@@ -23,24 +23,147 @@ const HeroScroll = ({ onFirstFrameReady, showContent = false }: HeroScrollProps)
   const imagesRef = useRef<HTMLImageElement[]>([])
   const [imagesLoaded, setImagesLoaded] = useState(0)
   const firstFrameReadyRef = useRef(false)
-  const [contentVisible, setContentVisible] = useState(false)
+  const scrollTimelineRef = useRef<gsap.core.Timeline | null>(null)
+  const introAnimationComplete = useRef(false)
 
   useEffect(() => {
-    if (showContent && !contentVisible) {
-      setContentVisible(true)
-      // Fade in navbar and hero content
-      gsap.fromTo(
-        navRef.current,
-        { opacity: 0, y: -20 },
-        { opacity: 1, y: 0, duration: 0.8, ease: "power2.out", delay: 0.2 },
-      )
-      gsap.fromTo(
-        heroContentRef.current,
-        { opacity: 0, y: 30 },
-        { opacity: 1, y: 0, duration: 0.8, ease: "power2.out", delay: 0.4 },
-      )
+    if (!showContent || introAnimationComplete.current) return
+    if (!navRef.current || !heroContentRef.current) return
+
+    introAnimationComplete.current = true
+
+    // Animate navbar in
+    gsap.fromTo(
+      navRef.current,
+      { opacity: 0, y: -30 },
+      { opacity: 1, y: 0, duration: 0.8, ease: "power2.out", delay: 0.1 },
+    )
+
+    // Animate hero content in
+    gsap.fromTo(
+      heroContentRef.current,
+      { opacity: 0, y: 40 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        ease: "power2.out",
+        delay: 0.3,
+        onComplete: () => {
+          // Only setup scroll animations AFTER intro animation is fully complete
+          setupScrollAnimations()
+        },
+      },
+    )
+  }, [showContent])
+
+  const setupScrollAnimations = () => {
+    if (scrollTimelineRef.current) return
+    if (!containerRef.current || !navRef.current || !heroContentRef.current || !wrapperRef.current) return
+
+    const playhead = { frame: 0 }
+    const canvas = canvasRef.current
+    const context = canvas?.getContext("2d")
+
+    const render = (index: number) => {
+      const img = imagesRef.current[index]
+      if (!img || !canvas || !context) return
+
+      const dpr = window.devicePixelRatio || 1
+      const cssWidth = window.innerWidth
+      const cssHeight = window.innerHeight
+
+      if (canvas.width !== cssWidth * dpr) {
+        canvas.width = cssWidth * dpr
+        canvas.height = cssHeight * dpr
+        context.scale(dpr, dpr)
+        context.imageSmoothingEnabled = true
+        context.imageSmoothingQuality = "medium"
+      }
+
+      context.clearRect(0, 0, canvas.width, canvas.height)
+
+      const imgRatio = img.width / img.height
+      const screenRatio = cssWidth / cssHeight
+
+      let drawWidth, drawHeight, offsetX, offsetY
+
+      if (imgRatio > screenRatio) {
+        drawHeight = cssHeight
+        drawWidth = cssHeight * imgRatio
+      } else {
+        drawWidth = cssWidth
+        drawHeight = cssWidth / imgRatio
+      }
+
+      const ZOOM_FIX = 1.25
+      drawWidth = drawWidth * ZOOM_FIX
+      drawHeight = drawHeight * ZOOM_FIX
+
+      offsetX = (cssWidth - drawWidth) / 2
+      offsetY = (cssHeight - drawHeight) / 2
+
+      context.drawImage(img, offsetX, offsetY, drawWidth, drawHeight)
     }
-  }, [showContent, contentVisible])
+
+    // Create scroll-driven timeline
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        id: "hero-scroll",
+        trigger: containerRef.current,
+        start: "top top",
+        end: "+=600%",
+        pin: true,
+        scrub: 0.8,
+      },
+    })
+
+    scrollTimelineRef.current = tl
+
+    tl.to(navRef.current, { opacity: 0, y: -50, ease: "none", duration: 2.5 }, 0)
+
+    tl.to(heroContentRef.current, { opacity: 0, scale: 0.7, ease: "none", duration: 3 }, 1.5)
+
+    // Frame animation runs through entire scroll
+    tl.to(
+      playhead,
+      {
+        frame: FRAME_COUNT - 1,
+        ease: "none",
+        duration: 10,
+        onUpdate: () => render(Math.round(playhead.frame)),
+      },
+      0,
+    )
+
+    // Container zoom out in last portion of scroll
+    tl.to(
+      wrapperRef.current,
+      {
+        scale: 0.95,
+        borderBottomLeftRadius: 40,
+        borderBottomRightRadius: 40,
+        borderTopLeftRadius: 0,
+        borderTopRightRadius: 0,
+        border: "1px solid rgba(255, 255, 255, 0.2)",
+        ease: "none",
+        duration: 2,
+      },
+      8,
+    )
+
+    tl.to(
+      wrapperRef.current,
+      {
+        boxShadow: "0 20px 40px rgba(0,0,0,0.2)",
+        duration: 1.5,
+        ease: "none",
+      },
+      8.5,
+    )
+
+    ScrollTrigger.refresh()
+  }
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger)
@@ -50,24 +173,6 @@ const HeroScroll = ({ onFirstFrameReady, showContent = false }: HeroScrollProps)
 
     context.imageSmoothingEnabled = true
     context.imageSmoothingQuality = "medium"
-
-    const loadImages = () => {
-      for (let i = 1; i <= FRAME_COUNT; i++) {
-        const img = new Image()
-        const formattedIndex = i.toString().padStart(4, "0")
-        img.src = `${URL_PREFIX}${FILE_NAME}${formattedIndex}.${FILE_TYPE}`
-        img.crossOrigin = "anonymous"
-        img.onload = () => {
-          imagesRef.current[i - 1] = img
-          setImagesLoaded((prev) => prev + 1)
-          if (i === 1 && !firstFrameReadyRef.current) {
-            firstFrameReadyRef.current = true
-            render(0)
-            onFirstFrameReady?.()
-          }
-        }
-      }
-    }
 
     const render = (index: number) => {
       const img = imagesRef.current[index]
@@ -110,6 +215,24 @@ const HeroScroll = ({ onFirstFrameReady, showContent = false }: HeroScrollProps)
       context.drawImage(img, offsetX, offsetY, drawWidth, drawHeight)
     }
 
+    const loadImages = () => {
+      for (let i = 1; i <= FRAME_COUNT; i++) {
+        const img = new Image()
+        const formattedIndex = i.toString().padStart(4, "0")
+        img.src = `${URL_PREFIX}${FILE_NAME}${formattedIndex}.${FILE_TYPE}`
+        img.crossOrigin = "anonymous"
+        img.onload = () => {
+          imagesRef.current[i - 1] = img
+          setImagesLoaded((prev) => prev + 1)
+          if (i === 1 && !firstFrameReadyRef.current) {
+            firstFrameReadyRef.current = true
+            render(0)
+            onFirstFrameReady?.()
+          }
+        }
+      }
+    }
+
     const handleResize = () => {
       const progress = ScrollTrigger.getById("hero-scroll")?.progress || 0
       const frameIndex = Math.floor(progress * (FRAME_COUNT - 1))
@@ -119,82 +242,6 @@ const HeroScroll = ({ onFirstFrameReady, showContent = false }: HeroScrollProps)
     window.addEventListener("resize", handleResize)
     loadImages()
 
-    const playhead = { frame: 0 }
-
-    // Total duration is 10 units. Each animation's duration/position is a fraction of scroll.
-    // scrub: 1 ensures smooth reverse on scroll up
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        id: "hero-scroll",
-        trigger: containerRef.current,
-        start: "top top",
-        end: "+=600%",
-        pin: true,
-        scrub: 1, // smooth scrub with reverse
-      },
-    })
-
-    tl.to(
-      navRef.current,
-      {
-        opacity: 0,
-        y: -40,
-        ease: "none",
-        duration: 2.5,
-      },
-      0, // start at beginning
-    )
-
-    tl.to(
-      heroContentRef.current,
-      {
-        scale: 0.6,
-        opacity: 0,
-        y: -80,
-        ease: "none",
-        duration: 3,
-      },
-      0, // start at beginning
-    )
-
-    // Frame animation runs through entire scroll
-    tl.to(
-      playhead,
-      {
-        frame: FRAME_COUNT - 1,
-        ease: "none",
-        duration: 10,
-        onUpdate: () => render(Math.round(playhead.frame)),
-      },
-      0,
-    )
-
-    // Container zoom out in last 20% of scroll
-    tl.to(
-      wrapperRef.current,
-      {
-        scale: 0.95,
-        borderBottomLeftRadius: 40,
-        borderBottomRightRadius: 40,
-        borderTopLeftRadius: 0,
-        borderTopRightRadius: 0,
-        border: "1px solid rgba(255, 255, 255, 0.2)",
-        ease: "none",
-        duration: 2,
-      },
-      8, // starts at 80% (8 out of 10)
-    )
-
-    tl.to(
-      wrapperRef.current,
-      {
-        boxShadow: "0 20px 40px rgba(0,0,0,0.2)",
-        duration: 1.5,
-        ease: "none",
-      },
-      8.5, // starts at 85%
-    )
-
     return () => {
       window.removeEventListener("resize", handleResize)
       ScrollTrigger.getAll().forEach((t) => t.kill())
@@ -203,15 +250,13 @@ const HeroScroll = ({ onFirstFrameReady, showContent = false }: HeroScrollProps)
 
   return (
     <div ref={containerRef} className="relative w-full h-screen bg-[#1a1a1a] overflow-hidden">
-      <div
-        ref={wrapperRef}
-        className="w-full h-full relative origin-top will-change-transform overflow-hidden bg-blue-600"
-      >
+      <div ref={wrapperRef} className="w-full h-full relative origin-top will-change-transform overflow-hidden">
         <canvas ref={canvasRef} style={{ width: "100%", height: "100%" }} className="block object-cover" />
 
         <nav
           ref={navRef}
-          className="absolute top-0 left-0 right-0 z-20 flex items-center justify-between px-8 py-6 opacity-0"
+          className="absolute top-0 left-0 right-0 z-20 flex items-center justify-between px-8 py-6 will-change-transform"
+          style={{ opacity: 0, visibility: showContent ? "visible" : "hidden" }}
         >
           {/* Left nav items */}
           <div className="flex items-center gap-8">
@@ -253,7 +298,11 @@ const HeroScroll = ({ onFirstFrameReady, showContent = false }: HeroScrollProps)
           </div>
         </nav>
 
-        <div ref={heroContentRef} className="absolute inset-0 z-10 flex flex-col items-center justify-center opacity-0">
+        <div
+          ref={heroContentRef}
+          className="absolute inset-0 z-10 flex flex-col items-center justify-center will-change-transform"
+          style={{ opacity: 0, visibility: showContent ? "visible" : "hidden" }}
+        >
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold text-[#2d3b2d] text-center max-w-4xl leading-tight text-balance px-4">
             The single platform to iterate, evaluate, deploy, and monitor AI agents
           </h1>

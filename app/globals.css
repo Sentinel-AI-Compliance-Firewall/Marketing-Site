@@ -4,7 +4,7 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  --background: #fcfdf6;
+  --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.145 0 0);
@@ -124,13 +124,12 @@
   }
 }
 
-/* Set body background to dark gray so we can distinguish from HeroScroll */
+/* Adding animation-specific styles for the scroll experience */
 html,
 body {
   background-color: #1a1a1a;
 }
 
-/* Adding animation-specific styles */
 html {
   scroll-behavior: smooth;
 }

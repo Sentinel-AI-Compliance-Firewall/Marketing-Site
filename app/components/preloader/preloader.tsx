@@ -125,8 +125,6 @@ const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
         duration: 1.2,
         ease: "expo.inOut",
       })
-
-      // This prevents the double-fade effect that causes the flash
     }, comp)
 
     return () => ctx.revert()
@@ -143,7 +141,7 @@ const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
 
       <div className="absolute inset-0 z-10 flex items-center justify-center">
         <div className="relative w-[80vw] max-w-4xl h-[200px] flex items-center justify-center">
-          <div className="meta-group absolute -top-6 right-0 text-white text-xs md:text-sm font-medium opacity-0">
+          <div className="meta-group absolute -top-7 right-0 text-white text-xs md:text-sm font-medium opacity-0">
             ©2025
           </div>
 
