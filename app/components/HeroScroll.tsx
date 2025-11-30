@@ -29,6 +29,18 @@ const HeroScroll = ({
   const scrollTimelineRef = useRef<gsap.core.Timeline | null>(null);
   const introAnimationComplete = useRef(false);
 
+  const handleWaitlistSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    if (!email || isSubmitting) return
+
+    setIsSubmitting(true)
+    // Simulate API call
+    await new Promise(resolve => setTimeout(resolve, 1000))
+    setIsSubmitted(true)
+    setIsSubmitting(false)
+    setEmail("")
+  }
+
   useEffect(() => {
     if (!showContent || introAnimationComplete.current) return;
     if (!navRef.current || !heroContentRef.current) return;
@@ -282,8 +294,7 @@ const HeroScroll = ({
 
         <nav
           ref={navRef}
-          className="absolute top-0 left-0 right-0 z-20 flex items-center justify-between px-8 py-6 will-change-transform"
-          style={{ opacity: 0, visibility: showContent ? "visible" : "hidden" }}
+          className={`absolute top-0 left-0 right-0 z-20 flex items-center justify-between px-8 py-6 will-change-transform opacity-hidden ${showContent ? "visibility-visible" : "visibility-hidden"}`}
         >
           {/* Left nav items */}
           <div className="flex items-center gap-8">
@@ -339,8 +350,7 @@ const HeroScroll = ({
 
         <div
           ref={heroContentRef}
-          className="absolute inset-0 z-10 flex flex-col items-center justify-center will-change-transform"
-          style={{ opacity: 0, visibility: showContent ? "visible" : "hidden" }}
+          className={`absolute inset-0 z-10 flex flex-col items-center justify-center will-change-transform opacity-hidden ${showContent ? "visibility-visible" : "visibility-hidden"}`}
         >
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold text-white text-center max-w-4xl leading-tight text-balance px-4">
             The single platform to iterate, evaluate, deploy, and monitor AI

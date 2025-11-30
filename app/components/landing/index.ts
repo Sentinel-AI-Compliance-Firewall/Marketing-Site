@@ -1,0 +1,6 @@
+export { HeroSection } from "./HeroSection"
+export { CategoriesGrid } from "./CategoriesGrid"
+export { InteractiveDemo } from "./InteractiveDemo"
+export { HowItWorks } from "./HowItWorks"
+export { StatsSection } from "./StatsSection"
+export { CTASection } from "./CTASection"

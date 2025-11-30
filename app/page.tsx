@@ -14,7 +14,8 @@ export default function Home() {
   const [firstFrameReady, setFirstFrameReady] = useState(false);
 
   useEffect(() => {
-    if (preloaderFinished && firstFrameReady) {
+    if (preloaderFinished) {
+      // Small delay to ensure smooth transition
       setTimeout(() => {
         ScrollTrigger.refresh();
       }, 100);
