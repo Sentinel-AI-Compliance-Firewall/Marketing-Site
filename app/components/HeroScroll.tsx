@@ -1,11 +1,13 @@
 "use client"
 
 import { useEffect, useRef, useState } from "react"
+import Link from "next/link"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
+import { Shield, ChevronDown, Play, ArrowRight } from "lucide-react"
 
-const FRAME_COUNT = 192
-const URL_PREFIX = "/frames/"
+const FRAME_COUNT = 195
+const URL_PREFIX = "/Frames/"
 const FILE_NAME = "frame"
 const FILE_TYPE = "jpg"
 
@@ -22,9 +24,24 @@ const HeroScroll = ({ onFirstFrameReady, showContent = false }: HeroScrollProps)
   const heroContentRef = useRef<HTMLDivElement>(null)
   const imagesRef = useRef<HTMLImageElement[]>([])
   const [imagesLoaded, setImagesLoaded] = useState(0)
+  const [email, setEmail] = useState("")
+  const [isSubmitted, setIsSubmitted] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false)
   const firstFrameReadyRef = useRef(false)
   const scrollTimelineRef = useRef<gsap.core.Timeline | null>(null)
   const introAnimationComplete = useRef(false)
+
+  const handleWaitlistSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    if (!email || isSubmitting) return
+
+    setIsSubmitting(true)
+    // Simulate API call
+    await new Promise(resolve => setTimeout(resolve, 1000))
+    setIsSubmitted(true)
+    setIsSubmitting(false)
+    setEmail("")
+  }
 
   useEffect(() => {
     if (!showContent || introAnimationComplete.current) return
@@ -120,7 +137,7 @@ const HeroScroll = ({ onFirstFrameReady, showContent = false }: HeroScrollProps)
 
     scrollTimelineRef.current = tl
 
-    tl.to(navRef.current, { opacity: 0, y: -50, ease: "none", duration: 2.5 }, 0)
+    // Navbar stays visible - no fade out animation
 
     tl.to(heroContentRef.current, { opacity: 0, scale: 0.7, ease: "none", duration: 3 }, 1.5)
 
@@ -251,67 +268,108 @@ const HeroScroll = ({ onFirstFrameReady, showContent = false }: HeroScrollProps)
   return (
     <div ref={containerRef} className="relative w-full h-screen bg-[#1a1a1a] overflow-hidden">
       <div ref={wrapperRef} className="w-full h-full relative origin-top will-change-transform overflow-hidden">
-        <canvas ref={canvasRef} style={{ width: "100%", height: "100%" }} className="block object-cover" />
+        <canvas ref={canvasRef} className="block object-cover canvas-fullscreen" />
 
         <nav
           ref={navRef}
-          className="absolute top-0 left-0 right-0 z-20 flex items-center justify-between px-8 py-6 will-change-transform"
-          style={{ opacity: 0, visibility: showContent ? "visible" : "hidden" }}
+          className={`absolute top-0 left-0 right-0 z-20 flex items-center justify-between px-8 py-6 will-change-transform opacity-hidden ${showContent ? "visibility-visible" : "visibility-hidden"}`}
         >
           {/* Left nav items */}
           <div className="flex items-center gap-8">
-            <button className="flex items-center gap-1 text-sm font-medium text-[#2d3b2d] uppercase tracking-wider hover:opacity-70 transition-opacity">
+            <Link href="/product" className="flex items-center gap-1 text-sm font-medium text-white uppercase tracking-wider hover:text-[#00FF88] transition-colors">
               Products
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-              </svg>
-            </button>
-            <button className="text-sm font-medium text-[#2d3b2d] uppercase tracking-wider hover:opacity-70 transition-opacity">
+              <ChevronDown className="w-4 h-4" />
+            </Link>
+            <Link href="/pricing" className="text-sm font-medium text-white uppercase tracking-wider hover:text-[#00FF88] transition-colors">
               Pricing
-            </button>
-            <button className="text-sm font-medium text-[#2d3b2d] uppercase tracking-wider hover:opacity-70 transition-opacity">
-              Blog
-            </button>
+            </Link>
+            <Link href="/security" className="text-sm font-medium text-white uppercase tracking-wider hover:text-[#00FF88] transition-colors">
+              Security
+            </Link>
           </div>
 
           {/* Center logo */}
-          <div className="absolute left-1/2 -translate-x-1/2 flex items-center gap-2">
-            <svg className="w-6 h-6 text-[#2d3b2d]" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
-            </svg>
-            <span className="text-xl font-semibold text-[#2d3b2d] text-center max-w-4xl leading-tight text-balance px-4">
-              Adaline
+          <Link href="/" className="absolute left-1/2 -translate-x-1/2 flex items-center gap-2">
+            <Shield className="w-8 h-8 text-[#00FF88]" />
+            <span className="text-xl font-bold text-white tracking-wide">
+              SENTINEL
             </span>
-          </div>
+          </Link>
 
           {/* Right CTA buttons */}
           <div className="flex items-center gap-4">
-            <button className="flex items-center gap-2 px-5 py-2.5 text-sm font-medium text-[#2d3b2d] border border-[#2d3b2d]/30 rounded-full hover:bg-[#2d3b2d]/5 transition-colors">
+            <Link href="/contact" className="flex items-center gap-2 px-5 py-2.5 text-sm font-medium text-white border border-white/30 rounded-full hover:bg-white/10 transition-colors">
               Watch Demo
-              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M8 5v14l11-7z" />
-              </svg>
-            </button>
-            <button className="px-5 py-2.5 text-sm font-medium text-white bg-[#2d3b2d] rounded-full uppercase tracking-wider hover:bg-[#1a2a1a] transition-colors">
-              Start for Free
-            </button>
+              <Play className="w-4 h-4" />
+            </Link>
+            <Link href="/contact?demo=true" className="px-5 py-2.5 text-sm font-medium text-black bg-[#00FF88] rounded-full uppercase tracking-wider hover:bg-[#00CC6A] transition-colors">
+              Request Demo
+            </Link>
           </div>
         </nav>
 
         <div
           ref={heroContentRef}
-          className="absolute inset-0 z-10 flex flex-col items-center justify-center will-change-transform"
-          style={{ opacity: 0, visibility: showContent ? "visible" : "hidden" }}
+          className={`absolute inset-0 z-10 flex flex-col items-center justify-center will-change-transform opacity-hidden ${showContent ? "visibility-visible" : "visibility-hidden"}`}
         >
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold text-[#2d3b2d] text-center max-w-4xl leading-tight text-balance px-4">
-            The single platform to iterate, evaluate, deploy, and monitor AI agents
-          </h1>
+          <div className="text-center max-w-3xl mx-auto px-6">
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">
+              AI-Powered Workplace
+              <span className="block text-[#00FF88]">Bias Detection</span>
+            </h1>
+            <p className="text-lg md:text-xl text-white/80 mb-10 max-w-2xl mx-auto">
+              Enterprise-grade compliance firewall that detects and remediates bias across 9 protected categories in real-time.
+            </p>
+
+            {/* Waitlist Form */}
+            <div className="max-w-md mx-auto">
+              {isSubmitted ? (
+                <div className="flex items-center justify-center gap-3 py-4 px-6 rounded-full bg-[#00FF88]/20 border border-[#00FF88]/40">
+                  <svg className="w-6 h-6 text-[#00FF88]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span className="text-[#00FF88] font-medium">You&apos;re on the waitlist!</span>
+                </div>
+              ) : (
+                <form onSubmit={handleWaitlistSubmit} className="flex flex-col sm:flex-row gap-3">
+                  <input
+                    type="email"
+                    placeholder="Enter your work email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
+                    className="flex-1 px-5 py-3.5 rounded-full bg-white/10 border border-white/20 text-white placeholder:text-white/50 focus:outline-none focus:border-[#00FF88] focus:ring-1 focus:ring-[#00FF88] transition-colors"
+                  />
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-[#00FF88] text-black font-semibold hover:bg-[#00CC6A] transition-colors disabled:opacity-70 disabled:cursor-not-allowed whitespace-nowrap"
+                  >
+                    {isSubmitting ? (
+                      <span className="flex items-center gap-2">
+                        <svg className="animate-spin w-5 h-5" fill="none" viewBox="0 0 24 24">
+                          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
+                        </svg>
+                        Joining...
+                      </span>
+                    ) : (
+                      <>
+                        Join Waitlist
+                        <ArrowRight className="w-5 h-5" />
+                      </>
+                    )}
+                  </button>
+                </form>
+              )}
+              <p className="text-white/50 text-sm mt-4">
+                Be first to access. No spam, unsubscribe anytime.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
 
-      <div className="absolute bottom-4 left-4 text-sm text-gray-400 pointer-events-none z-10">
-        Frames loaded: {imagesLoaded}/{FRAME_COUNT}
-      </div>
     </div>
   )
 }

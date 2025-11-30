@@ -8,9 +8,9 @@ interface PreloaderProps {
   onComplete?: () => void
 }
 
-const words = ["SLEEP", "RELAX", "DREAM"]
+// Sentinel branding words
+const words = ["SCAN", "DETECT", "PROTECT"]
 const numberSteps = ["0%", "17%", "34%", "58%", "82%", "100%"]
-const fontStack = `HelveticaNowDisplayMedium, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif`
 
 const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
   const comp = useRef<HTMLDivElement>(null)
@@ -25,17 +25,21 @@ const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
         },
       })
 
-      gsap.set([topShutterRef.current, bottomShutterRef.current], { height: "50vh" })
+      gsap.set([topShutterRef.current, bottomShutterRef.current], {
+        height: "50vh",
+      })
       gsap.set(".word-container", { opacity: 1 })
       gsap.set(".number-container", { opacity: 1 })
       gsap.set(".meta-group", { opacity: 0, y: 20 })
 
+      // Initial shutter movement
       tl.to([topShutterRef.current, bottomShutterRef.current], {
         height: "49.5vh",
         duration: 0.8,
         ease: "power3.out",
       })
 
+      // Open shutters to reveal content
       tl.to(
         [topShutterRef.current, bottomShutterRef.current],
         {
@@ -43,9 +47,10 @@ const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
           duration: 1.5,
           ease: "power2.inOut",
         },
-        "open",
+        "open"
       )
 
+      // Show meta info
       tl.to(
         ".meta-group",
         {
@@ -54,12 +59,13 @@ const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
           duration: 0.8,
           ease: "power3.out",
         },
-        "open+=1.0",
+        "open+=1.0"
       )
 
       tl.add("start-flow")
       const totalAnimationTime = words.length * 2.5
 
+      // Continue opening shutters
       tl.to(
         [topShutterRef.current, bottomShutterRef.current],
         {
@@ -67,32 +73,43 @@ const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
           duration: totalAnimationTime,
           ease: "linear",
         },
-        "start-flow",
+        "start-flow"
       )
 
+      // Animate each word
       words.forEach((word, index) => {
         const letters = `.word-${index} .letter`
         const startTime = index * 2.3
 
+        // Letters in
         tl.fromTo(
           letters,
-          { y: "150%" },
-          { y: "0%", duration: 1.4, stagger: 0.06, ease: "power3.out" },
-          `start-flow+=${startTime}`,
+          { y: "150%", opacity: 0 },
+          {
+            y: "0%",
+            opacity: 1,
+            duration: 1.4,
+            stagger: 0.06,
+            ease: "power3.out",
+          },
+          `start-flow+=${startTime}`
         )
 
+        // Letters out
         tl.to(
           letters,
           {
             y: "-150%",
+            opacity: 0,
             duration: 0.8,
             stagger: 0.04,
             ease: "power2.in",
           },
-          `start-flow+=${startTime + 1.8}`,
+          `start-flow+=${startTime + 1.8}`
         )
       })
 
+      // Animate number counter
       const stepDuration = totalAnimationTime / numberSteps.length
       numberSteps.forEach((num, index) => {
         const chars = `.num-${index} .num-char`
@@ -103,7 +120,7 @@ const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
           chars,
           { y: "150%" },
           { y: "0%", duration: 1.0, stagger: 0.05, ease: "power3.out" },
-          `start-flow+=${startTime}`,
+          `start-flow+=${startTime}`
         )
 
         if (!isLast) {
@@ -115,11 +132,12 @@ const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
               stagger: 0.03,
               ease: "power2.in",
             },
-            `start-flow+=${startTime + stepDuration * 0.7}`,
+            `start-flow+=${startTime + stepDuration * 0.7}`
           )
         }
       })
 
+      // Final shutter close
       tl.to([topShutterRef.current, bottomShutterRef.current], {
         height: "0vh",
         duration: 1.2,
@@ -133,29 +151,42 @@ const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
   return (
     <div
       ref={comp}
-      className="fixed inset-0 z-50 flex items-center justify-center pointer-events-none"
-      style={{ fontFamily: fontStack }}
+      className="fixed inset-0 z-[9999] flex items-center justify-center pointer-events-none"
     >
-      <div ref={topShutterRef} className="absolute top-0 left-0 w-full bg-black z-20"></div>
-      <div ref={bottomShutterRef} className="absolute bottom-0 left-0 w-full bg-black z-20"></div>
+      {/* Top Shutter */}
+      <div
+        ref={topShutterRef}
+        className="absolute top-0 left-0 w-full bg-black z-20"
+      >
+        {/* Subtle grid pattern */}
+        <div className="absolute inset-0 opacity-5 preloader-grid" />
+      </div>
 
+      {/* Bottom Shutter */}
+      <div
+        ref={bottomShutterRef}
+        className="absolute bottom-0 left-0 w-full bg-black z-20"
+      />
+
+      {/* Content */}
       <div className="absolute inset-0 z-10 flex items-center justify-center">
         <div className="relative w-[80vw] max-w-4xl h-[200px] flex items-center justify-center">
-          <div className="meta-group absolute -top-7 right-0 text-white text-xs md:text-sm font-medium opacity-0">
-            ©2025
+          {/* Top right meta - Sentinel branding */}
+          <div className="meta-group absolute -top-7 right-0 text-[#00FF88] text-xs md:text-sm font-mono font-medium opacity-0 tracking-wider">
+            SENTINEL//INITIALIZING
           </div>
 
+          {/* Words container */}
           <div className="relative w-full h-full flex items-center justify-center overflow-hidden">
             {words.map((word, wordIndex) => (
               <div
                 key={wordIndex}
-                className={`word-container word-${wordIndex} absolute flex items-center justify-center`}
-                style={{ opacity: 0 }}
+                className={`word-container word-${wordIndex} absolute flex items-center justify-center opacity-hidden`}
               >
                 {word.split("").map((char, charIndex) => (
                   <span
                     key={charIndex}
-                    className="letter inline-block text-5xl md:text-7xl lg:text-9xl font-bold text-white leading-none tracking-tight"
+                    className={`letter inline-block text-5xl md:text-7xl lg:text-9xl font-bold text-white leading-none tracking-tight font-display ${wordIndex === 2 ? "text-glow-green" : "text-glow-none"}`}
                   >
                     {char}
                   </span>
@@ -164,24 +195,28 @@ const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
             ))}
           </div>
 
-          <div className="meta-group absolute -bottom-6 left-0 text-white opacity-0 h-10 w-24 overflow-hidden">
+          {/* Bottom left counter */}
+          <div className="meta-group absolute -bottom-6 left-0 text-white opacity-0 h-10 w-24 overflow-hidden font-mono">
             {numberSteps.map((num, i) => (
               <div
                 key={i}
-                className={`number-container num-${i} absolute top-0 left-0 w-full h-full flex items-center`}
-                style={{ opacity: 1 }}
+                className={`number-container num-${i} absolute top-0 left-0 w-full h-full flex items-center opacity-full`}
               >
                 {num.split("").map((char, charIndex) => (
                   <span
                     key={charIndex}
-                    className="num-char inline-block text-xl md:text-3xl font-bold tabular-nums leading-none"
-                    style={{ transform: "translateY(150%)" }}
+                    className="num-char inline-block text-xl md:text-3xl font-bold tabular-nums leading-none translate-y-150 text-primary-green"
                   >
                     {char}
                   </span>
                 ))}
               </div>
             ))}
+          </div>
+
+          {/* Bottom right status */}
+          <div className="meta-group absolute -bottom-6 right-0 text-[#666666] text-xs md:text-sm font-mono opacity-0">
+            BIAS DETECTION READY
           </div>
         </div>
       </div>

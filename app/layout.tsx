@@ -1,31 +1,76 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Geist, Geist_Mono } from "next/font/google"
 import "./globals.css"
 
-const _geist = Geist({ subsets: ["latin"] })
-const _geistMono = Geist_Mono({ subsets: ["latin"] })
-
 export const metadata: Metadata = {
-  title: "Animation System",
-  description: "Premium scroll-driven animation experience",
-  generator: "v0.app",
-  icons: {
-    icon: [
+  title: {
+    default: "Sentinel AI | Enterprise Bias Detection & Compliance Platform",
+    template: "%s | Sentinel AI",
+  },
+  description:
+    "AI-powered compliance firewall that detects and remediates workplace bias across 9 protected categories. Prevent discrimination before it happens.",
+  keywords: [
+    "bias detection",
+    "AI compliance",
+    "workplace discrimination",
+    "HR technology",
+    "enterprise security",
+    "EEOC compliance",
+    "diversity and inclusion",
+    "employment law",
+    "machine learning",
+    "NLP",
+  ],
+  authors: [{ name: "Sentinel AI" }],
+  creator: "Sentinel AI",
+  publisher: "Sentinel AI",
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  metadataBase: new URL("https://sentinel-ai.com"),
+  openGraph: {
+    title: "Sentinel AI - The Compliance Firewall for Enterprise",
+    description:
+      "Enterprise-grade AI that detects and remediates workplace bias across 9 protected categories.",
+    url: "https://sentinel-ai.com",
+    siteName: "Sentinel AI",
+    locale: "en_US",
+    type: "website",
+    images: [
       {
-        url: "/icon-light-32x32.png",
-        media: "(prefers-color-scheme: light)",
-      },
-      {
-        url: "/icon-dark-32x32.png",
-        media: "(prefers-color-scheme: dark)",
-      },
-      {
-        url: "/icon.svg",
-        type: "image/svg+xml",
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Sentinel AI - Compliance Firewall",
       },
     ],
-    apple: "/apple-icon.png",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Sentinel AI - The Compliance Firewall",
+    description:
+      "AI-powered bias detection protecting organizations from workplace discrimination.",
+    images: ["/og-image.png"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  icons: {
+    icon: [
+      { url: "/favicon.ico" },
+      { url: "/icon.svg", type: "image/svg+xml" },
+    ],
+    apple: [{ url: "/apple-touch-icon.png" }],
   },
 }
 
@@ -35,8 +80,17 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
-      <body className={`font-sans antialiased`}>{children}</body>
+    <html lang="en" className="dark">
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+      </head>
+      <body
+        className="font-sans antialiased bg-black text-white min-h-screen"
+      >
+        {children}
+      </body>
     </html>
   )
 }
