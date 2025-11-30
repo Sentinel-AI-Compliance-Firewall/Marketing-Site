@@ -127,7 +127,7 @@
 /* Adding animation-specific styles for the scroll experience */
 html,
 body {
-  background-color: #1a1a1a;
+  background-color: black; /* Updated from #1a1a1a */
 }
 
 html {
@@ -136,4 +136,18 @@ html {
 
 canvas {
   display: block;
+}
+
+/* Adding seamless infinite marquee animation */
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee linear infinite;
 }
