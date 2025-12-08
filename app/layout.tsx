@@ -1,6 +1,7 @@
 import type React from "react"
 import type { Metadata } from "next"
 import "./globals.css"
+import { WaitlistProvider } from "@/app/context/WaitlistContext"
 
 export const metadata: Metadata = {
   title: {
@@ -89,7 +90,9 @@ export default function RootLayout({
       <body
         className="font-sans antialiased bg-black text-white min-h-screen"
       >
-        {children}
+        <WaitlistProvider>
+          {children}
+        </WaitlistProvider>
       </body>
     </html>
   )

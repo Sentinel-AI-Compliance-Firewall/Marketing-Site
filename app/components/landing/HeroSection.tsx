@@ -3,7 +3,8 @@
 import { useEffect, useRef } from "react"
 import gsap from "gsap"
 import { Button } from "@/app/components/ui"
-import { Play, ArrowRight, Shield } from "lucide-react"
+import { ArrowRight, Shield, Sparkles } from "lucide-react"
+import { useWaitlist } from "@/app/context/WaitlistContext"
 
 interface HeroSectionProps {
   showContent: boolean
@@ -15,6 +16,7 @@ export function HeroSection({ showContent }: HeroSectionProps) {
   const subheadlineRef = useRef<HTMLParagraphElement>(null)
   const ctaRef = useRef<HTMLDivElement>(null)
   const badgeRef = useRef<HTMLDivElement>(null)
+  const { openWaitlist } = useWaitlist()
 
   useEffect(() => {
     if (!showContent) return
@@ -98,13 +100,13 @@ export function HeroSection({ showContent }: HeroSectionProps) {
           ref={ctaRef}
           className="flex flex-col sm:flex-row items-center justify-center gap-4 opacity-0"
         >
-          <Button variant="primary" size="lg" as="a" href="/contact?demo=true">
+          <Button variant="accent" size="lg" onClick={openWaitlist}>
+            <Sparkles className="w-5 h-5" />
+            Join Waitlist
+          </Button>
+          <Button variant="ghost" size="lg" as="a" href="/contact?demo=true">
             Request Demo
             <ArrowRight className="w-5 h-5" />
-          </Button>
-          <Button variant="ghost" size="lg" as="a" href="#product-tour">
-            <Play className="w-5 h-5" />
-            Watch Product Tour
           </Button>
         </div>
 

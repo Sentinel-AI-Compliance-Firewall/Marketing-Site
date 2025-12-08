@@ -7,6 +7,7 @@ import { cn } from "@/app/lib/utils"
 import { Button } from "@/app/components/ui"
 import { NAV_LINKS, CTA_CONFIG } from "@/app/constants/navigation"
 import { Menu, X, ChevronDown, Shield } from "lucide-react"
+import { useWaitlist } from "@/app/context/WaitlistContext"
 
 interface NavbarProps {
   transparent?: boolean
@@ -17,6 +18,7 @@ export function Navbar({ transparent = true }: NavbarProps) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null)
   const pathname = usePathname()
+  const { openWaitlist } = useWaitlist()
 
   useEffect(() => {
     const handleScroll = () => {
@@ -118,8 +120,8 @@ export function Navbar({ transparent = true }: NavbarProps) {
               <Button variant="ghost" size="sm" as="a" href="/contact">
                 {CTA_CONFIG.sales.label}
               </Button>
-              <Button variant="primary" size="sm" as="a" href={CTA_CONFIG.primary.href}>
-                {CTA_CONFIG.primary.label}
+              <Button variant="accent" size="sm" onClick={openWaitlist}>
+                Join Waitlist
               </Button>
             </div>
 
@@ -199,8 +201,8 @@ export function Navbar({ transparent = true }: NavbarProps) {
               <Button variant="ghost" fullWidth as="a" href="/contact">
                 {CTA_CONFIG.sales.label}
               </Button>
-              <Button variant="primary" fullWidth as="a" href={CTA_CONFIG.primary.href}>
-                {CTA_CONFIG.primary.label}
+              <Button variant="accent" fullWidth onClick={() => { setIsMobileMenuOpen(false); openWaitlist(); }}>
+                Join Waitlist
               </Button>
             </div>
           </div>
