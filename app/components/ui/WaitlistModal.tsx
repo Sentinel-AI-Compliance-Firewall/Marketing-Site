@@ -47,7 +47,7 @@ export function WaitlistModal({ isOpen, onClose }: WaitlistModalProps) {
         body: JSON.stringify({
           email: formData.email,
           companyName: formData.companyName || "Not provided",
-          timestamp: new Date().toISOString(),
+          source: "waitlist-modal", // identify this entry in the sheet
         }),
       })
 
@@ -57,6 +57,7 @@ export function WaitlistModal({ isOpen, onClose }: WaitlistModalProps) {
 
       setStatus("success")
     } catch (error) {
+      console.error(error)
       setStatus("error")
       setErrorMessage("Something went wrong. Please try again.")
     }

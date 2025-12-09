@@ -1,19 +1,11 @@
 "use client"
 
 import { useState } from "react"
-import { Button, Input } from "@/app/components/ui"
-import { ArrowRight, Shield, CheckCircle } from "lucide-react"
+import { Shield, CheckCircle } from "lucide-react"
+import { WaitlistForm } from "@/app/components/WaitlistForm"
 
 export function CTASection() {
-  const [email, setEmail] = useState("")
   const [submitted, setSubmitted] = useState(false)
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    // In production, this would submit to an API
-    console.log("Demo request:", email)
-    setSubmitted(true)
-  }
 
   return (
     <section className="section bg-black relative overflow-hidden">
@@ -51,23 +43,10 @@ export function CTASection() {
               </p>
             </div>
           ) : (
-            <form
-              onSubmit={handleSubmit}
-              className="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto"
-            >
-              <Input
-                type="email"
-                placeholder="Enter your work email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-                className="flex-1"
-              />
-              <Button type="submit" variant="primary" size="lg">
-                Request Demo
-                <ArrowRight className="w-5 h-5" />
-              </Button>
-            </form>
+            <WaitlistForm
+              source="cta-section"
+              onSuccess={() => setSubmitted(true)}
+            />
           )}
 
           {/* Trust indicators */}

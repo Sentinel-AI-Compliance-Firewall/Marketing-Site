@@ -3,20 +3,11 @@
 import { useState } from "react"
 import Link from "next/link"
 import { FOOTER_LINKS, SOCIAL_LINKS } from "@/app/constants/navigation"
-import { Button, Input } from "@/app/components/ui"
-import { Shield, Twitter, Linkedin, Github, ArrowRight } from "lucide-react"
+import { Shield, Twitter, Linkedin, Github } from "lucide-react"
+import { WaitlistForm } from "@/app/components/WaitlistForm"
 
 export function Footer() {
-  const [email, setEmail] = useState("")
   const [subscribed, setSubscribed] = useState(false)
-
-  const handleSubscribe = async (e: React.FormEvent) => {
-    e.preventDefault()
-    // In production, this would call the newsletter API
-    console.log("Subscribing:", email)
-    setSubscribed(true)
-    setEmail("")
-  }
 
   const currentYear = new Date().getFullYear()
 
@@ -46,6 +37,7 @@ export function Footer() {
               Get the latest updates on workplace compliance, AI ethics, and
               product news.
             </p>
+
             {subscribed ? (
               <div className="flex items-center justify-center gap-2 text-[var(--success)]">
                 <svg
@@ -64,23 +56,11 @@ export function Footer() {
                 <span>Thanks for subscribing!</span>
               </div>
             ) : (
-              <form
-                onSubmit={handleSubscribe}
-                className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto"
-              >
-                <Input
-                  type="email"
-                  placeholder="Enter your email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  required
-                  className="flex-1"
-                />
-                <Button type="submit" variant="primary">
-                  Subscribe
-                  <ArrowRight className="w-4 h-4" />
-                </Button>
-              </form>
+              <WaitlistForm
+                source="footer-newsletter"
+                buttonLabel="Subscribe"
+                onSuccess={() => setSubscribed(true)}
+              />
             )}
           </div>
         </div>
