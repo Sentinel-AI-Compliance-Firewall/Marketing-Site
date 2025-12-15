@@ -63,8 +63,8 @@ export default function DpaPage() {
                 <h2 className="text-2xl font-bold text-white mb-4">1. Purpose and Scope</h2>
                 <p>
                   This Data Processing Agreement (&quot;DPA&quot;) forms part of the Terms of Service between
-                  Sentinel AI, Inc. (&quot;Processor&quot;) and the Customer (&quot;Controller&quot;) and governs the
-                  processing of personal data by Sentinel in connection with providing bias detection services.
+                  SentinelAI Compliance Firewall (&quot;Processor&quot;) and the Customer (&quot;Controller&quot;) and governs the
+                  processing of personal data by SentinelAI in connection with providing bias detection services.
                 </p>
               </section>
 
@@ -73,7 +73,7 @@ export default function DpaPage() {
                 <ul className="list-disc pl-6 space-y-2">
                   <li><strong className="text-white">&quot;Personal Data&quot;</strong> means any information relating to an identified or identifiable natural person</li>
                   <li><strong className="text-white">&quot;Processing&quot;</strong> means any operation performed on Personal Data</li>
-                  <li><strong className="text-white">&quot;Sub-processor&quot;</strong> means any third party engaged by Sentinel to process Personal Data</li>
+                  <li><strong className="text-white">&quot;Sub-processor&quot;</strong> means any third party engaged by SentinelAI to process Personal Data</li>
                   <li><strong className="text-white">&quot;Data Subject&quot;</strong> means an identified or identifiable natural person</li>
                 </ul>
               </section>
@@ -104,7 +104,7 @@ export default function DpaPage() {
 
               <section>
                 <h2 className="text-2xl font-bold text-white mb-4">4. Processor Obligations</h2>
-                <p>Sentinel agrees to:</p>
+                <p>SentinelAI agrees to:</p>
                 <ul className="list-disc pl-6 space-y-2 mt-2">
                   <li>Process Personal Data only on documented instructions from the Controller</li>
                   <li>Ensure personnel are bound by confidentiality obligations</li>
@@ -117,7 +117,7 @@ export default function DpaPage() {
 
               <section>
                 <h2 className="text-2xl font-bold text-white mb-4">5. Security Measures</h2>
-                <p>Sentinel implements the following security measures:</p>
+                <p>SentinelAI implements the following security measures:</p>
                 <ul className="list-disc pl-6 space-y-2 mt-2">
                   <li>Encryption of data in transit (TLS 1.3) and at rest (AES-256)</li>
                   <li>Access controls and authentication mechanisms</li>
@@ -131,8 +131,8 @@ export default function DpaPage() {
               <section>
                 <h2 className="text-2xl font-bold text-white mb-4">6. Sub-processors</h2>
                 <p>
-                  Controller authorizes Sentinel to engage sub-processors for the processing of Personal Data.
-                  Sentinel maintains a list of current sub-processors, available upon request. Sentinel will
+                  Controller authorizes SentinelAI to engage sub-processors for the processing of Personal Data.
+                  SentinelAI maintains a list of current sub-processors, available upon request. SentinelAI will
                   notify Controller of any intended changes to sub-processors, allowing Controller to object.
                 </p>
               </section>
@@ -140,7 +140,7 @@ export default function DpaPage() {
               <section>
                 <h2 className="text-2xl font-bold text-white mb-4">7. International Transfers</h2>
                 <p>
-                  For transfers of Personal Data outside the EEA, Sentinel relies on EU Standard Contractual
+                  For transfers of Personal Data outside the EEA, SentinelAI relies on EU Standard Contractual
                   Clauses (SCCs) as approved by the European Commission. Additional supplementary measures
                   are implemented as necessary based on transfer impact assessments.
                 </p>
@@ -149,7 +149,7 @@ export default function DpaPage() {
               <section>
                 <h2 className="text-2xl font-bold text-white mb-4">8. Data Subject Rights</h2>
                 <p>
-                  Sentinel will assist Controller in responding to requests from Data Subjects exercising
+                  SentinelAI will assist Controller in responding to requests from Data Subjects exercising
                   their rights under GDPR, including rights of access, rectification, erasure, restriction,
                   portability, and objection.
                 </p>
@@ -158,7 +158,7 @@ export default function DpaPage() {
               <section>
                 <h2 className="text-2xl font-bold text-white mb-4">9. Breach Notification</h2>
                 <p>
-                  Sentinel will notify Controller without undue delay (and in any event within 72 hours)
+                  SentinelAI will notify Controller without undue delay (and in any event within 72 hours)
                   after becoming aware of a Personal Data breach. Notification will include all information
                   reasonably required for Controller to meet its breach reporting obligations.
                 </p>
@@ -167,7 +167,7 @@ export default function DpaPage() {
               <section>
                 <h2 className="text-2xl font-bold text-white mb-4">10. Audit Rights</h2>
                 <p>
-                  Sentinel will make available to Controller all information necessary to demonstrate
+                  SentinelAI will make available to Controller all information necessary to demonstrate
                   compliance with this DPA and allow for audits. Controller may conduct audits upon
                   reasonable notice, subject to confidentiality obligations.
                 </p>
@@ -176,12 +176,8 @@ export default function DpaPage() {
               <section>
                 <h2 className="text-2xl font-bold text-white mb-4">Contact Information</h2>
                 <p>
-                  For questions about this DPA or to request a signed copy:
-                </p>
-                <p className="mt-2">
-                  <strong className="text-white">Email:</strong> legal@sentinel-ai.com<br />
-                  <strong className="text-white">DPO:</strong> dpo@sentinel-ai.com<br />
-                  <strong className="text-white">Address:</strong> 123 Innovation Way, San Francisco, CA 94105
+                  For questions about this DPA or to request a signed copy, please contact us through
+                  our <a href="/contact" className="text-[var(--primary)] hover:underline">contact form</a>.
                 </p>
               </section>
             </div>

@@ -490,11 +490,16 @@ canvas {
 /* Hide scrollbar but keep functionality */
 .no-scrollbar {
   -ms-overflow-style: none;
-  scrollbar-width: none;
 }
 
 .no-scrollbar::-webkit-scrollbar {
   display: none;
+}
+
+@supports (scrollbar-width: none) {
+  .no-scrollbar {
+    scrollbar-width: none;
+  }
 }
 
 /* Aspect ratios */

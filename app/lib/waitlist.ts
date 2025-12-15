@@ -18,17 +18,17 @@ function getAuth() {
   });
 }
 
-export async function addToWaitlist(email: string, name: string, source?: string) {
+export async function addToWaitlist(email: string, name: string, source?: string, companyName?: string) {
   const auth = getAuth();
   const sheets = google.sheets({ version: "v4", auth });
 
   const spreadsheetId = process.env.GOOGLE_SHEETS_ID as string;
 
-  const values = [[email, name, new Date().toISOString(), source || "unknown"]];
+  const values = [[email, name || "", source || "unknown", companyName || "", new Date().toISOString()]];
 
   await sheets.spreadsheets.values.append({
     spreadsheetId,
-    range: "Sheet1!A:D",
+    range: "Sheet1!A:E",
     valueInputOption: "RAW",
     requestBody: { values },
   });

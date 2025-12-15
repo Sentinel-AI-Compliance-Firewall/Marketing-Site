@@ -2,8 +2,7 @@
 
 import { Navbar, Footer } from "@/app/components/layout"
 import { Card, Badge, Button, Input } from "@/app/components/ui"
-import { Search, Book, MessageCircle, Mail, Phone, ArrowRight, HelpCircle, Zap, Shield, Code } from "lucide-react"
-import Link from "next/link"
+import { Search, Book, MessageCircle, Mail, ArrowRight, HelpCircle, Zap, Shield, Code } from "lucide-react"
 
 const HELP_CATEGORIES = [
   {
@@ -43,12 +42,12 @@ const POPULAR_ARTICLES = [
 
 const FAQ = [
   {
-    question: "How accurate is Sentinel's bias detection?",
-    answer: "Sentinel achieves 99.7% accuracy across all 9 protected categories, validated through extensive testing with diverse datasets and regular third-party audits.",
+    question: "How accurate is SentinelAI's bias detection?",
+    answer: "SentinelAI achieves high accuracy across all 9 protected categories through our multi-model ML ensemble approach. We continuously improve our models based on feedback and testing.",
   },
   {
-    question: "What languages does Sentinel support?",
-    answer: "We currently support 12 languages including English, Spanish, French, German, Chinese, Japanese, Korean, Portuguese, Italian, Dutch, Arabic, and Hindi.",
+    question: "What languages does SentinelAI support?",
+    answer: "We're starting with English support and plan to expand to additional languages based on customer demand. Contact us to discuss your language requirements.",
   },
   {
     question: "How long does it take to scan a document?",
@@ -56,7 +55,7 @@ const FAQ = [
   },
   {
     question: "Is my data secure?",
-    answer: "Yes. Sentinel is SOC 2 Type II certified, GDPR compliant, and offers HIPAA-compliant deployments. All data is encrypted in transit and at rest.",
+    answer: "Security is our priority. We implement industry-standard encryption for data in transit and at rest, and follow best practices for secure software development.",
   },
 ]
 
@@ -151,7 +150,7 @@ export default function HelpPage() {
         <div className="container">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-2xl font-bold text-white mb-8 text-center">Still Need Help?</h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-2xl mx-auto">
               <Card className="p-6 text-center">
                 <MessageCircle className="w-10 h-10 text-[var(--primary)] mx-auto mb-4" />
                 <h3 className="font-semibold text-white mb-2">Live Chat</h3>
@@ -162,18 +161,11 @@ export default function HelpPage() {
               </Card>
               <Card className="p-6 text-center">
                 <Mail className="w-10 h-10 text-[var(--primary)] mx-auto mb-4" />
-                <h3 className="font-semibold text-white mb-2">Email Support</h3>
+                <h3 className="font-semibold text-white mb-2">Contact Form</h3>
                 <p className="text-sm text-[var(--text-muted)] mb-4">Get a response within 24 hours</p>
-                <Button variant="ghost" size="sm" as="a" href="mailto:support@sentinel-ai.com">
-                  Send Email
-                </Button>
-              </Card>
-              <Card className="p-6 text-center">
-                <Phone className="w-10 h-10 text-[var(--primary)] mx-auto mb-4" />
-                <h3 className="font-semibold text-white mb-2">Phone Support</h3>
-                <p className="text-sm text-[var(--text-muted)] mb-4">Enterprise customers only</p>
-                <Button variant="ghost" size="sm">
-                  Schedule Call
+                <Button variant="ghost" size="sm" as="a" href="/contact">
+                  Contact Us
+                  <ArrowRight className="w-4 h-4" />
                 </Button>
               </Card>
             </div>

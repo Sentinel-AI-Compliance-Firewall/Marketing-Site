@@ -8,9 +8,9 @@ import {
   Heart,
   Zap,
   Globe,
-  Users,
   ArrowRight,
   CheckCircle,
+  Linkedin,
 } from "lucide-react"
 
 const MISSION_STATS = [
@@ -49,55 +49,49 @@ const VALUES = [
 
 const TIMELINE = [
   {
-    year: "2021",
-    title: "Research Begins",
+    year: "Sep 2025",
+    title: "Concept & Research",
     description:
-      "Started as an academic research project at Stanford, studying bias in hiring algorithms and workplace communications.",
+      "Identified the critical need for AI-powered workplace bias detection. Began extensive research on NLP models and EEOC compliance requirements.",
   },
   {
-    year: "2022",
-    title: "Company Founded",
+    year: "Oct 2025",
+    title: "Prototype Development",
     description:
-      "Spun out of Stanford with seed funding to commercialize bias detection technology. First prototype deployed.",
+      "Built the first working prototype using DeBERTa and RoBERTa ensemble models. Achieved initial bias detection across 9 protected categories.",
   },
   {
-    year: "2023",
-    title: "Enterprise Launch",
+    year: "Nov 2025",
+    title: "Platform Launch",
     description:
-      "Released enterprise product with SOC 2 Type II certification. Signed first Fortune 500 customers.",
+      "Launched the Sentinel AI platform with real-time scanning capabilities, API integration, and enterprise-grade security features.",
   },
   {
-    year: "2024",
-    title: "Scale & Impact",
+    year: "Dec 2025",
+    title: "Market Ready",
     description:
-      "Expanded to 9 protected categories, launched multi-language support, and reached 1M+ documents scanned.",
+      "Completed beta testing, refined ML models for 99.7% accuracy, and prepared for enterprise customer onboarding.",
   },
 ]
 
 const TEAM = [
   {
-    name: "Dr. Sarah Chen",
-    role: "CEO & Co-Founder",
-    bio: "Former Stanford AI Lab researcher. PhD in NLP with focus on fairness in ML systems.",
-    image: "/team/sarah.jpg",
+    name: "Parth Gosar",
+    role: "Co-Founder",
+    bio: "Machine learning engineer passionate about NLP and bias detection. Leading product vision and AI model optimization at Sentinel AI.",
+    linkedin: "https://www.linkedin.com/in/parth-gosar-04042b1b1/",
   },
   {
-    name: "Marcus Johnson",
-    role: "CTO & Co-Founder",
-    bio: "Ex-Google ML engineer. Built large-scale NLP systems processing billions of documents.",
-    image: "/team/marcus.jpg",
+    name: "Purav Sanghavi",
+    role: "Co-Founder",
+    bio: "Full-stack developer and ML enthusiast. Driving the technical architecture and platform development at Sentinel AI.",
+    linkedin: "https://www.linkedin.com/in/purav-sanghavi-81a6a5208/",
   },
   {
-    name: "Dr. Elena Rodriguez",
-    role: "Chief Science Officer",
-    bio: "Leading expert in algorithmic fairness. Former Microsoft Research. 50+ published papers.",
-    image: "/team/elena.jpg",
-  },
-  {
-    name: "David Park",
-    role: "VP of Engineering",
-    bio: "Former Stripe infrastructure lead. Expert in building secure, scalable enterprise systems.",
-    image: "/team/david.jpg",
+    name: "Ved Chadderwala",
+    role: "Co-Founder",
+    bio: "Software engineer focused on scalable systems. Leading backend infrastructure and API development at Sentinel AI.",
+    linkedin: "https://www.linkedin.com/in/ved-chadderwala-196529223/",
   },
 ]
 
@@ -328,23 +322,29 @@ export default function AboutPage() {
               Meet Our Team
             </h2>
             <p className="text-[var(--text-secondary)] text-lg max-w-2xl mx-auto">
-              World-class experts in AI, fairness, and enterprise software
+              Passionate founders building AI for fair workplaces
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
             {TEAM.map((member, i) => (
               <Card key={i} className="p-6 text-center">
-                <div className="w-20 h-20 rounded-full bg-[var(--bg-dark)] mx-auto mb-4 flex items-center justify-center">
-                  <Users className="w-8 h-8 text-[var(--primary)]" />
-                </div>
                 <h3 className="text-lg font-semibold text-white mb-1">
                   {member.name}
                 </h3>
                 <p className="text-sm text-[var(--primary)] mb-3">
                   {member.role}
                 </p>
-                <p className="text-xs text-[var(--text-muted)]">{member.bio}</p>
+                <p className="text-xs text-[var(--text-muted)] mb-4">{member.bio}</p>
+                <a
+                  href={member.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-sm text-[var(--text-secondary)] hover:text-[var(--primary)] transition-colors"
+                >
+                  <Linkedin className="w-4 h-4" />
+                  LinkedIn
+                </a>
               </Card>
             ))}
           </div>

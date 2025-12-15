@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import { Card, Button, Badge } from "@/app/components/ui"
 import { useBiasScan } from "@/app/hooks/useBiasScan"
 import { getSeverityLevel } from "@/app/constants/categories"
@@ -113,26 +113,25 @@ export function InteractiveDemo() {
                 </div>
               </div>
 
-              {/* Scan button */}
-              <Button
-                variant="primary"
-                onClick={handleScan}
-                loading={loading}
-                disabled={!inputText.trim() || loading}
-                fullWidth
-              >
-                {loading ? (
-                  <>
-                    <Loader2 className="w-4 h-4 animate-spin" />
-                    Scanning...
-                  </>
-                ) : (
-                  <>
-                    <Sparkles className="w-4 h-4" />
-                    Scan for Bias
-                  </>
-                )}
-              </Button>
+              {/* Scan button with Coming Soon overlay */}
+              <div className="relative">
+                <Button
+                  variant="primary"
+                  onClick={handleScan}
+                  loading={loading}
+                  disabled={true}
+                  fullWidth
+                >
+                  <Sparkles className="w-4 h-4" />
+                  Scan for Bias
+                </Button>
+                {/* Coming Soon Overlay */}
+                <div className="absolute inset-0 flex items-center justify-center bg-[var(--primary)]/90 rounded-lg cursor-not-allowed">
+                  <span className="text-white font-bold text-lg tracking-wide">
+                    COMING SOON
+                  </span>
+                </div>
+              </div>
 
               {/* Error message */}
               {error && (

@@ -8,8 +8,9 @@ export const PRICING_PLANS = [
     name: "Starter",
     description: "Perfect for small teams getting started with bias detection",
     price: {
-      monthly: 299,
-      annual: 249, // 17% discount
+      monthly: null,
+      annual: null,
+      label: "Coming Soon",
     },
     popular: false,
     features: [
@@ -24,7 +25,7 @@ export const PRICING_PLANS = [
       { text: "Custom policies", included: false },
       { text: "On-premise deployment", included: false },
     ],
-    cta: "Start Free Trial",
+    cta: "Join Waitlist",
     ctaVariant: "outline" as const,
   },
   {
@@ -32,8 +33,9 @@ export const PRICING_PLANS = [
     name: "Professional",
     description: "For growing organizations with compliance requirements",
     price: {
-      monthly: 999,
-      annual: 799, // 20% discount
+      monthly: null,
+      annual: null,
+      label: "Coming Soon",
     },
     popular: true,
     features: [
@@ -48,7 +50,7 @@ export const PRICING_PLANS = [
       { text: "On-premise deployment", included: false },
       { text: "Dedicated account manager", included: false },
     ],
-    cta: "Start Free Trial",
+    cta: "Join Waitlist",
     ctaVariant: "primary" as const,
   },
   {
@@ -58,6 +60,7 @@ export const PRICING_PLANS = [
     price: {
       monthly: null,
       annual: null,
+      label: "Contact Us",
     },
     popular: false,
     features: [
@@ -72,7 +75,7 @@ export const PRICING_PLANS = [
       { text: "On-premise deployment", included: true },
       { text: "Dedicated account manager", included: true },
     ],
-    cta: "Contact Sales",
+    cta: "Contact Us",
     ctaVariant: "outline" as const,
   },
 ] as const

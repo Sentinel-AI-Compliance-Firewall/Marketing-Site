@@ -5,8 +5,6 @@ import { useSearchParams } from "next/navigation"
 import { Navbar, Footer } from "@/app/components/layout"
 import { Card, Button, Badge, Input, Textarea } from "@/app/components/ui"
 import {
-  Mail,
-  Phone,
   MapPin,
   Clock,
   MessageSquare,
@@ -14,32 +12,21 @@ import {
   Send,
   CheckCircle,
   AlertCircle,
+  Mail,
 } from "lucide-react"
 import { cn } from "@/app/lib/utils"
 
 const CONTACT_INFO = [
   {
-    icon: Mail,
-    label: "Email",
-    value: "hello@sentinel-ai.com",
-    href: "mailto:hello@sentinel-ai.com",
-  },
-  {
-    icon: Phone,
-    label: "Phone",
-    value: "+1 (555) 123-4567",
-    href: "tel:+15551234567",
-  },
-  {
     icon: MapPin,
-    label: "Office",
-    value: "San Francisco, CA",
+    label: "Location",
+    value: "Los Angeles, CA",
     href: "#",
   },
   {
     icon: Clock,
-    label: "Hours",
-    value: "Mon-Fri 9am-6pm PT",
+    label: "Response Time",
+    value: "Within 24 hours",
     href: "#",
   },
 ]
@@ -84,9 +71,19 @@ function ContactForm() {
     e.preventDefault()
     setStatus("submitting")
 
-    // Simulate form submission
     try {
-      await new Promise((resolve) => setTimeout(resolve, 1500))
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      })
+
+      if (!response.ok) {
+        throw new Error("Failed to submit")
+      }
+
       setStatus("success")
       setFormData({
         name: "",
@@ -340,15 +337,12 @@ export default function ContactPage() {
 
               <Card className="p-6 bg-gradient-to-br from-[var(--primary)]/10 to-transparent">
                 <h3 className="text-lg font-semibold text-white mb-4">
-                  Enterprise Sales
+                  Enterprise Inquiries
                 </h3>
                 <p className="text-sm text-[var(--text-secondary)] mb-4">
-                  Looking for custom pricing or enterprise features? Our sales
-                  team can help build a solution for your organization.
+                  Looking for custom pricing or enterprise features? Fill out the
+                  form and select &quot;Sales Inquiry&quot; to connect with our team.
                 </p>
-                <Button variant="primary" size="sm" as="a" href="mailto:sales@sentinel-ai.com">
-                  Contact Sales
-                </Button>
               </Card>
             </div>
 

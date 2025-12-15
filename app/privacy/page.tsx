@@ -34,7 +34,7 @@ export default function PrivacyPage() {
               <section>
                 <h2 className="text-2xl font-bold text-white mb-4">1. Introduction</h2>
                 <p>
-                  Sentinel AI, Inc. (&quot;Sentinel,&quot; &quot;we,&quot; &quot;our,&quot; or &quot;us&quot;) is committed to protecting your privacy.
+                  SentinelAI Compliance Firewall (&quot;SentinelAI,&quot; &quot;we,&quot; &quot;our,&quot; or &quot;us&quot;) is committed to protecting your privacy.
                   This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you
                   use our bias detection platform and related services.
                 </p>
@@ -97,8 +97,8 @@ export default function PrivacyPage() {
                 <h2 className="text-2xl font-bold text-white mb-4">6. Data Security</h2>
                 <p>
                   We implement industry-standard security measures including encryption, access controls,
-                  and regular security audits. Our platform is SOC 2 Type II certified and complies with
-                  GDPR, CCPA, and HIPAA requirements where applicable.
+                  and regular security audits. We are committed to complying with GDPR, CCPA, and other
+                  applicable data protection requirements.
                 </p>
               </section>
 
@@ -135,11 +135,8 @@ export default function PrivacyPage() {
               <section>
                 <h2 className="text-2xl font-bold text-white mb-4">10. Contact Us</h2>
                 <p>
-                  If you have questions about this Privacy Policy or our data practices, please contact us at:
-                </p>
-                <p className="mt-2">
-                  <strong className="text-white">Email:</strong> privacy@sentinel-ai.com<br />
-                  <strong className="text-white">Address:</strong> 123 Innovation Way, San Francisco, CA 94105
+                  If you have questions about this Privacy Policy or our data practices, please contact us
+                  through our <a href="/contact" className="text-[var(--primary)] hover:underline">contact form</a>.
                 </p>
               </section>
             </div>

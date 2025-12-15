@@ -140,31 +140,8 @@ const HeroScroll = ({ onFirstFrameReady, showContent = false }: HeroScrollProps)
       0,
     )
 
-    // Container zoom out in last portion of scroll
-    tl.to(
-      wrapperRef.current,
-      {
-        scale: 0.95,
-        borderBottomLeftRadius: 40,
-        borderBottomRightRadius: 40,
-        borderTopLeftRadius: 0,
-        borderTopRightRadius: 0,
-        border: "1px solid rgba(255, 255, 255, 0.2)",
-        ease: "none",
-        duration: 2,
-      },
-      8,
-    )
-
-    tl.to(
-      wrapperRef.current,
-      {
-        boxShadow: "0 20px 40px rgba(0,0,0,0.2)",
-        duration: 1.5,
-        ease: "none",
-      },
-      8.5,
-    )
+    // Keep container at full size - no scaling at the end
+    // Just maintain the current frame and allow scroll to continue
 
     ScrollTrigger.refresh()
   }
@@ -259,10 +236,10 @@ const HeroScroll = ({ onFirstFrameReady, showContent = false }: HeroScrollProps)
 
         <nav
           ref={navRef}
-          className={`absolute top-0 left-0 right-0 z-20 flex items-center justify-between px-8 py-6 will-change-transform opacity-hidden ${showContent ? "visibility-visible" : "visibility-hidden"}`}
+          className={`absolute top-0 left-0 right-0 z-20 flex items-center justify-between px-4 md:px-8 py-4 md:py-6 will-change-transform opacity-hidden ${showContent ? "visibility-visible" : "visibility-hidden"}`}
         >
-          {/* Left nav items */}
-          <div className="flex items-center gap-8">
+          {/* Left nav items - hidden on mobile */}
+          <div className="hidden lg:flex items-center gap-8">
             <Link href="/product" className="flex items-center gap-1 text-sm font-medium text-white uppercase tracking-wider hover:text-[#00FF88] transition-colors">
               Products
               <ChevronDown className="w-4 h-4" />
@@ -275,21 +252,21 @@ const HeroScroll = ({ onFirstFrameReady, showContent = false }: HeroScrollProps)
             </Link>
           </div>
 
-          {/* Center logo */}
-          <Link href="/" className="absolute left-1/2 -translate-x-1/2 flex items-center gap-2">
-            <Shield className="w-8 h-8 text-[#00FF88]" />
-            <span className="text-xl font-bold text-white tracking-wide">
+          {/* Logo - left on mobile, center on desktop */}
+          <Link href="/" className="flex lg:absolute lg:left-1/2 lg:-translate-x-1/2 items-center gap-2">
+            <Shield className="w-7 h-7 md:w-8 md:h-8 text-[#00FF88]" />
+            <span className="text-lg md:text-xl font-bold text-white tracking-wide">
               SENTINEL
             </span>
           </Link>
 
-          {/* Right CTA buttons */}
-          <div className="flex items-center gap-4">
-            <Link href="/contact" className="flex items-center gap-2 px-5 py-2.5 text-sm font-medium text-white border border-white/30 rounded-full hover:bg-white/10 transition-colors">
+          {/* Right CTA buttons - simplified on mobile */}
+          <div className="flex items-center gap-2 md:gap-4">
+            <Link href="/contact" className="hidden md:flex items-center gap-2 px-5 py-2.5 text-sm font-medium text-white border border-white/30 rounded-full hover:bg-white/10 transition-colors">
               Watch Demo
               <Play className="w-4 h-4" />
             </Link>
-            <Link href="/contact?demo=true" className="px-5 py-2.5 text-sm font-medium text-black bg-[#00FF88] rounded-full uppercase tracking-wider hover:bg-[#00CC6A] transition-colors">
+            <Link href="/contact?demo=true" className="px-4 md:px-5 py-2 md:py-2.5 text-xs md:text-sm font-medium text-black bg-[#00FF88] rounded-full uppercase tracking-wider hover:bg-[#00CC6A] transition-colors">
               Request Demo
             </Link>
           </div>
@@ -299,27 +276,27 @@ const HeroScroll = ({ onFirstFrameReady, showContent = false }: HeroScrollProps)
           ref={heroContentRef}
           className={`absolute inset-0 z-10 flex flex-col items-center justify-center will-change-transform opacity-hidden ${showContent ? "visibility-visible" : "visibility-hidden"}`}
         >
-          <div className="text-center max-w-3xl mx-auto px-6">
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">
+          <div className="text-center max-w-3xl mx-auto px-4 md:px-6">
+            <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-4 md:mb-6 leading-tight">
               AI-Powered Workplace
               <span className="block text-[#00FF88]">Bias Detection</span>
             </h1>
-            <p className="text-lg md:text-xl text-white/80 mb-10 max-w-2xl mx-auto">
+            <p className="text-base md:text-lg lg:text-xl text-white/80 mb-6 md:mb-10 max-w-2xl mx-auto px-2">
               Enterprise-grade compliance firewall that detects and remediates bias across 9 protected categories in real-time.
             </p>
 
             {/* Waitlist CTA */}
-            <div className="flex flex-col items-center gap-4">
+            <div className="flex flex-col items-center gap-3 md:gap-4">
               <button
                 type="button"
                 onClick={openWaitlist}
-                className="group flex items-center gap-3 px-8 py-4 rounded-full bg-[#00FF88] text-black font-semibold text-lg hover:bg-[#00CC6A] transition-all hover:scale-105"
+                className="group flex items-center gap-2 md:gap-3 px-6 md:px-8 py-3 md:py-4 rounded-full bg-[#00FF88] text-black font-semibold text-base md:text-lg hover:bg-[#00CC6A] transition-all hover:scale-105"
               >
-                <Sparkles className="w-5 h-5" />
+                <Sparkles className="w-4 h-4 md:w-5 md:h-5" />
                 Join Waitlist
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                <ArrowRight className="w-4 h-4 md:w-5 md:h-5 group-hover:translate-x-1 transition-transform" />
               </button>
-              <p className="text-white/50 text-sm">
+              <p className="text-white/50 text-xs md:text-sm">
                 Be first to access. No spam, unsubscribe anytime.
               </p>
             </div>

@@ -12,33 +12,32 @@ import {
   Globe,
   CheckCircle,
   ArrowRight,
-  AlertTriangle,
 } from "lucide-react"
 
 const CERTIFICATIONS = [
   {
     name: "SOC 2 Type II",
-    description: "Annual audit of security controls and processes",
+    description: "Security controls audit planned for 2026",
     icon: Shield,
-    status: "Certified",
+    status: "Planned",
   },
   {
-    name: "GDPR",
-    description: "Full compliance with EU data protection regulations",
+    name: "GDPR Ready",
+    description: "Built with EU data protection principles",
     icon: Globe,
-    status: "Compliant",
+    status: "Privacy-First",
   },
   {
-    name: "HIPAA",
-    description: "Healthcare data protection standards",
+    name: "CCPA Ready",
+    description: "California consumer privacy compliant",
     icon: FileCheck,
     status: "Compliant",
   },
   {
-    name: "ISO 27001",
-    description: "International security management standard",
+    name: "EEOC Aligned",
+    description: "Federal workplace fairness guidelines",
     icon: CheckCircle,
-    status: "Certified",
+    status: "Aligned",
   },
 ]
 
@@ -108,7 +107,7 @@ const SECURITY_FAQ = [
   {
     question: "Where is my data stored?",
     answer:
-      "By default, data is stored in AWS US-East. Enterprise customers can choose from US, EU (Frankfurt), or Asia-Pacific (Singapore) regions for data residency compliance.",
+      "Data is processed and stored securely using industry-standard cloud infrastructure. We prioritize data security and privacy in all our operations.",
   },
   {
     question: "Do you use my data to train AI models?",
@@ -118,17 +117,17 @@ const SECURITY_FAQ = [
   {
     question: "How long do you retain data?",
     answer:
-      "Scan results and audit logs are retained for 90 days by default. Enterprise customers can configure custom retention periods. Original text content is deleted immediately after processing.",
+      "We follow data minimization principles. Text content is processed in real-time and not stored longer than necessary. Audit logs are retained based on your plan requirements.",
   },
   {
-    question: "Can I get a copy of your SOC 2 report?",
+    question: "What security measures do you have in place?",
     answer:
-      "Yes. Our SOC 2 Type II report is available under NDA. Contact our security team at security@sentinel-ai.com to request a copy.",
+      "We use encryption at rest and in transit, follow secure development practices, and are working towards SOC 2 Type II certification. Contact us for detailed security documentation.",
   },
   {
-    question: "Do you support on-premise deployment?",
+    question: "How can I request security information?",
     answer:
-      "Enterprise customers can deploy Sentinel AI in their own cloud environment (AWS, GCP, Azure) or on-premise. Contact sales for details.",
+      "Please reach out through our contact form to request security documentation or discuss your specific compliance requirements.",
   },
 ]
 
@@ -156,8 +155,8 @@ export default function SecurityPage() {
               <Button variant="primary" size="lg" as="a" href="#certifications">
                 View Certifications
               </Button>
-              <Button variant="ghost" size="lg" as="a" href="mailto:security@sentinel-ai.com">
-                Contact Security Team
+              <Button variant="ghost" size="lg" as="a" href="/contact">
+                Contact Us
               </Button>
             </div>
           </div>
@@ -268,33 +267,33 @@ export default function SecurityPage() {
             <div>
               <Card variant="elevated" className="p-8">
                 <div className="flex items-center gap-3 mb-6">
-                  <div className="w-10 h-10 rounded-lg bg-[var(--accent)]/10 flex items-center justify-center">
-                    <AlertTriangle className="w-5 h-5 text-[var(--accent)]" />
+                  <div className="w-10 h-10 rounded-lg bg-[var(--primary)]/10 flex items-center justify-center">
+                    <Shield className="w-5 h-5 text-[var(--primary)]" />
                   </div>
                   <h3 className="text-lg font-semibold text-white">
-                    Report a Vulnerability
+                    Security Concerns
                   </h3>
                 </div>
                 <p className="text-sm text-[var(--text-secondary)] mb-6">
-                  We run a responsible disclosure program and reward security
-                  researchers who help us keep our platform secure.
+                  We take security seriously and appreciate responsible
+                  disclosure of any security concerns.
                 </p>
                 <div className="space-y-4 mb-6">
                   <div className="flex items-center gap-2 text-sm text-[var(--text-secondary)]">
                     <CheckCircle className="w-4 h-4 text-[var(--primary)]" />
-                    <span>Bug bounty rewards up to $10,000</span>
+                    <span>Prompt response to all reports</span>
                   </div>
                   <div className="flex items-center gap-2 text-sm text-[var(--text-secondary)]">
                     <CheckCircle className="w-4 h-4 text-[var(--primary)]" />
-                    <span>Response within 24 hours</span>
+                    <span>Transparent communication</span>
                   </div>
                   <div className="flex items-center gap-2 text-sm text-[var(--text-secondary)]">
                     <CheckCircle className="w-4 h-4 text-[var(--primary)]" />
-                    <span>Safe harbor policy</span>
+                    <span>Committed to continuous improvement</span>
                   </div>
                 </div>
-                <Button variant="outline" fullWidth as="a" href="mailto:security@sentinel-ai.com">
-                  Report Vulnerability
+                <Button variant="outline" fullWidth as="a" href="/contact">
+                  Report Security Concern
                   <ArrowRight className="w-4 h-4" />
                 </Button>
               </Card>
@@ -337,8 +336,8 @@ export default function SecurityPage() {
               documentation.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Button variant="primary" size="lg" as="a" href="mailto:security@sentinel-ai.com">
-                Contact Security Team
+              <Button variant="primary" size="lg" as="a" href="/contact">
+                Contact Us
               </Button>
               <Button variant="ghost" size="lg" as="a" href="/docs/security">
                 Security Documentation

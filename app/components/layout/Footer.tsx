@@ -1,14 +1,10 @@
 "use client"
 
-import { useState } from "react"
 import Link from "next/link"
 import { FOOTER_LINKS, SOCIAL_LINKS } from "@/app/constants/navigation"
 import { Shield, Twitter, Linkedin, Github } from "lucide-react"
-import { WaitlistForm } from "@/app/components/WaitlistForm"
 
 export function Footer() {
-  const [subscribed, setSubscribed] = useState(false)
-
   const currentYear = new Date().getFullYear()
 
   const getSocialIcon = (icon: string) => {
@@ -26,46 +22,6 @@ export function Footer() {
 
   return (
     <footer className="bg-[var(--bg-dark)] border-t border-[var(--border)]">
-      {/* Newsletter Section */}
-      <div className="border-b border-[var(--border)]">
-        <div className="container mx-auto px-4 lg:px-8 py-12 lg:py-16">
-          <div className="max-w-2xl mx-auto text-center">
-            <h3 className="text-2xl lg:text-3xl font-bold text-white mb-3">
-              Stay Updated
-            </h3>
-            <p className="text-[var(--text-secondary)] mb-6">
-              Get the latest updates on workplace compliance, AI ethics, and
-              product news.
-            </p>
-
-            {subscribed ? (
-              <div className="flex items-center justify-center gap-2 text-[var(--success)]">
-                <svg
-                  className="w-5 h-5"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M5 13l4 4L19 7"
-                  />
-                </svg>
-                <span>Thanks for subscribing!</span>
-              </div>
-            ) : (
-              <WaitlistForm
-                source="footer-newsletter"
-                buttonLabel="Subscribe"
-                onSuccess={() => setSubscribed(true)}
-              />
-            )}
-          </div>
-        </div>
-      </div>
-
       {/* Main Footer Content */}
       <div className="container mx-auto px-4 lg:px-8 py-12 lg:py-16">
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 lg:gap-12">

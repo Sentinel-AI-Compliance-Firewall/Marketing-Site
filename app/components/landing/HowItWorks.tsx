@@ -1,8 +1,5 @@
 "use client"
 
-import { useRef, useEffect } from "react"
-import gsap from "gsap"
-import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { Scan, AlertCircle, CheckCircle, ArrowRight } from "lucide-react"
 
 const STEPS = [
@@ -36,41 +33,8 @@ const STEPS = [
 ]
 
 export function HowItWorks() {
-  const sectionRef = useRef<HTMLElement>(null)
-  const stepsRef = useRef<HTMLDivElement>(null)
-
-  useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger)
-
-    if (!stepsRef.current) return
-
-    const steps = stepsRef.current.querySelectorAll(".step-card")
-
-    steps.forEach((step, index) => {
-      gsap.fromTo(
-        step,
-        { opacity: 0, x: index % 2 === 0 ? -50 : 50 },
-        {
-          opacity: 1,
-          x: 0,
-          duration: 0.8,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: step,
-            start: "top 85%",
-            toggleActions: "play none none none",
-          },
-        }
-      )
-    })
-
-    return () => {
-      ScrollTrigger.getAll().forEach((t) => t.kill())
-    }
-  }, [])
-
   return (
-    <section ref={sectionRef} className="section bg-black relative">
+    <section className="section bg-black relative">
       <div className="container">
         {/* Section Header */}
         <div className="text-center mb-16">
@@ -86,24 +50,16 @@ export function HowItWorks() {
         </div>
 
         {/* Steps */}
-        <div ref={stepsRef} className="max-w-4xl mx-auto space-y-8">
+        <div className="max-w-4xl mx-auto space-y-8">
           {STEPS.map((step, index) => (
-            <div key={step.number} className="step-card relative">
-              <div
-                className="flex flex-col md:flex-row items-start gap-6 p-6 md:p-8 rounded-2xl border transition-all duration-300 hover:border-opacity-50"
-                style={{
-                  backgroundColor: `${step.color}05`,
-                  borderColor: `${step.color}30`,
-                }}
-              >
+            <div
+              key={step.number}
+              className="step-card relative"
+              style={{ "--step-color": step.color } as React.CSSProperties}
+            >
+              <div className="flex flex-col md:flex-row items-start gap-6 p-6 md:p-8 rounded-2xl border transition-all duration-300 hover:border-opacity-50 bg-[var(--step-color)]/5 border-[var(--step-color)]/30">
                 {/* Number */}
-                <div
-                  className="flex-shrink-0 w-16 h-16 rounded-xl flex items-center justify-center font-mono text-2xl font-bold"
-                  style={{
-                    backgroundColor: `${step.color}15`,
-                    color: step.color,
-                  }}
-                >
+                <div className="flex-shrink-0 w-16 h-16 rounded-xl flex items-center justify-center font-mono text-2xl font-bold bg-[var(--step-color)]/15 text-[var(--step-color)]">
                   {step.number}
                 </div>
 
@@ -113,15 +69,9 @@ export function HowItWorks() {
                     <h3 className="text-2xl font-bold text-white">
                       {step.title}
                     </h3>
-                    <step.icon
-                      className="w-6 h-6"
-                      style={{ color: step.color }}
-                    />
+                    <step.icon className="w-6 h-6 text-[var(--step-color)]" />
                   </div>
-                  <p
-                    className="text-sm font-medium mb-3"
-                    style={{ color: step.color }}
-                  >
+                  <p className="text-sm font-medium mb-3 text-[var(--step-color)]">
                     {step.subtitle}
                   </p>
                   <p className="text-[var(--text-secondary)]">
@@ -140,22 +90,6 @@ export function HowItWorks() {
           ))}
         </div>
 
-        {/* Metrics */}
-        <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
-          {[
-            { value: "<100ms", label: "API Latency" },
-            { value: "99.7%", label: "Accuracy" },
-            { value: "9", label: "Categories" },
-            { value: "24/7", label: "Monitoring" },
-          ].map((metric, i) => (
-            <div key={i} className="text-center">
-              <p className="text-3xl md:text-4xl font-bold text-[var(--primary)] mb-1">
-                {metric.value}
-              </p>
-              <p className="text-sm text-[var(--text-muted)]">{metric.label}</p>
-            </div>
-          ))}
-        </div>
       </div>
     </section>
   )

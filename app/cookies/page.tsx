@@ -70,7 +70,7 @@ export default function CookiesPage() {
               <section>
                 <h2 className="text-2xl font-bold text-white mb-4">How We Use Cookies</h2>
                 <p className="mb-4">
-                  Sentinel AI uses cookies and similar technologies to provide, protect, and improve our
+                  SentinelAI Compliance Firewall uses cookies and similar technologies to provide, protect, and improve our
                   services. We use cookies to:
                 </p>
                 <ul className="list-disc pl-6 space-y-2">
@@ -163,11 +163,8 @@ export default function CookiesPage() {
               <section>
                 <h2 className="text-2xl font-bold text-white mb-4">Contact Us</h2>
                 <p>
-                  If you have questions about our use of cookies, please contact us at:
-                </p>
-                <p className="mt-2">
-                  <strong className="text-white">Email:</strong> privacy@sentinel-ai.com<br />
-                  <strong className="text-white">Address:</strong> 123 Innovation Way, San Francisco, CA 94105
+                  If you have questions about our use of cookies, please contact us through
+                  our <a href="/contact" className="text-[var(--primary)] hover:underline">contact form</a>.
                 </p>
               </section>
             </div>

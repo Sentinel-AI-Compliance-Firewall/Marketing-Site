@@ -4,7 +4,7 @@ import { useState } from "react"
 import { Modal } from "./Modal"
 import { Input } from "./Input"
 import { Button } from "./Button"
-import { CheckCircle, Mail, Building2 } from "lucide-react"
+import { CheckCircle, Mail, Building2, User } from "lucide-react"
 
 interface WaitlistModalProps {
   isOpen: boolean
@@ -12,6 +12,7 @@ interface WaitlistModalProps {
 }
 
 interface FormData {
+  name: string
   email: string
   companyName: string
 }
@@ -20,6 +21,7 @@ type FormStatus = "idle" | "submitting" | "success" | "error"
 
 export function WaitlistModal({ isOpen, onClose }: WaitlistModalProps) {
   const [formData, setFormData] = useState<FormData>({
+    name: "",
     email: "",
     companyName: "",
   })
@@ -29,7 +31,11 @@ export function WaitlistModal({ isOpen, onClose }: WaitlistModalProps) {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
 
-    // Basic email validation
+    // Basic validation - name and email are required
+    if (!formData.name) {
+      setErrorMessage("Please enter your name")
+      return
+    }
     if (!formData.email || !formData.email.includes("@")) {
       setErrorMessage("Please enter a valid email address")
       return
@@ -45,9 +51,10 @@ export function WaitlistModal({ isOpen, onClose }: WaitlistModalProps) {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
+          name: formData.name,
           email: formData.email,
-          companyName: formData.companyName || "Not provided",
-          source: "waitlist-modal", // identify this entry in the sheet
+          source: "waitlist-modal",
+          companyName: formData.companyName,
         }),
       })
 
@@ -65,7 +72,7 @@ export function WaitlistModal({ isOpen, onClose }: WaitlistModalProps) {
 
   const handleClose = () => {
     // Reset form state when closing
-    setFormData({ email: "", companyName: "" })
+    setFormData({ name: "", email: "", companyName: "" })
     setStatus("idle")
     setErrorMessage("")
     onClose()
@@ -103,6 +110,20 @@ export function WaitlistModal({ isOpen, onClose }: WaitlistModalProps) {
     >
       <form onSubmit={handleSubmit} className="space-y-4">
         <Input
+          type="text"
+          label="Your Name"
+          placeholder="John Doe"
+          value={formData.name}
+          onChange={(e) =>
+            setFormData({ ...formData, name: e.target.value })
+          }
+          icon={<User className="w-5 h-5" />}
+          iconPosition="left"
+          required
+          error={errorMessage && !formData.name ? errorMessage : undefined}
+        />
+
+        <Input
           type="email"
           label="Email Address"
           placeholder="you@company.com"
@@ -113,7 +134,7 @@ export function WaitlistModal({ isOpen, onClose }: WaitlistModalProps) {
           icon={<Mail className="w-5 h-5" />}
           iconPosition="left"
           required
-          error={errorMessage && !formData.email ? errorMessage : undefined}
+          error={errorMessage && formData.name && !formData.email ? errorMessage : undefined}
         />
 
         <Input
@@ -128,7 +149,7 @@ export function WaitlistModal({ isOpen, onClose }: WaitlistModalProps) {
           iconPosition="left"
         />
 
-        {errorMessage && formData.email && (
+        {errorMessage && formData.name && formData.email && (
           <p className="text-sm text-[var(--error)]">{errorMessage}</p>
         )}
 

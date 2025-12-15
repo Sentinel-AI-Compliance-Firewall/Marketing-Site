@@ -8,7 +8,6 @@ import { Check, X, Minus, ChevronDown } from "lucide-react"
 import { cn } from "@/app/lib/utils"
 
 export default function PricingPage() {
-  const [annual, setAnnual] = useState(true)
   const [openFaq, setOpenFaq] = useState<number | null>(null)
 
   return (
@@ -24,40 +23,11 @@ export default function PricingPage() {
               Pricing
             </Badge>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
-              Simple, Transparent Pricing
+              Flexible Plans for Every Team
             </h1>
-            <p className="text-xl text-[var(--text-secondary)] mb-8">
-              Start with a free trial. Scale as you grow.
+            <p className="text-xl text-[var(--text-secondary)]">
+              Join our waitlist to be the first to know when we launch. Pricing details coming soon.
             </p>
-
-            {/* Billing toggle */}
-            <div className="inline-flex items-center gap-4 p-1.5 bg-[var(--bg-card)] rounded-full border border-[var(--border)]">
-              <button
-                onClick={() => setAnnual(false)}
-                className={cn(
-                  "px-4 py-2 rounded-full text-sm font-medium transition-all",
-                  !annual
-                    ? "bg-[var(--primary)] text-black"
-                    : "text-[var(--text-secondary)] hover:text-white"
-                )}
-              >
-                Monthly
-              </button>
-              <button
-                onClick={() => setAnnual(true)}
-                className={cn(
-                  "px-4 py-2 rounded-full text-sm font-medium transition-all flex items-center gap-2",
-                  annual
-                    ? "bg-[var(--primary)] text-black"
-                    : "text-[var(--text-secondary)] hover:text-white"
-                )}
-              >
-                Annual
-                <span className="px-2 py-0.5 text-xs bg-black/20 rounded-full">
-                  Save 20%
-                </span>
-              </button>
-            </div>
           </div>
         </div>
       </section>
@@ -91,28 +61,16 @@ export default function PricingPage() {
                 </div>
 
                 <div className="mb-6">
-                  {plan.price.monthly ? (
-                    <>
-                      <span className="text-4xl font-bold text-white">
-                        ${annual ? plan.price.annual : plan.price.monthly}
-                      </span>
-                      <span className="text-[var(--text-muted)]">/month</span>
-                      {annual && (
-                        <p className="text-xs text-[var(--text-muted)] mt-1">
-                          Billed annually
-                        </p>
-                      )}
-                    </>
-                  ) : (
-                    <span className="text-4xl font-bold text-white">Custom</span>
-                  )}
+                  <span className="text-3xl font-bold text-white">
+                    {plan.price.label}
+                  </span>
                 </div>
 
                 <Button
                   variant={plan.popular ? "primary" : "outline"}
                   fullWidth
                   as="a"
-                  href={plan.id === "enterprise" ? "/contact?sales=true" : "/signup"}
+                  href="/contact"
                 >
                   {plan.cta}
                 </Button>

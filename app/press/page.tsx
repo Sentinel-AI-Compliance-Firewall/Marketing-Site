@@ -2,62 +2,7 @@
 
 import { Navbar, Footer } from "@/app/components/layout"
 import { Card, Badge, Button } from "@/app/components/ui"
-import { Download, ExternalLink, Mail, Calendar } from "lucide-react"
-import Link from "next/link"
-
-const PRESS_RELEASES = [
-  {
-    title: "Sentinel AI Raises $50M Series B to Combat Workplace Discrimination",
-    date: "November 2024",
-    source: "Company Announcement",
-    excerpt: "Funding round led by Accel to accelerate product development and global expansion.",
-  },
-  {
-    title: "Sentinel Achieves SOC 2 Type II and HIPAA Certification",
-    date: "September 2024",
-    source: "Company Announcement",
-    excerpt: "Demonstrating enterprise-grade security standards for healthcare and regulated industries.",
-  },
-  {
-    title: "Sentinel Expands Multi-Language Support to 12 Languages",
-    date: "July 2024",
-    source: "Company Announcement",
-    excerpt: "New language models enable bias detection for global enterprises across Europe and Asia.",
-  },
-  {
-    title: "Sentinel Surpasses 1 Million Documents Scanned",
-    date: "May 2024",
-    source: "Company Announcement",
-    excerpt: "Milestone reflects growing enterprise adoption of AI-powered compliance solutions.",
-  },
-]
-
-const MEDIA_COVERAGE = [
-  {
-    title: "How AI is Revolutionizing HR Compliance",
-    publication: "TechCrunch",
-    date: "November 2024",
-    link: "#",
-  },
-  {
-    title: "The Startups Fighting Workplace Bias with Machine Learning",
-    publication: "Forbes",
-    date: "October 2024",
-    link: "#",
-  },
-  {
-    title: "Sentinel AI: Making Workplaces Fairer, One Document at a Time",
-    publication: "VentureBeat",
-    date: "September 2024",
-    link: "#",
-  },
-  {
-    title: "The Rise of AI-Powered DEI Tools",
-    publication: "Harvard Business Review",
-    date: "August 2024",
-    link: "#",
-  },
-]
+import { Download, Mail, ArrowRight, Newspaper } from "lucide-react"
 
 const BRAND_ASSETS = [
   { name: "Logo Pack (SVG, PNG)", type: "ZIP", size: "2.4 MB" },
@@ -83,9 +28,9 @@ export default function PressPage() {
               Newsroom
             </h1>
             <p className="text-xl text-[var(--text-secondary)] mb-8">
-              Latest news, press releases, and media resources from Sentinel AI.
+              Media resources and press information for SentinelAI Compliance Firewall.
             </p>
-            <Button variant="primary" size="lg" as="a" href="mailto:press@sentinel-ai.com">
+            <Button variant="primary" size="lg" as="a" href="/contact">
               <Mail className="w-5 h-5" />
               Media Inquiries
             </Button>
@@ -93,55 +38,43 @@ export default function PressPage() {
         </div>
       </section>
 
-      {/* Press Releases */}
+      {/* About Section for Press */}
       <section className="pb-20">
         <div className="container">
-          <h2 className="text-2xl font-bold text-white mb-8">Press Releases</h2>
-          <div className="max-w-4xl mx-auto space-y-4">
-            {PRESS_RELEASES.map((release, i) => (
-              <Card key={i} className="p-6 hover:border-[var(--primary)] transition-colors cursor-pointer">
-                <div className="flex items-center gap-2 mb-2 text-sm text-[var(--text-muted)]">
-                  <Calendar className="w-4 h-4" />
-                  {release.date}
-                  <span className="mx-2">•</span>
-                  {release.source}
+          <div className="max-w-3xl mx-auto">
+            <Card variant="elevated" className="p-8">
+              <div className="flex items-center gap-4 mb-6">
+                <div className="w-12 h-12 rounded-lg bg-[var(--primary)]/10 flex items-center justify-center">
+                  <Newspaper className="w-6 h-6 text-[var(--primary)]" />
                 </div>
-                <h3 className="text-lg font-semibold text-white mb-2">{release.title}</h3>
-                <p className="text-[var(--text-secondary)]">{release.excerpt}</p>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Media Coverage */}
-      <section className="section bg-[var(--bg-dark)]">
-        <div className="container">
-          <h2 className="text-2xl font-bold text-white mb-8">Media Coverage</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-4xl mx-auto">
-            {MEDIA_COVERAGE.map((article, i) => (
-              <Card key={i} className="p-6 hover:border-[var(--primary)] transition-colors">
-                <a href={article.link} className="flex items-start justify-between gap-4">
-                  <div>
-                    <p className="text-sm text-[var(--primary)] font-medium mb-1">{article.publication}</p>
-                    <h3 className="font-semibold text-white mb-2">{article.title}</h3>
-                    <p className="text-sm text-[var(--text-muted)]">{article.date}</p>
-                  </div>
-                  <ExternalLink className="w-5 h-5 text-[var(--text-muted)] flex-shrink-0" />
-                </a>
-              </Card>
-            ))}
+                <div>
+                  <h2 className="text-xl font-bold text-white">About SentinelAI</h2>
+                  <p className="text-sm text-[var(--text-muted)]">Company Overview</p>
+                </div>
+              </div>
+              <p className="text-[var(--text-secondary)] mb-4">
+                SentinelAI Compliance Firewall is an AI-powered platform that helps organizations
+                detect and prevent workplace bias in real-time. Our multi-model ML ensemble analyzes
+                text across 9 EEOC-protected categories, enabling HR teams and compliance officers
+                to catch potential issues before they become incidents.
+              </p>
+              <p className="text-[var(--text-secondary)]">
+                Founded in 2025, we&apos;re on a mission to create fairer workplaces through
+                responsible AI technology. Our platform is designed for enterprise-grade security
+                and seamless integration with existing HR workflows.
+              </p>
+            </Card>
           </div>
         </div>
       </section>
 
       {/* Brand Assets */}
-      <section className="section">
+      <section className="section bg-[var(--bg-dark)]">
         <div className="container">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-2xl font-bold text-white mb-4">Brand Assets</h2>
             <p className="text-[var(--text-secondary)] mb-8">
-              Download official Sentinel logos, screenshots, and brand materials for press use.
+              Download official SentinelAI logos, screenshots, and brand materials for press use.
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {BRAND_ASSETS.map((asset, i) => (
@@ -160,8 +93,8 @@ export default function PressPage() {
         </div>
       </section>
 
-      {/* Contact */}
-      <section className="section bg-[var(--bg-dark)]">
+      {/* Press Contact */}
+      <section className="section">
         <div className="container">
           <div className="max-w-3xl mx-auto text-center">
             <h2 className="text-3xl font-bold text-white mb-4">
@@ -169,14 +102,12 @@ export default function PressPage() {
             </h2>
             <p className="text-[var(--text-secondary)] mb-8">
               For media inquiries, interview requests, or additional information,
-              please contact our communications team.
+              please reach out through our contact form.
             </p>
-            <Card className="p-6 max-w-md mx-auto">
-              <p className="text-white font-semibold mb-1">Media Relations</p>
-              <a href="mailto:press@sentinel-ai.com" className="text-[var(--primary)] hover:underline">
-                press@sentinel-ai.com
-              </a>
-            </Card>
+            <Button variant="primary" size="lg" as="a" href="/contact">
+              Contact Us
+              <ArrowRight className="w-5 h-5" />
+            </Button>
           </div>
         </div>
       </section>

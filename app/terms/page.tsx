@@ -34,7 +34,7 @@ export default function TermsPage() {
               <section>
                 <h2 className="text-2xl font-bold text-white mb-4">1. Acceptance of Terms</h2>
                 <p>
-                  By accessing or using Sentinel AI&apos;s services, you agree to be bound by these Terms of Service.
+                  By accessing or using SentinelAI Compliance Firewall&apos;s services, you agree to be bound by these Terms of Service.
                   If you do not agree to these terms, you may not use our services. These terms apply to all
                   users, including individual users and organizations.
                 </p>
@@ -43,7 +43,7 @@ export default function TermsPage() {
               <section>
                 <h2 className="text-2xl font-bold text-white mb-4">2. Description of Services</h2>
                 <p>
-                  Sentinel AI provides an AI-powered bias detection platform that scans documents and
+                  SentinelAI Compliance Firewall provides an AI-powered bias detection platform that scans documents and
                   communications for potential discriminatory content across protected categories. Our
                   services include real-time scanning, batch processing, API access, and reporting tools.
                 </p>
@@ -76,7 +76,7 @@ export default function TermsPage() {
               <section>
                 <h2 className="text-2xl font-bold text-white mb-4">5. Intellectual Property</h2>
                 <p>
-                  Sentinel AI retains all rights to its platform, algorithms, and proprietary technology.
+                  SentinelAI Compliance Firewall retains all rights to its platform, algorithms, and proprietary technology.
                   You retain ownership of content you submit for scanning. By using our services, you grant
                   us a limited license to process your content solely for providing the requested services.
                 </p>
@@ -103,7 +103,7 @@ export default function TermsPage() {
               <section>
                 <h2 className="text-2xl font-bold text-white mb-4">8. Limitation of Liability</h2>
                 <p>
-                  Sentinel AI&apos;s bias detection is provided as a tool to assist human decision-making and
+                  SentinelAI&apos;s bias detection is provided as a tool to assist human decision-making and
                   does not guarantee the elimination of all bias. We are not liable for decisions made based
                   on our analysis. Our maximum liability is limited to fees paid in the preceding 12 months.
                 </p>
@@ -146,11 +146,8 @@ export default function TermsPage() {
               <section>
                 <h2 className="text-2xl font-bold text-white mb-4">13. Contact</h2>
                 <p>
-                  For questions about these Terms of Service, contact us at:
-                </p>
-                <p className="mt-2">
-                  <strong className="text-white">Email:</strong> legal@sentinel-ai.com<br />
-                  <strong className="text-white">Address:</strong> 123 Innovation Way, San Francisco, CA 94105
+                  For questions about these Terms of Service, please contact us through
+                  our <a href="/contact" className="text-[var(--primary)] hover:underline">contact form</a>.
                 </p>
               </section>
             </div>

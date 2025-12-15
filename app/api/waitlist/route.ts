@@ -4,13 +4,13 @@ import { addToWaitlist } from "../../lib/waitlist";
 
 export async function POST(request: Request) {
   try {
-    const { email, name, source } = await request.json();
+    const { email, name, source, companyName } = await request.json();
 
     if (!email || !name) {
       return NextResponse.json({ error: "Email and Name are required" }, { status: 400 });
     }
 
-    await addToWaitlist(email, name, source);
+    await addToWaitlist(email, name, source, companyName);
 
     return NextResponse.json({ ok: true });
   } catch (err) {

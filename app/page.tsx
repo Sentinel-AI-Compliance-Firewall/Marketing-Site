@@ -16,6 +16,7 @@ import {
   InteractiveDemo,
   HowItWorks,
   CTASection,
+  TrustedBy,
 } from "@/app/components/landing"
 
 // Smooth scroll
@@ -65,6 +66,9 @@ export default function Home() {
 
         {/* How It Works */}
         <HowItWorks />
+
+        {/* Trust Indicators */}
+        <TrustedBy />
 
         {/* Final CTA */}
         <CTASection />
