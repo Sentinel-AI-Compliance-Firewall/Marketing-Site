@@ -164,7 +164,7 @@ export default function HelpPage() {
                 <Mail className="w-10 h-10 text-[var(--primary)] mx-auto mb-4" />
                 <h3 className="font-semibold text-white mb-2">Email Support</h3>
                 <p className="text-sm text-[var(--text-muted)] mb-4">Get a response within 24 hours</p>
-                <Button variant="ghost" size="sm" as={Link} href="mailto:support@sentinel-ai.com">
+                <Button variant="ghost" size="sm" as="a" href="mailto:support@sentinel-ai.com">
                   Send Email
                 </Button>
               </Card>

@@ -85,7 +85,7 @@ export default function PressPage() {
             <p className="text-xl text-[var(--text-secondary)] mb-8">
               Latest news, press releases, and media resources from Sentinel AI.
             </p>
-            <Button variant="primary" size="lg" as={Link} href="mailto:press@sentinel-ai.com">
+            <Button variant="primary" size="lg" as="a" href="mailto:press@sentinel-ai.com">
               <Mail className="w-5 h-5" />
               Media Inquiries
             </Button>

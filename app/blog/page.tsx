@@ -182,7 +182,7 @@ export default function BlogPage() {
             <p className="text-[var(--text-secondary)] mb-8">
               Get the latest insights on workplace fairness and AI ethics delivered to your inbox.
             </p>
-            <Button variant="primary" size="lg" as={Link} href="#newsletter">
+            <Button variant="primary" size="lg" as="a" href="#newsletter">
               Subscribe to Newsletter
               <ArrowRight className="w-5 h-5" />
             </Button>

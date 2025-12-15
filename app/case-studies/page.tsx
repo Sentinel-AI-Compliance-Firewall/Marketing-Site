@@ -167,11 +167,11 @@ export default function CaseStudiesPage() {
               Join hundreds of organizations building fairer workplaces with Sentinel.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Button variant="primary" size="lg" as={Link} href="/contact?demo=true">
+              <Button variant="primary" size="lg" as="a" href="/contact?demo=true">
                 Request Demo
                 <ArrowRight className="w-5 h-5" />
               </Button>
-              <Button variant="ghost" size="lg" as={Link} href="/pricing">
+              <Button variant="ghost" size="lg" as="a" href="/pricing">
                 View Pricing
               </Button>
             </div>

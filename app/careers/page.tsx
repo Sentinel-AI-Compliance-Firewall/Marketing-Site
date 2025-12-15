@@ -93,7 +93,7 @@ export default function CareersPage() {
               Help us build a future where every workplace is fair, inclusive,
               and free from bias. We&apos;re looking for passionate people to join our team.
             </p>
-            <Button variant="primary" size="lg" as={Link} href="#openings">
+            <Button variant="primary" size="lg" as="a" href="#openings">
               View Open Positions
               <ArrowRight className="w-5 h-5" />
             </Button>
@@ -179,7 +179,7 @@ export default function CareersPage() {
               We&apos;re always looking for talented people. Send us your resume and
               we&apos;ll keep you in mind for future opportunities.
             </p>
-            <Button variant="primary" size="lg" as={Link} href="/contact">
+            <Button variant="primary" size="lg" as="a" href="/contact">
               Get in Touch
               <ArrowRight className="w-5 h-5" />
             </Button>

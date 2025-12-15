@@ -62,11 +62,11 @@ export default function DocsPage() {
               Comprehensive guides, API references, and code examples.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Button variant="primary" size="lg" as={Link} href="#quickstart">
+              <Button variant="primary" size="lg" as="a" href="#quickstart">
                 Quick Start
                 <ArrowRight className="w-5 h-5" />
               </Button>
-              <Button variant="ghost" size="lg" as={Link} href="/docs/api">
+              <Button variant="ghost" size="lg" as="a" href="/docs/api">
                 API Reference
                 <ExternalLink className="w-4 h-4" />
               </Button>
