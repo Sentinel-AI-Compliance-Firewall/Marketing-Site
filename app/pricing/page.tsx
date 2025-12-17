@@ -39,17 +39,9 @@ export default function PricingPage() {
             {PRICING_PLANS.map((plan) => (
               <Card
                 key={plan.id}
-                className={cn(
-                  "relative p-6",
-                  plan.popular && "border-[var(--primary)] shadow-[var(--glow-primary)]"
-                )}
+                className="relative p-6"
                 hover={false}
               >
-                {plan.popular && (
-                  <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                    <Badge variant="success">Most Popular</Badge>
-                  </div>
-                )}
 
                 <div className="mb-6">
                   <h3 className="text-xl font-semibold text-white mb-2">
@@ -67,7 +59,7 @@ export default function PricingPage() {
                 </div>
 
                 <Button
-                  variant={plan.popular ? "primary" : "outline"}
+                  variant="outline"
                   fullWidth
                   as="a"
                   href="/contact"

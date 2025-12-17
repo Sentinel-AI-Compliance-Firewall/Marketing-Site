@@ -82,7 +82,6 @@ export const FOOTER_LINKS = {
     title: "Company",
     links: [
       { label: "About", href: "/about" },
-      { label: "Careers", href: "/careers" },
       { label: "Blog", href: "/blog" },
       { label: "Press", href: "/press" },
       { label: "Contact", href: "/contact" },
@@ -94,7 +93,7 @@ export const FOOTER_LINKS = {
       { label: "Documentation", href: "/docs" },
       { label: "Case Studies", href: "/case-studies" },
       { label: "Help Center", href: "/help" },
-      { label: "Status", href: "https://status.sentinel-ai.com" },
+      { label: "Status", href: "/status" },
       { label: "Community", href: "/community" },
     ],
   },
