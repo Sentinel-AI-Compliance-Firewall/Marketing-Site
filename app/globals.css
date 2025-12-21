@@ -13,13 +13,16 @@
   --bg-card: #0F0F0F;
   --bg-elevated: #1A1A1A;
 
-  /* Primary Colors - Neon */
-  --primary: #00FF88;
-  --primary-dark: #00CC6A;
-  --secondary: #0066FF;
-  --secondary-dark: #0052CC;
-  --accent: #FF0066;
-  --accent-dark: #CC0052;
+  /* Primary Colors - Gold Theme */
+  --primary: #FFD700;
+  --primary-light: #FFE55C;
+  --primary-dark: #E5C100;
+  --secondary: #FFA500;
+  --secondary-light: #FFB733;
+  --secondary-dark: #E59400;
+  --accent: #FF8C00;
+  --accent-light: #FFA033;
+  --accent-dark: #E57D00;
 
   /* Text Hierarchy */
   --text-primary: #FFFFFF;
@@ -32,21 +35,21 @@
   --border-hover: #333333;
 
   /* Status Colors */
-  --success: #00FF88;
+  --success: #00CC6A;
   --warning: #FFB800;
   --error: #FF4444;
   --info: #00C4FF;
 
   /* Gradients */
-  --gradient-primary: linear-gradient(135deg, #00FF88 0%, #00C4FF 100%);
-  --gradient-secondary: linear-gradient(135deg, #0066FF 0%, #00C4FF 100%);
-  --gradient-accent: linear-gradient(135deg, #FF0066 0%, #FF6B35 100%);
+  --gradient-primary: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+  --gradient-secondary: linear-gradient(135deg, #FFA500 0%, #FF8C00 100%);
+  --gradient-accent: linear-gradient(135deg, #FF8C00 0%, #FF6B35 100%);
   --gradient-dark: linear-gradient(180deg, #0A0A0A 0%, #000000 100%);
 
   /* Shadows & Glows */
-  --glow-primary: 0 0 20px rgba(0, 255, 136, 0.4);
-  --glow-secondary: 0 0 20px rgba(0, 102, 255, 0.4);
-  --glow-accent: 0 0 20px rgba(255, 0, 102, 0.4);
+  --glow-primary: 0 0 20px rgba(255, 215, 0, 0.4);
+  --glow-secondary: 0 0 20px rgba(255, 165, 0, 0.4);
+  --glow-accent: 0 0 20px rgba(255, 140, 0, 0.4);
   --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.5);
 
   /* Radius */
@@ -156,7 +159,7 @@ body {
 
 .border-glow {
   border: 1px solid var(--primary);
-  box-shadow: var(--glow-primary), inset 0 0 20px rgba(0, 255, 136, 0.1);
+  box-shadow: var(--glow-primary), inset 0 0 20px rgba(255, 215, 0, 0.1);
 }
 
 /* ============================================
@@ -241,7 +244,7 @@ body {
 .btn-ghost:hover {
   border-color: var(--primary);
   color: var(--primary);
-  background: rgba(0, 255, 136, 0.05);
+  background: rgba(255, 215, 0, 0.05);
 }
 
 .btn-outline {
@@ -274,7 +277,7 @@ body {
 .input:focus {
   outline: none;
   border-color: var(--primary);
-  box-shadow: 0 0 0 3px rgba(0, 255, 136, 0.1);
+  box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.1);
 }
 
 .input::placeholder {
@@ -287,10 +290,10 @@ body {
 
 @keyframes pulse-glow {
   0%, 100% {
-    box-shadow: 0 0 20px rgba(0, 255, 136, 0.4);
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
   }
   50% {
-    box-shadow: 0 0 40px rgba(0, 255, 136, 0.6);
+    box-shadow: 0 0 40px rgba(255, 215, 0, 0.6);
   }
 }
 
@@ -400,8 +403,8 @@ body {
 /* Grid Background */
 .grid-bg {
   background-image:
-    linear-gradient(rgba(0, 255, 136, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 255, 136, 0.03) 1px, transparent 1px);
+    linear-gradient(rgba(255, 215, 0, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 215, 0, 0.03) 1px, transparent 1px);
   background-size: 50px 50px;
 }
 
@@ -524,6 +527,11 @@ canvas {
   opacity: 0;
 }
 
+/* For GSAP-animated elements - lower specificity so GSAP inline styles can override */
+.gsap-opacity-0 {
+  opacity: 0;
+}
+
 .visibility-hidden {
   visibility: hidden;
 }
@@ -537,21 +545,27 @@ canvas {
 }
 
 .preloader-grid {
-  background-image: linear-gradient(rgba(0,255,136,0.3) 1px, transparent 1px),
-                    linear-gradient(90deg, rgba(0,255,136,0.3) 1px, transparent 1px);
+  background-image: linear-gradient(rgba(255,215,0,0.3) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(255,215,0,0.3) 1px, transparent 1px);
   background-size: 50px 50px;
 }
 
-.text-glow-green {
-  text-shadow: 0 0 30px #00FF88, 0 0 60px #00FF88;
+.text-glow-gold {
+  text-shadow: 0 0 30px #FFD700, 0 0 60px #FFD700;
 }
 
 .text-glow-none {
   text-shadow: none;
 }
 
-.text-primary-green {
-  color: #00FF88;
+.text-primary-gold {
+  color: #FFE55C;
+}
+
+/* Brighter gold for small text with better contrast */
+.text-gold-bright {
+  color: #FFE55C;
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
 }
 
 .opacity-full {
@@ -560,6 +574,231 @@ canvas {
 
 .translate-y-150 {
   transform: translateY(150%);
+}
+
+/* ============================================
+   ACCESSIBILITY
+   ============================================ */
+
+/* Skip to content link */
+.skip-to-content {
+  position: absolute;
+  top: -100%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10000;
+  padding: 1rem 2rem;
+  background: var(--primary);
+  color: var(--bg-black);
+  font-weight: 600;
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  transition: top var(--transition-fast);
+}
+
+.skip-to-content:focus {
+  top: 1rem;
+  outline: none;
+  box-shadow: var(--glow-primary);
+}
+
+/* Focus-visible states for all interactive elements */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px rgba(255, 215, 0, 0.2);
+}
+
+/* Remove default focus for mouse users */
+a:focus:not(:focus-visible),
+button:focus:not(:focus-visible),
+input:focus:not(:focus-visible),
+textarea:focus:not(:focus-visible),
+select:focus:not(:focus-visible),
+[tabindex]:focus:not(:focus-visible) {
+  outline: none;
+  box-shadow: none;
+}
+
+/* ============================================
+   BUTTON MICROINTERACTIONS
+   ============================================ */
+
+.btn {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Ripple effect base */
+.btn::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, transparent 70%);
+  transform: scale(0);
+  opacity: 0;
+  transition: transform 0.4s ease, opacity 0.4s ease;
+}
+
+.btn:active::after {
+  transform: scale(2);
+  opacity: 1;
+  transition: transform 0s, opacity 0s;
+}
+
+/* Hover lift effect */
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+/* Icon animation on hover */
+.btn svg {
+  transition: transform var(--transition-fast);
+}
+
+.btn:hover svg {
+  transform: translateX(3px);
+}
+
+/* Primary button glow pulse on hover */
+.btn-primary:hover,
+.btn-accent:hover {
+  animation: btn-glow-pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes btn-glow-pulse {
+  0%, 100% {
+    box-shadow: 0 0 15px rgba(255, 165, 0, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 25px rgba(255, 165, 0, 0.6);
+  }
+}
+
+/* Ghost button border animation */
+.btn-ghost {
+  background-size: 200% 100%;
+  background-image: linear-gradient(90deg, transparent 50%, rgba(255, 215, 0, 0.1) 50%);
+  background-position: 0% 0%;
+  transition: background-position var(--transition-base), border-color var(--transition-base), color var(--transition-base);
+}
+
+.btn-ghost:hover {
+  background-position: -100% 0%;
+}
+
+/* Card hover microinteraction */
+.card {
+  transition: all var(--transition-base), box-shadow 0.4s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+}
+
+/* Link underline animation */
+a.animated-underline {
+  position: relative;
+  text-decoration: none;
+}
+
+a.animated-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--primary);
+  transition: width var(--transition-base);
+}
+
+a.animated-underline:hover::after {
+  width: 100%;
+}
+
+/* ============================================
+   GSAP ANIMATION INITIAL STATES
+   These classes set initial values for GSAP animations
+   ============================================ */
+
+/* Preloader shutter initial height */
+.preloader-shutter {
+  height: 50vh;
+}
+
+/* Hero content initial state - hidden for GSAP animation */
+.hero-content-initial {
+  opacity: 0;
+}
+
+/* ============================================
+   BIAS CATEGORY COLORS
+   Dynamic colors for the 9 protected categories
+   ============================================ */
+
+.category-age { --category-color: #FF6B6B; --category-color-rgb: 255, 107, 107; }
+.category-gender { --category-color: #9B59B6; --category-color-rgb: 155, 89, 182; }
+.category-race { --category-color: #3498DB; --category-color-rgb: 52, 152, 219; }
+.category-nationality { --category-color: #1ABC9C; --category-color-rgb: 26, 188, 156; }
+.category-disability { --category-color: #E67E22; --category-color-rgb: 230, 126, 34; }
+.category-religion { --category-color: #F39C12; --category-color-rgb: 243, 156, 18; }
+.category-sexual_orientation { --category-color: #E74C3C; --category-color-rgb: 231, 76, 60; }
+.category-employment { --category-color: #2ECC71; --category-color-rgb: 46, 204, 113; }
+.category-toxicity { --category-color: #C0392B; --category-color-rgb: 192, 57, 43; }
+
+/* Category card hover effect */
+.category-card:hover {
+  border-color: rgba(var(--category-color-rgb), 0.5) !important;
+}
+
+.category-icon-bg {
+  background-color: rgba(var(--category-color-rgb), 0.1);
+}
+
+/* Category text color - inherits from parent category class */
+.category-text-color {
+  color: var(--category-color);
+}
+
+/* ============================================
+   HOW IT WORKS STEP COLORS
+   ============================================ */
+
+.step-01 { --step-color: #0066FF; --step-color-rgb: 0, 102, 255; }
+.step-02 { --step-color: #FFB800; --step-color-rgb: 255, 184, 0; }
+.step-03 { --step-color: #00FF88; --step-color-rgb: 0, 255, 136; }
+
+/* Step card styling using CSS custom properties */
+.step-card-styled {
+  background-color: rgba(var(--step-color-rgb), 0.05);
+  border-color: rgba(var(--step-color-rgb), 0.3);
+}
+
+.step-card-styled:hover {
+  border-color: rgba(var(--step-color-rgb), 0.5);
+}
+
+.step-number-box {
+  background-color: rgba(var(--step-color-rgb), 0.15);
+  color: var(--step-color);
+}
+
+.step-icon-color {
+  color: var(--step-color);
+}
+
+.step-subtitle-color {
+  color: var(--step-color);
 }
 
 /* ============================================

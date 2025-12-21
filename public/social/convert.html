@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>SVG to PNG Converter</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; background: #1a1a1a; color: white; }
+    .container { max-width: 800px; margin: 0 auto; }
+    h1 { color: #FFD700; }
+    .preview { margin: 20px 0; padding: 20px; background: #333; border-radius: 8px; }
+    canvas { display: block; margin: 10px 0; border: 1px solid #555; }
+    button { background: #FFD700; color: black; border: none; padding: 10px 20px; margin: 5px; cursor: pointer; border-radius: 4px; font-weight: bold; }
+    button:hover { background: #FFA500; }
+    .info { color: #888; font-size: 14px; margin-top: 5px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>SVG to PNG Converter</h1>
+    <p>Click each button to download the PNG version of each logo.</p>
+
+    <div class="preview">
+      <h3>Profile Logo (400x400)</h3>
+      <canvas id="profile-canvas" width="400" height="400"></canvas>
+      <button onclick="downloadCanvas('profile-canvas', 'sentinel-ai-logo.png')">Download PNG</button>
+      <p class="info">Use this for LinkedIn/X profile picture</p>
+    </div>
+
+    <div class="preview">
+      <h3>LinkedIn Banner (1200x630)</h3>
+      <canvas id="linkedin-canvas" width="1200" height="630"></canvas>
+      <button onclick="downloadCanvas('linkedin-canvas', 'sentinel-ai-linkedin-banner.png')">Download PNG</button>
+      <p class="info">Use this for LinkedIn company page cover</p>
+    </div>
+
+    <div class="preview">
+      <h3>X (Twitter) Banner (1500x500)</h3>
+      <canvas id="x-canvas" width="1500" height="500"></canvas>
+      <button onclick="downloadCanvas('x-canvas', 'sentinel-ai-x-banner.png')">Download PNG</button>
+      <p class="info">Use this for X/Twitter header image</p>
+    </div>
+  </div>
+
+  <script>
+    // Load and render SVGs to canvases
+    async function loadSVG(svgPath, canvasId) {
+      const canvas = document.getElementById(canvasId);
+      const ctx = canvas.getContext('2d');
+
+      try {
+        const response = await fetch(svgPath);
+        const svgText = await response.text();
+
+        const img = new Image();
+        const svgBlob = new Blob([svgText], { type: 'image/svg+xml;charset=utf-8' });
+        const url = URL.createObjectURL(svgBlob);
+
+        img.onload = function() {
+          ctx.fillStyle = '#000000';
+          ctx.fillRect(0, 0, canvas.width, canvas.height);
+          ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+          URL.revokeObjectURL(url);
+        };
+
+        img.src = url;
+      } catch (e) {
+        console.error('Error loading SVG:', e);
+        ctx.fillStyle = '#000000';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = '#FFD700';
+        ctx.font = '20px Arial';
+        ctx.fillText('Error loading SVG - check console', 20, canvas.height/2);
+      }
+    }
+
+    function downloadCanvas(canvasId, filename) {
+      const canvas = document.getElementById(canvasId);
+      const link = document.createElement('a');
+      link.download = filename;
+      link.href = canvas.toDataURL('image/png');
+      link.click();
+    }
+
+    // Load all SVGs on page load
+    window.onload = function() {
+      loadSVG('profile-logo.svg', 'profile-canvas');
+      loadSVG('linkedin-banner.svg', 'linkedin-canvas');
+      loadSVG('x-banner.svg', 'x-canvas');
+    };
+  </script>
+</body>
+</html>

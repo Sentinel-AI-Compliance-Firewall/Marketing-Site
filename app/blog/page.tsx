@@ -2,7 +2,8 @@
 
 import { Navbar, Footer } from "@/app/components/layout"
 import { Card, Badge, Button } from "@/app/components/ui"
-import { Calendar, Clock, ArrowRight, BookOpen, Lightbulb, TrendingUp, FileText } from "lucide-react"
+import { Calendar, ArrowRight, BookOpen, Lightbulb, TrendingUp, FileText, Sparkles } from "lucide-react"
+import { useWaitlist } from "@/app/context/WaitlistContext"
 
 // Upcoming topics we'll cover
 const UPCOMING_TOPICS = [
@@ -35,29 +36,31 @@ const UPCOMING_TOPICS = [
 // Sample preview articles (coming soon)
 const PREVIEW_POSTS = [
   {
-    title: "The Hidden Cost of Workplace Bias: A 2025 Analysis",
+    title: "The Hidden Cost of Workplace Bias: A 2026 Analysis",
     excerpt: "New research reveals that workplace discrimination costs Fortune 500 companies an average of $8.1 billion annually in lost productivity, legal fees, and turnover.",
-    date: "Coming January 2025",
+    date: "Coming Q1 2026",
     readTime: "8 min read",
     category: "Research",
   },
   {
     title: "How AI is Transforming HR Compliance",
     excerpt: "From manual audits to real-time detection: exploring the evolution of workplace compliance technology and what it means for HR teams.",
-    date: "Coming January 2025",
+    date: "Coming Q1 2026",
     readTime: "6 min read",
     category: "Technology",
   },
   {
-    title: "Case Study: Reducing Bias Incidents by 73%",
+    title: "Case Study: Reducing Bias Incidents with AI",
     excerpt: "Learn how organizations are implementing AI-powered bias detection to dramatically improve their workplace culture.",
-    date: "Coming February 2025",
+    date: "Coming Q1 2026",
     readTime: "10 min read",
     category: "Case Study",
   },
 ]
 
 export default function BlogPage() {
+  const { openWaitlist } = useWaitlist()
+
   return (
     <main className="bg-black min-h-screen">
       <Navbar transparent={false} />
@@ -84,7 +87,7 @@ export default function BlogPage() {
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[var(--secondary)] opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-3 w-3 bg-[var(--secondary)]"></span>
               </span>
-              <span className="text-[var(--secondary)] font-medium">Full blog launching January 2025</span>
+              <span className="text-[var(--secondary)] font-medium">Full blog launching Q1 2026</span>
             </div>
           </div>
         </div>
@@ -167,7 +170,8 @@ export default function BlogPage() {
               to exclusive research and guides on workplace fairness.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button variant="primary" size="lg" as="a" href="/contact">
+              <Button variant="primary" size="lg" onClick={openWaitlist}>
+                <Sparkles className="w-5 h-5" />
                 Join Waitlist
                 <ArrowRight className="w-5 h-5" />
               </Button>

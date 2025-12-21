@@ -94,32 +94,22 @@ export const PRICING_FAQ = [
   {
     question: "Can I upgrade or downgrade my plan?",
     answer:
-      "Yes, you can change your plan at any time. When upgrading, you'll be charged the prorated difference. When downgrading, the new rate takes effect at your next billing cycle.",
+      "Yes, you'll be able to change your plan at any time once we launch. When upgrading, you'll be charged the prorated difference. When downgrading, the new rate takes effect at your next billing cycle.",
   },
   {
-    question: "Is there a free trial?",
+    question: "Will there be a free trial?",
     answer:
-      "Yes! All plans include a 14-day free trial with full access to features. No credit card required to start.",
+      "Yes! We plan to offer a free trial period with full access to features for all plans. Join the waitlist to be notified when we launch.",
   },
   {
-    question: "What payment methods do you accept?",
+    question: "What payment methods will you accept?",
     answer:
-      "We accept all major credit cards (Visa, MasterCard, American Express), ACH bank transfers for annual plans, and can arrange invoicing for Enterprise customers.",
-  },
-  {
-    question: "Do you offer non-profit or education discounts?",
-    answer:
-      "Yes, we offer 25% discounts for verified non-profit organizations and educational institutions. Contact our sales team for details.",
-  },
-  {
-    question: "What's included in the free trial?",
-    answer:
-      "The free trial includes all features of the Professional plan, including all 9 bias categories, full analytics, and priority support.",
+      "We plan to accept all major credit cards (Visa, MasterCard, American Express), ACH bank transfers for annual plans, and can arrange invoicing for Enterprise customers.",
   },
   {
     question: "How does the on-premise deployment work?",
     answer:
-      "Enterprise customers can deploy Sentinel AI within their own infrastructure. We provide Docker containers, Kubernetes Helm charts, and full deployment support.",
+      "Enterprise customers can deploy Sentinel AI Compliance Firewall within their own infrastructure. We provide Docker containers, Kubernetes Helm charts, and full deployment support.",
   },
   {
     question: "What SLA do you offer?",

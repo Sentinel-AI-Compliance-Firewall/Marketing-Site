@@ -2,6 +2,7 @@ import type React from "react"
 import type { Metadata } from "next"
 import "./globals.css"
 import { WaitlistProvider } from "@/app/context/WaitlistContext"
+import BackToTop from "@/app/components/BackToTop"
 
 export const metadata: Metadata = {
   title: {
@@ -90,8 +91,16 @@ export default function RootLayout({
       <body
         className="font-sans antialiased bg-black text-white min-h-screen"
       >
+        {/* Skip to content link for accessibility */}
+        <a
+          href="#main-content"
+          className="skip-to-content"
+        >
+          Skip to main content
+        </a>
         <WaitlistProvider>
           {children}
+          <BackToTop />
         </WaitlistProvider>
       </body>
     </html>

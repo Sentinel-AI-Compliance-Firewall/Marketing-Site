@@ -172,7 +172,7 @@ const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
       <div className="absolute inset-0 z-10 flex items-center justify-center">
         <div className="relative w-[80vw] max-w-4xl h-[200px] flex items-center justify-center">
           {/* Top right meta - Sentinel branding */}
-          <div className="meta-group absolute -top-7 right-0 text-[#00FF88] text-xs md:text-sm font-mono font-medium opacity-0 tracking-wider">
+          <div className="meta-group absolute -top-7 right-0 text-[#FFD700] text-xs md:text-sm font-mono font-medium opacity-0 tracking-wider">
             SENTINEL//INITIALIZING
           </div>
 
@@ -186,7 +186,7 @@ const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
                 {word.split("").map((char, charIndex) => (
                   <span
                     key={charIndex}
-                    className={`letter inline-block text-5xl md:text-7xl lg:text-9xl font-bold text-white leading-none tracking-tight font-display ${wordIndex === 2 ? "text-glow-green" : "text-glow-none"}`}
+                    className={`letter inline-block text-5xl md:text-7xl lg:text-9xl font-bold text-white leading-none tracking-tight font-display ${wordIndex === 2 ? "text-glow-gold" : "text-glow-none"}`}
                   >
                     {char}
                   </span>
@@ -205,7 +205,7 @@ const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
                 {num.split("").map((char, charIndex) => (
                   <span
                     key={charIndex}
-                    className="num-char inline-block text-xl md:text-3xl font-bold tabular-nums leading-none translate-y-150 text-primary-green"
+                    className="num-char inline-block text-xl md:text-3xl font-bold tabular-nums leading-none translate-y-150 text-primary-gold"
                   >
                     {char}
                   </span>

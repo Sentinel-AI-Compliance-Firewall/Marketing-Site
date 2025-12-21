@@ -20,6 +20,11 @@ export const NAV_LINKS: NavLink[] = [
     href: "/product",
     children: [
       {
+        label: "Overview",
+        href: "/product",
+        description: "Complete product overview",
+      },
+      {
         label: "Features",
         href: "/product#features",
         description: "Explore all bias detection capabilities",
@@ -33,11 +38,6 @@ export const NAV_LINKS: NavLink[] = [
         label: "API & Integrations",
         href: "/product#api",
         description: "Connect with your existing tools",
-      },
-      {
-        label: "Enterprise",
-        href: "/product#enterprise",
-        description: "Solutions for large organizations",
       },
     ],
   },
@@ -91,10 +91,9 @@ export const FOOTER_LINKS = {
     title: "Resources",
     links: [
       { label: "Documentation", href: "/docs" },
-      { label: "Case Studies", href: "/case-studies" },
+      { label: "API Reference", href: "/docs/api" },
+      { label: "Security Docs", href: "/security" },
       { label: "Help Center", href: "/help" },
-      { label: "Status", href: "/status" },
-      { label: "Community", href: "/community" },
     ],
   },
   legal: {
@@ -103,7 +102,6 @@ export const FOOTER_LINKS = {
       { label: "Privacy Policy", href: "/privacy" },
       { label: "Terms of Service", href: "/terms" },
       { label: "Cookie Policy", href: "/cookies" },
-      { label: "DPA", href: "/dpa" },
       { label: "Security", href: "/security" },
     ],
   },
@@ -111,19 +109,14 @@ export const FOOTER_LINKS = {
 
 export const SOCIAL_LINKS = [
   {
-    label: "Twitter",
-    href: "https://twitter.com/sentinelai",
+    label: "X (Twitter)",
+    href: "https://x.com/SentinelAICF",
     icon: "twitter",
   },
   {
     label: "LinkedIn",
-    href: "https://linkedin.com/company/sentinel-ai",
+    href: "https://www.linkedin.com/company/sentinel-ai-compliance-firewall",
     icon: "linkedin",
-  },
-  {
-    label: "GitHub",
-    href: "https://github.com/sentinel-ai",
-    icon: "github",
   },
 ] as const
 
@@ -181,6 +174,6 @@ export const PAGE_META = {
   security: {
     title: "Security & Compliance",
     description:
-      "Enterprise-grade security with SOC 2 Type II, GDPR, HIPAA compliance and more.",
+      "Enterprise-grade security with GDPR, CCPA compliance, encryption, and SOC 2 certification planned for 2026.",
   },
 } as const

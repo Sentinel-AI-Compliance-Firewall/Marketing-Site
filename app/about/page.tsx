@@ -14,10 +14,9 @@ import {
 } from "lucide-react"
 
 const MISSION_STATS = [
-  { value: "1M+", label: "Documents Scanned" },
-  { value: "500+", label: "Enterprise Clients" },
+  { value: "10K+", label: "Beta Documents Scanned" },
   { value: "9", label: "Protected Categories" },
-  { value: "99.7%", label: "Detection Accuracy" },
+  { value: "99.7%", label: "Accuracy (Internal Benchmarks)" },
 ]
 
 const VALUES = [
@@ -64,7 +63,7 @@ const TIMELINE = [
     year: "Nov 2025",
     title: "Platform Launch",
     description:
-      "Launched the Sentinel AI platform with real-time scanning capabilities, API integration, and enterprise-grade security features.",
+      "Launched the Sentinel AI Compliance Firewall platform with real-time scanning capabilities, API integration, and enterprise-grade security features.",
   },
   {
     year: "Dec 2025",
@@ -78,19 +77,19 @@ const TEAM = [
   {
     name: "Parth Gosar",
     role: "Co-Founder",
-    bio: "Machine learning engineer passionate about NLP and bias detection. Leading product vision and AI model optimization at Sentinel AI.",
+    bio: "Machine learning engineer passionate about NLP and bias detection. Leading product vision and AI model optimization at Sentinel AI Compliance Firewall.",
     linkedin: "https://www.linkedin.com/in/parth-gosar-04042b1b1/",
   },
   {
     name: "Purav Sanghavi",
     role: "Co-Founder",
-    bio: "Full-stack developer and ML enthusiast. Driving the technical architecture and platform development at Sentinel AI.",
+    bio: "Full-stack developer and ML enthusiast. Driving the technical architecture and platform development at Sentinel AI Compliance Firewall.",
     linkedin: "https://www.linkedin.com/in/purav-sanghavi-81a6a5208/",
   },
   {
     name: "Ved Chadderwala",
     role: "Co-Founder",
-    bio: "Software engineer focused on scalable systems. Leading backend infrastructure and API development at Sentinel AI.",
+    bio: "Software engineer focused on scalable systems. Leading backend infrastructure and API development at Sentinel AI Compliance Firewall.",
     linkedin: "https://www.linkedin.com/in/ved-chadderwala-196529223/",
   },
 ]
@@ -124,7 +123,7 @@ export default function AboutPage() {
       {/* Stats */}
       <section className="pb-20">
         <div className="container">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-3xl mx-auto">
             {MISSION_STATS.map((stat, i) => (
               <Card key={i} className="p-6 text-center">
                 <div className="text-3xl md:text-4xl font-bold text-[var(--primary)] mb-2">
@@ -151,15 +150,31 @@ export default function AboutPage() {
                 Bias Detection That Protects Everyone
               </h2>
               <p className="text-[var(--text-secondary)] text-lg mb-6">
-                Workplace discrimination costs businesses billions annually and
-                causes immeasurable harm to individuals. Traditional compliance
+                Workplace discrimination costs businesses{" "}
+                <a
+                  href="https://www.eeoc.gov/data/eeoc-litigation-statistics-fy-1997-through-fy-2023"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[var(--primary)] hover:underline"
+                >
+                  billions annually
+                </a>{" "}
+                and causes immeasurable harm to individuals. Traditional compliance
                 approaches react after damage is done. We believe in prevention.
               </p>
               <p className="text-[var(--text-secondary)] text-lg mb-8">
                 Our multi-model ML ensemble analyzes text in real-time,
                 detecting subtle patterns of bias across 9 protected categories
-                aligned with EEOC guidelines. We catch issues before they become
-                incidents.
+                aligned with{" "}
+                <a
+                  href="https://www.eeoc.gov/employers/small-business/3-who-protected-employment-discrimination"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[var(--primary)] hover:underline"
+                >
+                  EEOC guidelines
+                </a>
+                . We catch issues before they become incidents.
               </p>
               <ul className="space-y-3">
                 {[
@@ -193,34 +208,34 @@ export default function AboutPage() {
                 <div className="space-y-4">
                   <div className="flex justify-between items-center">
                     <span className="text-sm text-[var(--text-secondary)]">
-                      Biased content flagged
+                      Beta documents analyzed
                     </span>
                     <span className="text-sm font-mono text-[var(--primary)]">
-                      2.3M+
+                      10K+
                     </span>
                   </div>
                   <div className="flex justify-between items-center">
                     <span className="text-sm text-[var(--text-secondary)]">
-                      Discrimination incidents prevented
+                      Bias patterns detected
                     </span>
                     <span className="text-sm font-mono text-[var(--primary)]">
-                      50K+
+                      1.2K+
                     </span>
                   </div>
                   <div className="flex justify-between items-center">
                     <span className="text-sm text-[var(--text-secondary)]">
-                      Countries served
+                      Protected categories
                     </span>
                     <span className="text-sm font-mono text-[var(--primary)]">
-                      35+
+                      9
                     </span>
                   </div>
                   <div className="flex justify-between items-center">
                     <span className="text-sm text-[var(--text-secondary)]">
-                      Languages supported
+                      Languages (roadmap)
                     </span>
                     <span className="text-sm font-mono text-[var(--primary)]">
-                      12
+                      4
                     </span>
                   </div>
                 </div>
@@ -356,21 +371,16 @@ export default function AboutPage() {
         <div className="container">
           <div className="max-w-3xl mx-auto text-center">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              Join Us in Building Fair Workplaces
+              Building Fair Workplaces
             </h2>
             <p className="text-[var(--text-secondary)] text-lg mb-8">
-              Whether you&apos;re looking to protect your organization or join
-              our team, we&apos;d love to hear from you.
+              Ready to protect your organization from workplace bias? Get in touch
+              to learn how we can help.
             </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Button variant="primary" size="lg" as="a" href="/contact?demo=true">
-                Request Demo
-                <ArrowRight className="w-5 h-5" />
-              </Button>
-              <Button variant="ghost" size="lg" as="a" href="/careers">
-                View Careers
-              </Button>
-            </div>
+            <Button variant="primary" size="lg" as="a" href="/contact">
+              Request Early Demo
+              <ArrowRight className="w-5 h-5" />
+            </Button>
           </div>
         </div>
       </section>

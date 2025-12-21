@@ -2,7 +2,8 @@
 
 import { Navbar, Footer } from "@/app/components/layout"
 import { Card, Badge, Button } from "@/app/components/ui"
-import { Users, MessageSquare, Github, Calendar, ArrowRight, BookOpen } from "lucide-react"
+import { Users, MessageSquare, Github, Calendar, ArrowRight, BookOpen, Sparkles } from "lucide-react"
+import { useWaitlist } from "@/app/context/WaitlistContext"
 
 const COMMUNITY_FEATURES = [
   {
@@ -28,6 +29,8 @@ const COMMUNITY_FEATURES = [
 ]
 
 export default function CommunityPage() {
+  const { openWaitlist } = useWaitlist()
+
   return (
     <main className="bg-black min-h-screen">
       <Navbar transparent={false} />
@@ -98,10 +101,14 @@ export default function CommunityPage() {
                 Sign up to get notified when our community launches. Early members
                 will get exclusive access and recognition as founding members.
               </p>
-              <Button variant="primary" size="lg" as="a" href="/contact">
+              <Button variant="primary" size="lg" onClick={openWaitlist}>
+                <Sparkles className="w-5 h-5" />
                 Join the Waitlist
                 <ArrowRight className="w-5 h-5" />
               </Button>
+              <p className="text-xs text-[var(--text-muted)] mt-4">
+                Expected launch: Q1 2026
+              </p>
             </Card>
           </div>
         </div>

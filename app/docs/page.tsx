@@ -55,12 +55,21 @@ export default function DocsPage() {
               Documentation
             </Badge>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
-              Build with Sentinel
+              Build with Sentinel AI Compliance Firewall
             </h1>
-            <p className="text-xl text-[var(--text-secondary)] mb-8">
+            <p className="text-xl text-[var(--text-secondary)] mb-6">
               Everything you need to integrate bias detection into your applications.
               Comprehensive guides, API references, and code examples.
             </p>
+
+            {/* Coming Soon Notice */}
+            <div className="inline-flex items-center gap-3 px-6 py-3 mb-8 bg-[var(--secondary)]/10 border border-[var(--secondary)]/30 rounded-full">
+              <span className="relative flex h-3 w-3">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[var(--secondary)] opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-3 w-3 bg-[var(--secondary)]"></span>
+              </span>
+              <span className="text-[var(--secondary)] font-medium">Documentation will be finalized once we are live. Join waitlist for updates.</span>
+            </div>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Button variant="primary" size="lg" as="a" href="#quickstart">
                 Quick Start
@@ -106,6 +115,13 @@ export default function DocsPage() {
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
               Get Started in Minutes
             </h2>
+
+            {/* Demo Notice */}
+            <div className="mb-8 p-4 bg-[var(--secondary)]/10 border border-[var(--secondary)]/30 rounded-lg">
+              <p className="text-sm text-[var(--secondary)]">
+                <strong>Note:</strong> This is preview documentation. Code examples and SDK details will be finalized once we launch.
+              </p>
+            </div>
 
             <div className="space-y-8">
               <div id="installation">
@@ -156,12 +172,15 @@ console.log(result.suggestions);`}
             <Badge variant="outline" className="mb-4">
               Guides
             </Badge>
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-8">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
               Step-by-Step Tutorials
             </h2>
+            <p className="text-[var(--text-muted)] text-sm mb-8">
+              Coming soon — detailed guides will be available at launch.
+            </p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {[
-                { title: "Integrating with HR Systems", desc: "Connect Sentinel to Workday, BambooHR, and more" },
+                { title: "Integrating with HR Systems", desc: "Connect Sentinel AI Compliance Firewall to Workday, BambooHR, and more" },
                 { title: "Custom Bias Categories", desc: "Define organization-specific bias patterns" },
                 { title: "Webhook Configuration", desc: "Set up real-time notifications" },
                 { title: "Batch Processing", desc: "Scan large document sets efficiently" },

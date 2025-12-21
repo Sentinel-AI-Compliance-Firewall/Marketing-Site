@@ -5,9 +5,10 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { cn } from "@/app/lib/utils"
 import { Button } from "@/app/components/ui"
-import { NAV_LINKS, CTA_CONFIG } from "@/app/constants/navigation"
-import { Menu, X, ChevronDown, Shield } from "lucide-react"
+import { NAV_LINKS } from "@/app/constants/navigation"
+import { Menu, X, ChevronDown } from "lucide-react"
 import { useWaitlist } from "@/app/context/WaitlistContext"
+import SentinelLogo from "@/app/components/SentinelLogo"
 
 interface NavbarProps {
   transparent?: boolean
@@ -49,12 +50,8 @@ export function Navbar({ transparent = true }: NavbarProps) {
         <div className="container mx-auto px-4 lg:px-8">
           <div className="flex items-center justify-between h-16 lg:h-20">
             {/* Logo */}
-            <Link
-              href="/"
-              className="flex items-center gap-2 text-white font-bold text-xl"
-            >
-              <Shield className="w-8 h-8 text-[var(--primary)]" />
-              <span className="hidden sm:inline">SENTINEL</span>
+            <Link href="/" className="flex items-center">
+              <SentinelLogo className="h-8 md:h-10 w-auto" />
             </Link>
 
             {/* Desktop Navigation */}
@@ -68,41 +65,53 @@ export function Navbar({ transparent = true }: NavbarProps) {
                   }
                   onMouseLeave={() => setActiveDropdown(null)}
                 >
-                  <Link
-                    href={link.href}
-                    className={cn(
-                      "flex items-center gap-1 px-4 py-2 text-sm font-medium transition-colors",
-                      pathname === link.href
-                        ? "text-[var(--primary)]"
-                        : "text-[var(--text-secondary)] hover:text-white"
-                    )}
-                  >
-                    {link.label}
-                    {link.children && (
+                  {link.children ? (
+                    <button
+                      type="button"
+                      className={cn(
+                        "flex items-center gap-1 px-4 py-2 text-xs font-semibold uppercase tracking-widest transition-colors",
+                        pathname.startsWith(link.href)
+                          ? "text-[#FFD700]"
+                          : "text-white hover:text-[#FFD700]"
+                      )}
+                    >
+                      {link.label}
                       <ChevronDown
                         className={cn(
                           "w-4 h-4 transition-transform",
                           activeDropdown === link.label && "rotate-180"
                         )}
                       />
-                    )}
-                  </Link>
+                    </button>
+                  ) : (
+                    <Link
+                      href={link.href}
+                      className={cn(
+                        "flex items-center gap-1 px-4 py-2 text-xs font-semibold uppercase tracking-widest transition-colors",
+                        pathname === link.href
+                          ? "text-[#FFD700]"
+                          : "text-white hover:text-[#FFD700]"
+                      )}
+                    >
+                      {link.label}
+                    </Link>
+                  )}
 
                   {/* Dropdown */}
                   {link.children && activeDropdown === link.label && (
                     <div className="absolute top-full left-0 pt-2">
-                      <div className="bg-[var(--bg-card)] border border-[var(--border)] rounded-lg shadow-xl py-2 min-w-[240px]">
+                      <div className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-lg shadow-xl py-2 min-w-[240px]">
                         {link.children.map((child) => (
                           <Link
                             key={child.href}
                             href={child.href}
-                            className="block px-4 py-3 hover:bg-[var(--bg-elevated)] transition-colors"
+                            className="block px-4 py-3 hover:bg-white/10 transition-colors"
                           >
-                            <span className="block text-sm font-medium text-white">
+                            <span className="block text-sm font-medium text-white/90 hover:text-[#FFD700]">
                               {child.label}
                             </span>
                             {child.description && (
-                              <span className="block text-xs text-[var(--text-muted)] mt-0.5">
+                              <span className="block text-xs text-white/60 mt-0.5">
                                 {child.description}
                               </span>
                             )}
@@ -117,9 +126,6 @@ export function Navbar({ transparent = true }: NavbarProps) {
 
             {/* Desktop CTAs */}
             <div className="hidden lg:flex items-center gap-3">
-              <Button variant="ghost" size="sm" as="a" href="/contact">
-                {CTA_CONFIG.sales.label}
-              </Button>
               <Button variant="accent" size="sm" onClick={openWaitlist}>
                 Join Waitlist
               </Button>
@@ -172,10 +178,10 @@ export function Navbar({ transparent = true }: NavbarProps) {
                   <Link
                     href={link.href}
                     className={cn(
-                      "block px-4 py-3 text-base font-medium rounded-lg transition-colors",
+                      "block px-4 py-3 text-sm font-medium uppercase tracking-wider rounded-lg transition-colors",
                       pathname === link.href
-                        ? "text-[var(--primary)] bg-[var(--primary)]/10"
-                        : "text-white hover:bg-[var(--bg-elevated)]"
+                        ? "text-[#FFD700] bg-[#FFD700]/10"
+                        : "text-white hover:bg-[var(--bg-elevated)] hover:text-[#FFD700]"
                     )}
                   >
                     {link.label}
@@ -198,9 +204,6 @@ export function Navbar({ transparent = true }: NavbarProps) {
             </div>
 
             <div className="mt-6 pt-6 border-t border-[var(--border)] space-y-3">
-              <Button variant="ghost" fullWidth as="a" href="/contact">
-                {CTA_CONFIG.sales.label}
-              </Button>
               <Button variant="accent" fullWidth onClick={() => { setIsMobileMenuOpen(false); openWaitlist(); }}>
                 Join Waitlist
               </Button>

@@ -1,64 +1,68 @@
 "use client"
 
-import { Shield, Building2, Users, Award } from "lucide-react"
-
-const TRUST_INDICATORS = [
-  {
-    icon: Shield,
-    title: "SOC 2 Type II",
-    description: "Enterprise security certified",
-  },
-  {
-    icon: Building2,
-    title: "EEOC Aligned",
-    description: "Compliant with federal guidelines",
-  },
-  {
-    icon: Users,
-    title: "500+ Teams",
-    description: "On our waitlist",
-  },
-  {
-    icon: Award,
-    title: "99.7% Accuracy",
-    description: "Bias detection rate",
-  },
-]
+import { Sparkles, ArrowRight } from "lucide-react"
+import { useWaitlist } from "@/app/context/WaitlistContext"
 
 export function TrustedBy() {
+  const { openWaitlist } = useWaitlist()
+
   return (
     <section className="section bg-black relative overflow-hidden">
       {/* Background grid */}
       <div className="absolute inset-0 grid-bg opacity-10" />
 
-      <div className="container relative z-10">
-        <div className="text-center mb-12">
-          <span className="inline-block px-4 py-1.5 mb-4 text-sm font-medium text-[var(--secondary)] bg-[var(--secondary)]/10 rounded-full border border-[var(--secondary)]/20">
-            Why Choose Sentinel
-          </span>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">
-            Enterprise-Ready Compliance
-          </h2>
-          <p className="text-[var(--text-secondary)] text-lg max-w-2xl mx-auto">
-            Built for organizations that take workplace fairness seriously
-          </p>
-        </div>
+      {/* Gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[var(--primary)]/5 to-transparent" />
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 max-w-4xl mx-auto">
-          {TRUST_INDICATORS.map((item, i) => (
-            <div
-              key={i}
-              className="text-center p-4 md:p-6 rounded-xl bg-[var(--bg-card)] border border-[var(--border)] hover:border-[var(--secondary)]/30 transition-colors"
+      <div className="container relative z-10">
+        <div className="max-w-3xl mx-auto text-center">
+          <span className="inline-block px-4 py-1.5 mb-6 text-sm font-medium text-[var(--primary)] bg-[var(--primary)]/10 rounded-full border border-[var(--primary)]/20">
+            Early Access Program
+          </span>
+
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6">
+            Join Our Early Access Program
+          </h2>
+
+          <p className="text-[var(--text-secondary)] text-lg mb-8 max-w-2xl mx-auto">
+            Be among the first to experience enterprise-grade bias detection.
+            Early access members get priority onboarding, dedicated support, and
+            help shape the future of workplace compliance.
+          </p>
+
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-10">
+            <button
+              type="button"
+              onClick={openWaitlist}
+              className="group flex items-center gap-3 px-8 py-4 rounded-full bg-gradient-to-r from-[#FFD700] to-[#FFA500] text-black font-semibold text-lg hover:from-[#FFE55C] hover:to-[#FFB733] transition-all hover:scale-105 shadow-[0_4px_30px_rgba(255,165,0,0.4)]"
             >
-              <div className="w-10 h-10 md:w-12 md:h-12 mx-auto mb-3 md:mb-4 rounded-lg bg-[var(--secondary)]/10 flex items-center justify-center">
-                <item.icon className="w-5 h-5 md:w-6 md:h-6 text-[var(--secondary)]" />
-              </div>
-              <h3 className="text-base md:text-lg font-bold text-white mb-1">{item.title}</h3>
-              <p className="text-xs md:text-sm text-[var(--text-muted)]">
-                {item.description}
+              <Sparkles className="w-5 h-5" />
+              Request Early Access
+              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            </button>
+          </div>
+
+          {/* Benefits grid */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
+            <div className="p-6 rounded-xl bg-[var(--bg-card)] border border-[var(--border)]">
+              <h3 className="text-white font-semibold mb-2">Priority Access</h3>
+              <p className="text-sm text-[var(--text-muted)]">
+                Be first in line when we launch. Skip the waitlist and get immediate access.
               </p>
             </div>
-          ))}
+            <div className="p-6 rounded-xl bg-[var(--bg-card)] border border-[var(--border)]">
+              <h3 className="text-white font-semibold mb-2">Founding Member Pricing</h3>
+              <p className="text-sm text-[var(--text-muted)]">
+                Lock in special rates available only to early access members.
+              </p>
+            </div>
+            <div className="p-6 rounded-xl bg-[var(--bg-card)] border border-[var(--border)]">
+              <h3 className="text-white font-semibold mb-2">Shape the Product</h3>
+              <p className="text-sm text-[var(--text-muted)]">
+                Direct input on features and roadmap. Your feedback drives development.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </section>

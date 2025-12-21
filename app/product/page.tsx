@@ -93,11 +93,11 @@ export default function ProductPage() {
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Button variant="primary" size="lg" as="a" href="/contact?demo=true">
-                Request Demo
+                Request Early Demo
                 <ArrowRight className="w-5 h-5" />
               </Button>
               <Button variant="ghost" size="lg" as="a" href="#api">
-                View API Docs
+                See Integration Example
               </Button>
             </div>
           </div>
@@ -149,16 +149,24 @@ export default function ProductPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {BIAS_CATEGORIES.map((category) => (
-              <Card key={category.id} className="p-6" hover={true}>
+              <Card key={category.id} className={`p-6 category-${category.id}`} hover={true}>
                 <div className="flex items-center gap-3 mb-4">
                   <span className="text-3xl">{category.icon}</span>
                   <div>
                     <h3 className="text-lg font-semibold text-white">
                       {category.name}
                     </h3>
-                    <p className="text-xs text-[var(--text-muted)]">
+                    <a
+                      href={category.legalUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-xs text-[var(--text-muted)] hover:text-[var(--primary)] transition-colors inline-flex items-center gap-1"
+                    >
                       {category.legalFramework}
-                    </p>
+                      <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                      </svg>
+                    </a>
                   </div>
                 </div>
                 <p className="text-sm text-[var(--text-secondary)] mb-4">
@@ -174,8 +182,7 @@ export default function ProductPage() {
                       className="flex items-center gap-2 text-xs text-[var(--text-secondary)]"
                     >
                       <CheckCircle
-                        className="w-3 h-3 flex-shrink-0"
-                        style={{ color: category.color }}
+                        className="w-3 h-3 flex-shrink-0 category-text-color"
                       />
                       <span>&quot;{example}&quot;</span>
                     </div>
@@ -183,11 +190,10 @@ export default function ProductPage() {
                 </div>
                 <div className="flex items-center justify-between pt-4 border-t border-[var(--border)]">
                   <span className="text-xs text-[var(--text-muted)]">
-                    Detection accuracy
+                    Internal benchmark
                   </span>
                   <span
-                    className="text-sm font-mono font-bold"
-                    style={{ color: category.color }}
+                    className="text-sm font-mono font-bold category-text-color"
                   >
                     {category.accuracy}%
                   </span>
@@ -209,11 +215,19 @@ export default function ProductPage() {
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
                 Integrate in Minutes
               </h2>
-              <p className="text-[var(--text-secondary)] text-lg mb-6">
-                Our RESTful API and official SDKs make integration simple.
+              <p className="text-[var(--text-secondary)] text-lg mb-4">
+                Our RESTful API and official SDKs will make integration simple.
                 Connect to your existing workflows with just a few lines of
                 code.
               </p>
+              {/* Coming Soon Notice */}
+              <div className="inline-flex items-center gap-2 px-4 py-2 mb-6 bg-[var(--secondary)]/10 border border-[var(--secondary)]/30 rounded-full">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[var(--secondary)] opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-[var(--secondary)]"></span>
+                </span>
+                <span className="text-sm text-[var(--secondary)]">Integration details will be updated once we are live</span>
+              </div>
               <ul className="space-y-3 mb-8">
                 {[
                   "Official SDKs for Python, JavaScript, Go",
@@ -227,8 +241,8 @@ export default function ProductPage() {
                   </li>
                 ))}
               </ul>
-              <Button variant="primary" as="a" href="/docs/api">
-                View API Reference
+              <Button variant="primary" as="a" href="/contact?inquiry=api">
+                Get Early API Access
                 <ArrowRight className="w-4 h-4" />
               </Button>
             </div>
@@ -261,14 +275,11 @@ export default function ProductPage() {
               Ready to Get Started?
             </h2>
             <p className="text-[var(--text-secondary)] text-lg mb-8">
-              Start your 14-day free trial and see Sentinel AI in action.
+              Request early access and be among the first to experience Sentinel AI Compliance Firewall.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Button variant="primary" size="lg" as="a" href="/contact?demo=true">
-                Request Demo
-              </Button>
-              <Button variant="ghost" size="lg" as="a" href="/pricing">
-                View Pricing
+                Request Early Demo
               </Button>
             </div>
           </div>

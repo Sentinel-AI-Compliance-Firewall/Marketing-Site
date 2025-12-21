@@ -12,6 +12,7 @@ export const BIAS_CATEGORIES = [
     color: "#FF6B6B",
     colorRgb: "255, 107, 107",
     legalFramework: "ADEA (Age 40+)",
+    legalUrl: "https://www.eeoc.gov/statutes/age-discrimination-employment-act-1967",
     description:
       "Detects age-coded language that may discriminate against older or younger candidates.",
     accuracy: 97.3,
@@ -31,6 +32,7 @@ export const BIAS_CATEGORIES = [
     color: "#9B59B6",
     colorRgb: "155, 89, 182",
     legalFramework: "Title VII",
+    legalUrl: "https://www.eeoc.gov/statutes/title-vii-civil-rights-act-1964",
     description:
       "Identifies gender-specific terms, stereotypes, and biased language patterns.",
     accuracy: 96.8,
@@ -50,6 +52,7 @@ export const BIAS_CATEGORIES = [
     color: "#3498DB",
     colorRgb: "52, 152, 219",
     legalFramework: "Title VII, Section 1981",
+    legalUrl: "https://www.eeoc.gov/racecolor-discrimination",
     description:
       "Detects racial and ethnic bias including coded language and microaggressions.",
     accuracy: 98.1,
@@ -69,6 +72,7 @@ export const BIAS_CATEGORIES = [
     color: "#1ABC9C",
     colorRgb: "26, 188, 156",
     legalFramework: "Title VII, INA",
+    legalUrl: "https://www.eeoc.gov/national-origin-discrimination",
     description:
       "Identifies national origin discrimination and citizenship-based bias.",
     accuracy: 95.4,
@@ -88,6 +92,7 @@ export const BIAS_CATEGORIES = [
     color: "#E67E22",
     colorRgb: "230, 126, 34",
     legalFramework: "ADA, Section 503",
+    legalUrl: "https://www.eeoc.gov/statutes/americans-disabilities-act-1990",
     description:
       "Detects language that may exclude or discriminate against people with disabilities.",
     accuracy: 97.0,
@@ -107,6 +112,7 @@ export const BIAS_CATEGORIES = [
     color: "#F39C12",
     colorRgb: "243, 156, 18",
     legalFramework: "Title VII",
+    legalUrl: "https://www.eeoc.gov/religious-discrimination",
     description:
       "Identifies religious discrimination and scheduling/accommodation bias.",
     accuracy: 94.7,
@@ -126,6 +132,7 @@ export const BIAS_CATEGORIES = [
     color: "#E74C3C",
     colorRgb: "231, 76, 60",
     legalFramework: "Title VII (Bostock)",
+    legalUrl: "https://www.eeoc.gov/sexual-orientation-and-gender-identity-sogi-discrimination",
     description:
       "Detects discrimination based on sexual orientation and gender identity.",
     accuracy: 96.2,
@@ -145,6 +152,7 @@ export const BIAS_CATEGORIES = [
     color: "#2ECC71",
     colorRgb: "46, 204, 113",
     legalFramework: "Various EEOC",
+    legalUrl: "https://www.eeoc.gov/laws/guidance",
     description:
       "Identifies general employment discrimination patterns and unfair practices.",
     accuracy: 93.5,
@@ -164,6 +172,7 @@ export const BIAS_CATEGORIES = [
     color: "#C0392B",
     colorRgb: "192, 57, 43",
     legalFramework: "Hostile Work Environment",
+    legalUrl: "https://www.eeoc.gov/harassment",
     description:
       "Detects harassment, bullying, and hostile language patterns.",
     accuracy: 99.1,
@@ -198,7 +207,7 @@ export function getCategoryColor(id: string): string {
  * Severity levels for bias detection
  */
 export const SEVERITY_LEVELS = {
-  LOW: { min: 0, max: 30, label: "Low", color: "#00FF88" },
+  LOW: { min: 0, max: 30, label: "Low", color: "#FFD700" },
   MEDIUM: { min: 31, max: 60, label: "Medium", color: "#FFB800" },
   HIGH: { min: 61, max: 80, label: "High", color: "#FF6B35" },
   CRITICAL: { min: 81, max: 100, label: "Critical", color: "#FF4444" },
@@ -218,8 +227,8 @@ export function getSeverityLevel(score: number) {
  * Policy actions
  */
 export const POLICY_ACTIONS = {
-  PASS: { label: "Pass", color: "#00FF88", icon: "✓" },
+  PASS: { label: "Pass", color: "#FFD700", icon: "✓" },
   WARN: { label: "Warning", color: "#FFB800", icon: "⚠" },
   BLOCK: { label: "Blocked", color: "#FF4444", icon: "✕" },
-  AUTO_REWRITE: { label: "Auto-Rewrite", color: "#0066FF", icon: "↻" },
+  AUTO_REWRITE: { label: "Auto-Rewrite", color: "#FFA500", icon: "↻" },
 } as const

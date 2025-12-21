@@ -4,10 +4,11 @@ import { useEffect, useRef, useState } from "react"
 import Link from "next/link"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
-import { Shield, ChevronDown, Play, ArrowRight, Sparkles } from "lucide-react"
+import { ChevronDown, ArrowRight, Sparkles } from "lucide-react"
 import { useWaitlist } from "@/app/context/WaitlistContext"
+import SentinelLogo from "./SentinelLogo"
 
-const FRAME_COUNT = 195
+const FRAME_COUNT = 192
 const URL_PREFIX = "/Frames/"
 const FILE_NAME = "frame"
 const FILE_TYPE = "jpg"
@@ -118,7 +119,8 @@ const HeroScroll = ({ onFirstFrameReady, showContent = false }: HeroScrollProps)
         start: "top top",
         end: "+=600%",
         pin: true,
-        scrub: 0.8,
+        scrub: 1.2, // Increased for smoother scrolling
+        anticipatePin: 1, // Smoother pin/unpin transitions
       },
     })
 
@@ -139,9 +141,6 @@ const HeroScroll = ({ onFirstFrameReady, showContent = false }: HeroScrollProps)
       },
       0,
     )
-
-    // Keep container at full size - no scaling at the end
-    // Just maintain the current frame and allow scroll to continue
 
     ScrollTrigger.refresh()
   }
@@ -238,35 +237,55 @@ const HeroScroll = ({ onFirstFrameReady, showContent = false }: HeroScrollProps)
           ref={navRef}
           className={`absolute top-0 left-0 right-0 z-20 flex items-center justify-between px-4 md:px-8 py-4 md:py-6 will-change-transform opacity-hidden ${showContent ? "visibility-visible" : "visibility-hidden"}`}
         >
-          {/* Left nav items - hidden on mobile */}
-          <div className="hidden lg:flex items-center gap-8">
-            <Link href="/product" className="flex items-center gap-1 text-sm font-medium text-white uppercase tracking-wider hover:text-[#00FF88] transition-colors">
-              Products
-              <ChevronDown className="w-4 h-4" />
+          {/* Logo and nav items - logo on left */}
+          <div className="flex items-center gap-4">
+            <Link href="/" className="flex items-center">
+              <SentinelLogo className="h-8 md:h-10 w-auto" />
             </Link>
-            <Link href="/pricing" className="text-sm font-medium text-white uppercase tracking-wider hover:text-[#00FF88] transition-colors">
-              Pricing
-            </Link>
-            <Link href="/security" className="text-sm font-medium text-white uppercase tracking-wider hover:text-[#00FF88] transition-colors">
-              Security
-            </Link>
+            <div className="hidden lg:flex items-center gap-6 ml-8">
+              <div className="relative group">
+                <button type="button" className="flex items-center gap-1 text-xs font-semibold text-white uppercase tracking-widest hover:text-[#FFD700] transition-colors">
+                  Products
+                  <ChevronDown className="w-3 h-3" />
+                </button>
+                <div className="absolute top-full left-0 mt-2 w-56 py-2 bg-white/10 backdrop-blur-xl border border-white/20 rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 shadow-xl">
+                  <Link href="/product" className="block px-4 py-2.5 text-sm text-white/90 hover:bg-white/10 hover:text-[#FFD700] transition-colors">
+                    Overview
+                  </Link>
+                  <Link href="/product#features" className="block px-4 py-2.5 text-sm text-white/90 hover:bg-white/10 hover:text-[#FFD700] transition-colors">
+                    Features
+                  </Link>
+                  <Link href="/product#integrations" className="block px-4 py-2.5 text-sm text-white/90 hover:bg-white/10 hover:text-[#FFD700] transition-colors">
+                    Integrations
+                  </Link>
+                </div>
+              </div>
+              <Link href="/pricing" className="text-xs font-semibold text-white uppercase tracking-widest hover:text-[#FFD700] transition-colors">
+                Pricing
+              </Link>
+              <Link href="/security" className="text-xs font-semibold text-white uppercase tracking-widest hover:text-[#FFD700] transition-colors">
+                Security
+              </Link>
+              <div className="relative group">
+                <button type="button" className="flex items-center gap-1 text-xs font-semibold text-white uppercase tracking-widest hover:text-[#FFD700] transition-colors">
+                  Company
+                  <ChevronDown className="w-3 h-3" />
+                </button>
+                <div className="absolute top-full left-0 mt-2 w-48 py-2 bg-white/10 backdrop-blur-xl border border-white/20 rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 shadow-xl">
+                  <Link href="/about" className="block px-4 py-2.5 text-sm text-white/90 hover:bg-white/10 hover:text-[#FFD700] transition-colors">
+                    About Us
+                  </Link>
+                  <Link href="/contact" className="block px-4 py-2.5 text-sm text-white/90 hover:bg-white/10 hover:text-[#FFD700] transition-colors">
+                    Contact Us
+                  </Link>
+                </div>
+              </div>
+            </div>
           </div>
 
-          {/* Logo - left on mobile, center on desktop */}
-          <Link href="/" className="flex lg:absolute lg:left-1/2 lg:-translate-x-1/2 items-center gap-2">
-            <Shield className="w-7 h-7 md:w-8 md:h-8 text-[#00FF88]" />
-            <span className="text-lg md:text-xl font-bold text-white tracking-wide">
-              SENTINEL
-            </span>
-          </Link>
-
-          {/* Right CTA buttons - simplified on mobile */}
+          {/* Right CTA buttons */}
           <div className="flex items-center gap-2 md:gap-4">
-            <Link href="/contact" className="hidden md:flex items-center gap-2 px-5 py-2.5 text-sm font-medium text-white border border-white/30 rounded-full hover:bg-white/10 transition-colors">
-              Watch Demo
-              <Play className="w-4 h-4" />
-            </Link>
-            <Link href="/contact?demo=true" className="px-4 md:px-5 py-2 md:py-2.5 text-xs md:text-sm font-medium text-black bg-[#00FF88] rounded-full uppercase tracking-wider hover:bg-[#00CC6A] transition-colors">
+            <Link href="/contact?demo=true" className="px-4 md:px-5 py-2 md:py-2.5 text-xs md:text-sm font-medium text-black bg-gradient-to-r from-[#FFD700] to-[#FFA500] rounded-full uppercase tracking-wider hover:from-[#FFE55C] hover:to-[#FFB733] transition-all">
               Request Demo
             </Link>
           </div>
@@ -276,12 +295,15 @@ const HeroScroll = ({ onFirstFrameReady, showContent = false }: HeroScrollProps)
           ref={heroContentRef}
           className={`absolute inset-0 z-10 flex flex-col items-center justify-center will-change-transform opacity-hidden ${showContent ? "visibility-visible" : "visibility-hidden"}`}
         >
-          <div className="text-center max-w-3xl mx-auto px-4 md:px-6">
-            <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-4 md:mb-6 leading-tight">
-              AI-Powered Workplace
-              <span className="block text-[#00FF88]">Bias Detection</span>
+          {/* Subtle radial gradient for text readability */}
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(0,0,0,0.6)_0%,_rgba(0,0,0,0.3)_50%,_transparent_80%)]" />
+          <div className="relative text-center max-w-3xl mx-auto px-4 md:px-6">
+            {/* Warm gold accent harmonizing with golden hour cityscape */}
+            <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold mb-4 md:mb-6 leading-tight tracking-tight">
+              <span className="text-white">AI-Powered Workplace</span>
+              <span className="block italic text-transparent bg-clip-text bg-gradient-to-r from-[#FFD700] via-[#FFA500] to-[#FF8C00]">Bias Detection</span>
             </h1>
-            <p className="text-base md:text-lg lg:text-xl text-white/80 mb-6 md:mb-10 max-w-2xl mx-auto px-2">
+            <p className="text-base md:text-lg lg:text-xl text-white/90 font-normal mb-6 md:mb-10 max-w-2xl mx-auto px-2">
               Enterprise-grade compliance firewall that detects and remediates bias across 9 protected categories in real-time.
             </p>
 
@@ -290,13 +312,13 @@ const HeroScroll = ({ onFirstFrameReady, showContent = false }: HeroScrollProps)
               <button
                 type="button"
                 onClick={openWaitlist}
-                className="group flex items-center gap-2 md:gap-3 px-6 md:px-8 py-3 md:py-4 rounded-full bg-[#00FF88] text-black font-semibold text-base md:text-lg hover:bg-[#00CC6A] transition-all hover:scale-105"
+                className="group flex items-center gap-2 md:gap-3 px-6 md:px-8 py-3 md:py-4 rounded-full bg-gradient-to-r from-[#FFD700] to-[#FFA500] text-black font-semibold text-base md:text-lg hover:from-[#FFE55C] hover:to-[#FFB733] transition-all hover:scale-105 shadow-[0_4px_30px_rgba(255,165,0,0.4)]"
               >
                 <Sparkles className="w-4 h-4 md:w-5 md:h-5" />
                 Join Waitlist
                 <ArrowRight className="w-4 h-4 md:w-5 md:h-5 group-hover:translate-x-1 transition-transform" />
               </button>
-              <p className="text-white/50 text-xs md:text-sm">
+              <p className="text-white/80 text-xs md:text-sm">
                 Be first to access. No spam, unsubscribe anytime.
               </p>
             </div>

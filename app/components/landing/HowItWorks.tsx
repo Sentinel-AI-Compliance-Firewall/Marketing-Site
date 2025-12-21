@@ -54,12 +54,11 @@ export function HowItWorks() {
           {STEPS.map((step, index) => (
             <div
               key={step.number}
-              className="step-card relative"
-              style={{ "--step-color": step.color } as React.CSSProperties}
+              className={`step-${step.number} relative`}
             >
-              <div className="flex flex-col md:flex-row items-start gap-6 p-6 md:p-8 rounded-2xl border transition-all duration-300 hover:border-opacity-50 bg-[var(--step-color)]/5 border-[var(--step-color)]/30">
+              <div className="flex flex-col md:flex-row items-start gap-6 p-6 md:p-8 rounded-2xl border transition-all duration-300 step-card-styled">
                 {/* Number */}
-                <div className="flex-shrink-0 w-16 h-16 rounded-xl flex items-center justify-center font-mono text-2xl font-bold bg-[var(--step-color)]/15 text-[var(--step-color)]">
+                <div className="flex-shrink-0 w-16 h-16 rounded-xl flex items-center justify-center font-mono text-2xl font-bold step-number-box">
                   {step.number}
                 </div>
 
@@ -69,9 +68,9 @@ export function HowItWorks() {
                     <h3 className="text-2xl font-bold text-white">
                       {step.title}
                     </h3>
-                    <step.icon className="w-6 h-6 text-[var(--step-color)]" />
+                    <step.icon className="w-6 h-6 step-icon-color" />
                   </div>
-                  <p className="text-sm font-medium mb-3 text-[var(--step-color)]">
+                  <p className="text-sm font-medium mb-3 step-subtitle-color">
                     {step.subtitle}
                   </p>
                   <p className="text-[var(--text-secondary)]">

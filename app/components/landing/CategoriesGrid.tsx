@@ -4,7 +4,7 @@ import { BIAS_CATEGORIES } from "@/app/constants/categories"
 
 export function CategoriesGrid() {
   return (
-    <section className="section bg-black relative">
+    <section className="section bg-transparent relative">
       <div className="container">
         {/* Section Header */}
         <div className="text-center mb-16">
@@ -20,25 +20,23 @@ export function CategoriesGrid() {
           </p>
         </div>
 
-        {/* Categories Grid - Compact View */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
-          {BIAS_CATEGORIES.map((category) => (
-            <div
-              key={category.id}
-              className="p-4 rounded-xl border border-[var(--border)] bg-[var(--bg-card)] hover:border-[var(--category-color)]/50 transition-all duration-300 text-center group"
-              style={{ "--category-color": category.color } as React.CSSProperties}
-            >
-              {/* Icon */}
-              <div className="w-12 h-12 mx-auto mb-3 rounded-lg flex items-center justify-center text-2xl bg-[var(--category-color)]/10">
-                {category.icon}
+        {/* Categories Grid - 3x3 layout */}
+        <div className="max-w-4xl mx-auto">
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 md:gap-6">
+            {BIAS_CATEGORIES.map((category) => (
+              <div
+                key={category.id}
+                className={`category-${category.id} category-card p-5 md:p-6 rounded-xl border border-[var(--border)] bg-[var(--bg-card)] transition-all duration-300 text-center group`}
+              >
+                <div className="w-14 h-14 md:w-16 md:h-16 mx-auto mb-3 rounded-xl flex items-center justify-center text-3xl md:text-4xl category-icon-bg">
+                  {category.icon}
+                </div>
+                <h3 className="text-sm font-semibold text-white">
+                  {category.name}
+                </h3>
               </div>
-
-              {/* Name */}
-              <h3 className="text-sm font-semibold text-white">
-                {category.name}
-              </h3>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
 
         {/* Bottom CTA */}

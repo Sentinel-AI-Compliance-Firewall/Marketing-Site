@@ -3,8 +3,8 @@
 import { useState } from "react"
 import { Navbar, Footer } from "@/app/components/layout"
 import { Card, Button, Badge } from "@/app/components/ui"
-import { PRICING_PLANS, PRICING_FAQ, FEATURE_COMPARISON } from "@/app/constants/pricing"
-import { Check, X, Minus, ChevronDown } from "lucide-react"
+import { PRICING_PLANS, PRICING_FAQ } from "@/app/constants/pricing"
+import { Check, X, ChevronDown } from "lucide-react"
 import { cn } from "@/app/lib/utils"
 
 export default function PricingPage() {
@@ -25,8 +25,15 @@ export default function PricingPage() {
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
               Flexible Plans for Every Team
             </h1>
-            <p className="text-xl text-[var(--text-secondary)]">
-              Join our waitlist to be the first to know when we launch. Pricing details coming soon.
+            <p className="text-xl text-[var(--text-secondary)] mb-4">
+              Transparent pricing designed to scale with your organization.
+            </p>
+            <p className="text-sm text-[var(--text-muted)] inline-flex items-center gap-2 px-4 py-2 bg-[var(--primary)]/10 border border-[var(--primary)]/20 rounded-full">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[var(--primary)] opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-[var(--primary)]"></span>
+              </span>
+              Planned pricing - subject to change before launch
             </p>
           </div>
         </div>
@@ -96,103 +103,8 @@ export default function PricingPage() {
         </div>
       </section>
 
-      {/* Feature Comparison Table */}
-      <section className="section bg-[var(--bg-dark)]">
-        <div className="container">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-white mb-4">
-              Compare Plans
-            </h2>
-            <p className="text-[var(--text-secondary)]">
-              See what&apos;s included in each plan
-            </p>
-          </div>
-
-          <div className="max-w-5xl mx-auto overflow-x-auto">
-            <table className="w-full">
-              <thead>
-                <tr className="border-b border-[var(--border)]">
-                  <th className="text-left py-4 px-4 text-[var(--text-muted)] font-medium">
-                    Features
-                  </th>
-                  <th className="text-center py-4 px-4 text-white font-medium">
-                    Starter
-                  </th>
-                  <th className="text-center py-4 px-4 text-white font-medium">
-                    Professional
-                  </th>
-                  <th className="text-center py-4 px-4 text-white font-medium">
-                    Enterprise
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                {FEATURE_COMPARISON.map((category) => (
-                  <>
-                    <tr key={category.category} className="bg-[var(--bg-card)]">
-                      <td
-                        colSpan={4}
-                        className="py-3 px-4 text-sm font-medium text-[var(--text-secondary)]"
-                      >
-                        {category.category}
-                      </td>
-                    </tr>
-                    {category.features.map((feature, i) => (
-                      <tr key={i} className="border-b border-[var(--border)]">
-                        <td className="py-4 px-4 text-sm text-[var(--text-secondary)]">
-                          {feature.name}
-                        </td>
-                        <td className="py-4 px-4 text-center">
-                          {typeof feature.starter === "boolean" ? (
-                            feature.starter ? (
-                              <Check className="w-5 h-5 text-[var(--primary)] mx-auto" />
-                            ) : (
-                              <Minus className="w-5 h-5 text-[var(--text-muted)] mx-auto" />
-                            )
-                          ) : (
-                            <span className="text-sm text-[var(--text-secondary)]">
-                              {feature.starter}
-                            </span>
-                          )}
-                        </td>
-                        <td className="py-4 px-4 text-center">
-                          {typeof feature.professional === "boolean" ? (
-                            feature.professional ? (
-                              <Check className="w-5 h-5 text-[var(--primary)] mx-auto" />
-                            ) : (
-                              <Minus className="w-5 h-5 text-[var(--text-muted)] mx-auto" />
-                            )
-                          ) : (
-                            <span className="text-sm text-[var(--text-secondary)]">
-                              {feature.professional}
-                            </span>
-                          )}
-                        </td>
-                        <td className="py-4 px-4 text-center">
-                          {typeof feature.enterprise === "boolean" ? (
-                            feature.enterprise ? (
-                              <Check className="w-5 h-5 text-[var(--primary)] mx-auto" />
-                            ) : (
-                              <Minus className="w-5 h-5 text-[var(--text-muted)] mx-auto" />
-                            )
-                          ) : (
-                            <span className="text-sm text-[var(--text-secondary)]">
-                              {feature.enterprise}
-                            </span>
-                          )}
-                        </td>
-                      </tr>
-                    ))}
-                  </>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </section>
-
       {/* FAQ */}
-      <section className="section">
+      <section id="faq" className="section">
         <div className="container">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-white mb-4">
@@ -241,7 +153,7 @@ export default function PricingPage() {
               organization.
             </p>
             <Button variant="primary" size="lg" as="a" href="/contact?sales=true">
-              Talk to Sales
+              Connect with Sales Early
             </Button>
           </div>
         </div>

@@ -2,14 +2,7 @@
 
 import { Navbar, Footer } from "@/app/components/layout"
 import { Card, Badge, Button } from "@/app/components/ui"
-import { Download, Mail, ArrowRight, Newspaper } from "lucide-react"
-
-const BRAND_ASSETS = [
-  { name: "Logo Pack (SVG, PNG)", type: "ZIP", size: "2.4 MB" },
-  { name: "Brand Guidelines", type: "PDF", size: "5.1 MB" },
-  { name: "Product Screenshots", type: "ZIP", size: "12.8 MB" },
-  { name: "Executive Headshots", type: "ZIP", size: "8.2 MB" },
-]
+import { Mail, ArrowRight, Newspaper } from "lucide-react"
 
 export default function PressPage() {
   return (
@@ -64,31 +57,6 @@ export default function PressPage() {
                 and seamless integration with existing HR workflows.
               </p>
             </Card>
-          </div>
-        </div>
-      </section>
-
-      {/* Brand Assets */}
-      <section className="section bg-[var(--bg-dark)]">
-        <div className="container">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-2xl font-bold text-white mb-4">Brand Assets</h2>
-            <p className="text-[var(--text-secondary)] mb-8">
-              Download official SentinelAI logos, screenshots, and brand materials for press use.
-            </p>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {BRAND_ASSETS.map((asset, i) => (
-                <Card key={i} className="p-4 hover:border-[var(--primary)] transition-colors cursor-pointer">
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <h3 className="font-semibold text-white">{asset.name}</h3>
-                      <p className="text-sm text-[var(--text-muted)]">{asset.type} • {asset.size}</p>
-                    </div>
-                    <Download className="w-5 h-5 text-[var(--primary)]" />
-                  </div>
-                </Card>
-              ))}
-            </div>
           </div>
         </div>
       </section>

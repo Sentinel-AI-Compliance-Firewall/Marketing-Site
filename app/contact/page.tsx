@@ -6,13 +6,13 @@ import { Navbar, Footer } from "@/app/components/layout"
 import { Card, Button, Badge, Input, Textarea } from "@/app/components/ui"
 import {
   MapPin,
-  Clock,
   MessageSquare,
   Building2,
   Send,
   CheckCircle,
   AlertCircle,
   Mail,
+  HelpCircle,
 } from "lucide-react"
 import { cn } from "@/app/lib/utils"
 
@@ -23,19 +23,14 @@ const CONTACT_INFO = [
     value: "Los Angeles, CA",
     href: "#",
   },
-  {
-    icon: Clock,
-    label: "Response Time",
-    value: "Within 24 hours",
-    href: "#",
-  },
 ]
 
 const INQUIRY_TYPES = [
-  { id: "demo", label: "Request Demo", icon: MessageSquare },
+  { id: "demo", label: "Request Early Demo", icon: MessageSquare },
+  { id: "api", label: "Early API Access", icon: Mail },
   { id: "sales", label: "Sales Inquiry", icon: Building2 },
-  { id: "support", label: "Technical Support", icon: Mail },
-  { id: "partnership", label: "Partnership", icon: Building2 },
+  { id: "security", label: "Security Inquiry", icon: Building2 },
+  { id: "other", label: "Other", icon: HelpCircle },
 ]
 
 type FormStatus = "idle" | "submitting" | "success" | "error"
@@ -51,10 +46,15 @@ interface FormData {
 
 function ContactForm() {
   const searchParams = useSearchParams()
+  const inquiryParam = searchParams.get("inquiry")
   const defaultInquiry = searchParams.get("demo")
     ? "demo"
     : searchParams.get("sales")
     ? "sales"
+    : inquiryParam === "api"
+    ? "api"
+    : inquiryParam === "security"
+    ? "security"
     : "demo"
 
   const [formData, setFormData] = useState<FormData>({
@@ -122,8 +122,7 @@ function ContactForm() {
             Message Sent!
           </h4>
           <p className="text-[var(--text-secondary)] mb-6">
-            Thank you for reaching out. We&apos;ll get back to you
-            within 24 hours.
+            Thank you for reaching out. We&apos;ll get back to you soon.
           </p>
           <Button
             variant="outline"

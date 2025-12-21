@@ -151,14 +151,6 @@ export default function SecurityPage() {
               Your data security is our top priority. We&apos;ve built Sentinel
               AI from the ground up with security and compliance at its core.
             </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Button variant="primary" size="lg" as="a" href="#certifications">
-                View Certifications
-              </Button>
-              <Button variant="ghost" size="lg" as="a" href="/contact">
-                Contact Us
-              </Button>
-            </div>
           </div>
         </div>
       </section>
@@ -168,11 +160,8 @@ export default function SecurityPage() {
         <div className="container">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-white mb-4">
-              Compliance & Certifications
+              Compliance
             </h2>
-            <p className="text-[var(--text-secondary)]">
-              Independently audited and certified to meet the highest standards
-            </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
@@ -324,25 +313,20 @@ export default function SecurityPage() {
         </div>
       </section>
 
-      {/* Trust Center CTA */}
+      {/* Contact CTA */}
       <section className="section">
         <div className="container">
           <div className="max-w-3xl mx-auto text-center">
             <h2 className="text-3xl font-bold text-white mb-4">
-              Need More Information?
+              Contact Us
             </h2>
-            <p className="text-[var(--text-secondary)] mb-8">
-              Our security team is here to answer your questions and provide
-              documentation.
+            <p className="text-[var(--text-secondary)] text-lg mb-8">
+              Have security questions or need compliance documentation? Our team is ready to help.
             </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Button variant="primary" size="lg" as="a" href="/contact">
-                Contact Us
-              </Button>
-              <Button variant="ghost" size="lg" as="a" href="/docs/security">
-                Security Documentation
-              </Button>
-            </div>
+            <Button variant="primary" size="lg" as="a" href="/contact?inquiry=security" className="px-8 py-4 text-lg">
+              Get in Touch
+              <ArrowRight className="w-5 h-5" />
+            </Button>
           </div>
         </div>
       </section>

@@ -4,39 +4,6 @@ import { Navbar, Footer } from "@/app/components/layout"
 import { Card, Badge, Button } from "@/app/components/ui"
 import { Lock, Zap, Database, ArrowRight, Code } from "lucide-react"
 
-const API_ENDPOINTS = [
-  {
-    method: "POST",
-    endpoint: "/v1/scan",
-    description: "Scan text for bias across all or specified categories",
-  },
-  {
-    method: "POST",
-    endpoint: "/v1/batch",
-    description: "Batch scan multiple documents in a single request",
-  },
-  {
-    method: "GET",
-    endpoint: "/v1/categories",
-    description: "List all available bias detection categories",
-  },
-  {
-    method: "GET",
-    endpoint: "/v1/results/:id",
-    description: "Retrieve scan results by ID",
-  },
-  {
-    method: "POST",
-    endpoint: "/v1/webhooks",
-    description: "Configure webhooks for async notifications",
-  },
-  {
-    method: "GET",
-    endpoint: "/v1/usage",
-    description: "Get API usage statistics for your account",
-  },
-]
-
 export default function ApiDocsPage() {
   return (
     <main className="bg-black min-h-screen">
@@ -51,7 +18,7 @@ export default function ApiDocsPage() {
               API Reference
             </Badge>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
-              SentinelAI API
+              Sentinel AI Compliance Firewall API
             </h1>
             <p className="text-xl text-[var(--text-secondary)] mb-8">
               RESTful API for integrating bias detection into your applications.
@@ -91,6 +58,13 @@ export default function ApiDocsPage() {
             </Card>
           </div>
 
+          {/* Demo Notice */}
+          <div className="max-w-4xl mx-auto mb-12 p-4 bg-[var(--secondary)]/10 border border-[var(--secondary)]/30 rounded-lg">
+            <p className="text-sm text-[var(--secondary)]">
+              <strong>Note:</strong> This is preview documentation. API endpoints, request/response formats, and SDK details shown below are illustrative and will be finalized at launch.
+            </p>
+          </div>
+
           {/* Base URL */}
           <div className="max-w-4xl mx-auto mb-12">
             <h2 className="text-2xl font-bold text-white mb-4">Base URL</h2>
@@ -99,45 +73,25 @@ export default function ApiDocsPage() {
                 https://api.sentinelai-firewall.com
               </code>
             </Card>
+            <p className="text-sm text-[var(--text-muted)] mt-3">
+              API access will be available once we launch. Join the waitlist for early access.
+            </p>
           </div>
 
           {/* Authentication */}
           <div className="max-w-4xl mx-auto mb-12">
             <h2 className="text-2xl font-bold text-white mb-4">Authentication</h2>
             <p className="text-[var(--text-secondary)] mb-4">
-              All API requests require authentication using an API key in the header:
+              All API requests will require authentication using an API key in the header:
             </p>
             <Card className="p-4 bg-[var(--bg-card)]">
               <pre className="text-sm text-[var(--text-secondary)] font-mono">
 {`Authorization: Bearer sk_live_your_api_key_here`}
               </pre>
             </Card>
-          </div>
-
-          {/* Endpoints */}
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-2xl font-bold text-white mb-6">Planned Endpoints</h2>
-            <div className="space-y-4">
-              {API_ENDPOINTS.map((endpoint, i) => (
-                <Card key={i} className="p-4">
-                  <div className="flex items-start gap-4">
-                    <span className={`px-2 py-1 rounded text-xs font-mono font-bold ${
-                      endpoint.method === "GET"
-                        ? "bg-blue-500/20 text-blue-400"
-                        : "bg-green-500/20 text-green-400"
-                    }`}>
-                      {endpoint.method}
-                    </span>
-                    <div>
-                      <code className="text-white font-mono">{endpoint.endpoint}</code>
-                      <p className="text-sm text-[var(--text-muted)] mt-1">
-                        {endpoint.description}
-                      </p>
-                    </div>
-                  </div>
-                </Card>
-              ))}
-            </div>
+            <p className="text-sm text-[var(--text-muted)] mt-3">
+              API keys will be available in your dashboard once we launch.
+            </p>
           </div>
 
           {/* Example */}
@@ -189,7 +143,7 @@ export default function ApiDocsPage() {
                 Get Early API Access
               </h2>
               <p className="text-[var(--text-secondary)] mb-8 max-w-xl mx-auto">
-                Join our waitlist to be among the first to integrate SentinelAI&apos;s
+                Join our waitlist to be among the first to integrate Sentinel AI Compliance Firewall&apos;s
                 bias detection API into your applications. Early adopters will receive
                 priority access and dedicated support.
               </p>

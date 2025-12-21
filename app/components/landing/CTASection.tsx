@@ -27,8 +27,8 @@ export function CTASection() {
             Ready to Protect Your Organization?
           </h2>
           <p className="text-lg text-[var(--text-secondary)] mb-10 max-w-2xl mx-auto">
-            Join 500+ enterprises already using Sentinel AI to prevent workplace
-            bias and ensure compliance.
+            Be among the first to experience enterprise-grade bias detection.
+            Join our early access program today.
           </p>
 
           {/* Form or Success Message */}
@@ -46,24 +46,10 @@ export function CTASection() {
             <WaitlistForm
               source="cta-section"
               onSuccess={() => setSubmitted(true)}
+              buttonLabel="Request Early Demo"
             />
           )}
 
-          {/* Trust indicators */}
-          <div className="mt-12 flex flex-wrap items-center justify-center gap-6 text-sm text-[var(--text-muted)]">
-            <div className="flex items-center gap-2">
-              <CheckCircle className="w-4 h-4 text-[var(--primary)]" />
-              <span>14-day free trial</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <CheckCircle className="w-4 h-4 text-[var(--primary)]" />
-              <span>No credit card required</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <CheckCircle className="w-4 h-4 text-[var(--primary)]" />
-              <span>Setup in minutes</span>
-            </div>
-          </div>
         </div>
       </div>
     </section>

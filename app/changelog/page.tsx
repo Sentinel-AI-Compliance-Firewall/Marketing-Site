@@ -6,72 +6,16 @@ import { Sparkles, Bug, Zap, Shield } from "lucide-react"
 
 const CHANGELOG_ENTRIES = [
   {
-    version: "2.4.0",
-    date: "November 2024",
+    version: "1.0.0",
+    date: "December 2025",
     type: "feature",
-    title: "Multi-Language Support Expansion",
+    title: "Initial Release - SentinelAI Compliance Firewall",
     changes: [
-      "Added support for 5 new languages: Japanese, Korean, Portuguese, Italian, and Dutch",
-      "Improved bias detection accuracy for non-English content by 23%",
-      "New language-specific bias patterns for cultural context",
-    ],
-  },
-  {
-    version: "2.3.2",
-    date: "October 2024",
-    type: "fix",
-    title: "Performance Improvements",
-    changes: [
-      "Reduced API latency by 40% for batch processing",
-      "Fixed memory leak in long-running webhook connections",
-      "Improved rate limiting accuracy for high-volume clients",
-    ],
-  },
-  {
-    version: "2.3.0",
-    date: "September 2024",
-    type: "feature",
-    title: "Advanced Reporting Dashboard",
-    changes: [
-      "New real-time analytics dashboard with customizable widgets",
-      "Export reports in PDF, CSV, and JSON formats",
-      "Team-level insights and bias trend analysis",
-      "Scheduled report delivery via email",
-    ],
-  },
-  {
-    version: "2.2.1",
-    date: "August 2024",
-    type: "security",
-    title: "Security Enhancements",
-    changes: [
-      "Upgraded to TLS 1.3 for all API communications",
-      "Added support for custom encryption keys (BYOK)",
-      "Enhanced audit logging with IP tracking",
-    ],
-  },
-  {
-    version: "2.2.0",
-    date: "July 2024",
-    type: "feature",
-    title: "Webhook 2.0",
-    changes: [
-      "Redesigned webhook system with guaranteed delivery",
-      "Custom payload templates for different integrations",
-      "Webhook signature verification for security",
-      "Retry policies with exponential backoff",
-    ],
-  },
-  {
-    version: "2.1.0",
-    date: "June 2024",
-    type: "improvement",
-    title: "SDK Improvements",
-    changes: [
-      "New Python SDK with async support",
-      "TypeScript types for all API responses",
-      "Improved error messages with actionable suggestions",
-      "Added request batching for bulk operations",
+      "AI-powered bias detection platform",
+      "Support for 9 EEOC-protected categories",
+      "Real-time detection with sub-100ms latency",
+      "RESTful API for seamless integration",
+      "Enterprise-grade security with TLS 1.3 encryption",
     ],
   },
 ]

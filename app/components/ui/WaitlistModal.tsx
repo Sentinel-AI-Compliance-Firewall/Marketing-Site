@@ -90,8 +90,8 @@ export function WaitlistModal({ isOpen, onClose }: WaitlistModalProps) {
             You&apos;re on the list!
           </h3>
           <p className="text-[var(--text-secondary)] mb-6">
-            We&apos;ll notify you when Sentinel AI is ready. Get ready to
-            transform your AI compliance.
+            We&apos;ll notify you when Sentinel AI Compliance Firewall is ready.
+            Get ready to transform your workplace communications.
           </p>
           <Button variant="primary" onClick={handleClose}>
             Got it
@@ -106,7 +106,7 @@ export function WaitlistModal({ isOpen, onClose }: WaitlistModalProps) {
       isOpen={isOpen}
       onClose={handleClose}
       title="Join the Waitlist"
-      subtitle="Be the first to know when Sentinel AI launches. Get early access and exclusive updates."
+      subtitle="Be the first to know when Sentinel AI Compliance Firewall launches. Get early access and exclusive updates."
     >
       <form onSubmit={handleSubmit} className="space-y-4">
         <Input

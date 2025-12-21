@@ -2,7 +2,8 @@
 
 import Link from "next/link"
 import { FOOTER_LINKS, SOCIAL_LINKS } from "@/app/constants/navigation"
-import { Shield, Twitter, Linkedin, Github } from "lucide-react"
+import { Linkedin } from "lucide-react"
+import SentinelLogo from "@/app/components/SentinelLogo"
 
 export function Footer() {
   const currentYear = new Date().getFullYear()
@@ -10,11 +11,13 @@ export function Footer() {
   const getSocialIcon = (icon: string) => {
     switch (icon) {
       case "twitter":
-        return <Twitter className="w-5 h-5" />
+        return (
+          <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+          </svg>
+        )
       case "linkedin":
         return <Linkedin className="w-5 h-5" />
-      case "github":
-        return <Github className="w-5 h-5" />
       default:
         return null
     }
@@ -27,9 +30,8 @@ export function Footer() {
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 lg:gap-12">
           {/* Brand Column */}
           <div className="col-span-2 md:col-span-3 lg:col-span-2">
-            <Link href="/" className="flex items-center gap-2 mb-4">
-              <Shield className="w-8 h-8 text-[var(--primary)]" />
-              <span className="text-xl font-bold text-white">SENTINEL</span>
+            <Link href="/" className="flex items-center mb-4">
+              <SentinelLogo className="h-8 md:h-10 w-auto" />
             </Link>
             <p className="text-[var(--text-secondary)] text-sm mb-6 max-w-xs">
               Enterprise-grade AI that detects and remediates workplace bias
@@ -131,7 +133,7 @@ export function Footer() {
         <div className="container mx-auto px-4 lg:px-8 py-6">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <p className="text-sm text-[var(--text-muted)]">
-              &copy; {currentYear} Sentinel AI. All rights reserved.
+              &copy; {currentYear} Sentinel AI Compliance Firewall. All rights reserved.
             </p>
             <div className="flex items-center gap-6">
               <span className="flex items-center gap-2 text-sm text-[var(--text-muted)]">

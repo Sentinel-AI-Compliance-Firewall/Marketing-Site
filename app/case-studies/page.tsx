@@ -2,7 +2,8 @@
 
 import { Navbar, Footer } from "@/app/components/layout"
 import { Card, Badge, Button } from "@/app/components/ui"
-import { ArrowRight, Building2, TrendingUp, FileText, Users } from "lucide-react"
+import { ArrowRight, Building2, TrendingUp, FileText, Users, Sparkles } from "lucide-react"
+import { useWaitlist } from "@/app/context/WaitlistContext"
 
 const INDUSTRIES = [
   {
@@ -28,6 +29,8 @@ const INDUSTRIES = [
 ]
 
 export default function CaseStudiesPage() {
+  const { openWaitlist } = useWaitlist()
+
   return (
     <main className="bg-black min-h-screen">
       <Navbar transparent={false} />
@@ -116,10 +119,16 @@ export default function CaseStudiesPage() {
                   Input on product roadmap
                 </li>
               </ul>
-              <Button variant="primary" size="lg" as="a" href="/contact">
-                Become a Case Study Partner
-                <ArrowRight className="w-5 h-5" />
-              </Button>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Button variant="primary" size="lg" as="a" href="/contact">
+                  Become a Case Study Partner
+                  <ArrowRight className="w-5 h-5" />
+                </Button>
+                <Button variant="ghost" size="lg" onClick={openWaitlist}>
+                  <Sparkles className="w-5 h-5" />
+                  Join Waitlist
+                </Button>
+              </div>
             </Card>
           </div>
         </div>

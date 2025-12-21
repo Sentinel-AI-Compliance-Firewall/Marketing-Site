@@ -1,61 +1,60 @@
 "use client"
 
 import { Navbar, Footer } from "@/app/components/layout"
-import { Card, Badge, Button, Input } from "@/app/components/ui"
-import { Search, Book, MessageCircle, Mail, ArrowRight, HelpCircle, Zap, Shield, Code } from "lucide-react"
+import { Card, Badge, Button } from "@/app/components/ui"
+import { MessageCircle, Mail, ArrowRight, HelpCircle, Zap, Shield, Code } from "lucide-react"
 
 const HELP_CATEGORIES = [
   {
     icon: Zap,
     title: "Getting Started",
-    description: "Quick start guides and onboarding help",
-    articles: 12,
+    description: "Quick start guides and onboarding tutorials",
   },
   {
     icon: Code,
     title: "API & Integrations",
-    description: "Technical documentation and API guides",
-    articles: 24,
+    description: "REST API docs and integration guides",
   },
   {
     icon: Shield,
     title: "Security & Compliance",
-    description: "Security settings and compliance information",
-    articles: 18,
+    description: "Data privacy and EEOC compliance",
   },
   {
     icon: HelpCircle,
     title: "Troubleshooting",
     description: "Common issues and solutions",
-    articles: 31,
   },
-]
-
-const POPULAR_ARTICLES = [
-  { title: "How to set up your first scan", category: "Getting Started" },
-  { title: "Understanding bias severity levels", category: "Getting Started" },
-  { title: "Configuring webhook notifications", category: "API & Integrations" },
-  { title: "Managing team permissions", category: "Account" },
-  { title: "Interpreting scan results", category: "Getting Started" },
-  { title: "Rate limits and quotas explained", category: "API & Integrations" },
 ]
 
 const FAQ = [
   {
-    question: "How accurate is SentinelAI's bias detection?",
-    answer: "SentinelAI achieves high accuracy across all 9 protected categories through our multi-model ML ensemble approach. We continuously improve our models based on feedback and testing.",
+    question: "What is Sentinel AI Compliance Firewall?",
+    answer: "Sentinel AI Compliance Firewall is an AI-powered bias detection platform that helps organizations identify and prevent workplace discrimination in HR documents, communications, and processes. We detect bias across 9 EEOC-protected categories in real-time.",
   },
   {
-    question: "What languages does SentinelAI support?",
-    answer: "We're starting with English support and plan to expand to additional languages based on customer demand. Contact us to discuss your language requirements.",
+    question: "What are the 9 protected categories you detect?",
+    answer: "We detect bias related to: Age, Gender, Race & Ethnicity, Nationality, Disability, Religion, Sexual Orientation, Employment practices, and Toxicity/harassment. These align with EEOC guidelines.",
   },
   {
-    question: "How long does it take to scan a document?",
-    answer: "Most documents are scanned in under 100ms. Batch processing of large document sets is optimized for throughput while maintaining low latency.",
+    question: "How accurate is the bias detection?",
+    answer: "Our multi-model ML ensemble achieves 99.7% accuracy on internal benchmarks. We use advanced NLP models (DeBERTa + RoBERTa) that analyze context, not just keywords, to minimize false positives.",
+  },
+  {
+    question: "How fast is the scanning?",
+    answer: "Real-time detection with sub-100ms latency for single documents. Our system can handle batch processing for high-volume enterprise needs.",
   },
   {
     question: "Is my data secure?",
-    answer: "Security is our priority. We implement industry-standard encryption for data in transit and at rest, and follow best practices for secure software development.",
+    answer: "Security is our priority. All data is encrypted in transit (TLS 1.3) and at rest (AES-256). We follow data minimization principles and never use customer data to train our models.",
+  },
+  {
+    question: "When will the platform launch?",
+    answer: "We're currently in pre-launch phase. Join our waitlist to get early access and be notified when we launch. Early adopters will receive priority support and special pricing.",
+  },
+  {
+    question: "How can I get early access?",
+    answer: "You can request early access by filling out our contact form. Select 'Request Early Demo' to schedule a demo or 'Early API Access' for API integration.",
   },
 ]
 
@@ -75,17 +74,9 @@ export default function HelpPage() {
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
               How Can We Help?
             </h1>
-            <p className="text-xl text-[var(--text-secondary)] mb-8">
-              Search our knowledge base or browse categories to find answers.
+            <p className="text-xl text-[var(--text-secondary)]">
+              Browse our FAQ below or contact our team directly.
             </p>
-            <div className="max-w-xl mx-auto relative">
-              <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-[var(--text-muted)]" />
-              <Input
-                type="text"
-                placeholder="Search for help articles..."
-                className="pl-12 py-4 text-lg"
-              />
-            </div>
           </div>
         </div>
       </section>
@@ -93,43 +84,29 @@ export default function HelpPage() {
       {/* Categories */}
       <section className="pb-20">
         <div className="container">
+          <div className="text-center mb-8">
+            <h2 className="text-2xl font-bold text-white mb-2">Knowledge Base</h2>
+            <p className="text-[var(--text-muted)]">Documentation coming soon</p>
+          </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
             {HELP_CATEGORIES.map((category, i) => (
-              <Card key={i} className="p-6 hover:border-[var(--primary)] transition-colors cursor-pointer">
+              <Card key={i} className="p-6 relative overflow-hidden">
+                <div className="absolute top-3 right-3">
+                  <span className="text-xs px-2 py-1 rounded-full bg-[var(--secondary)]/20 text-[var(--secondary)] font-medium">
+                    Coming Soon
+                  </span>
+                </div>
                 <category.icon className="w-10 h-10 text-[var(--primary)] mb-4" />
                 <h3 className="font-semibold text-white mb-2">{category.title}</h3>
-                <p className="text-sm text-[var(--text-muted)] mb-3">{category.description}</p>
-                <span className="text-xs text-[var(--primary)]">{category.articles} articles</span>
+                <p className="text-sm text-[var(--text-muted)]">{category.description}</p>
               </Card>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Popular Articles */}
-      <section className="section bg-[var(--bg-dark)]">
-        <div className="container">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-2xl font-bold text-white mb-8">Popular Articles</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {POPULAR_ARTICLES.map((article, i) => (
-                <Card key={i} className="p-4 hover:border-[var(--primary)] transition-colors cursor-pointer">
-                  <div className="flex items-start gap-3">
-                    <Book className="w-5 h-5 text-[var(--primary)] mt-0.5 flex-shrink-0" />
-                    <div>
-                      <h3 className="font-medium text-white mb-1">{article.title}</h3>
-                      <span className="text-xs text-[var(--text-muted)]">{article.category}</span>
-                    </div>
-                  </div>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* FAQ */}
-      <section className="section">
+      <section className="section bg-[var(--bg-dark)]">
         <div className="container">
           <div className="max-w-3xl mx-auto">
             <h2 className="text-2xl font-bold text-white mb-8 text-center">Frequently Asked Questions</h2>
@@ -146,25 +123,26 @@ export default function HelpPage() {
       </section>
 
       {/* Contact Support */}
-      <section className="section bg-[var(--bg-dark)]">
+      <section className="section">
         <div className="container">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-2xl font-bold text-white mb-8 text-center">Still Need Help?</h2>
+            <h2 className="text-2xl font-bold text-white mb-8 text-center">Need More Help?</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-2xl mx-auto">
               <Card className="p-6 text-center">
                 <MessageCircle className="w-10 h-10 text-[var(--primary)] mx-auto mb-4" />
-                <h3 className="font-semibold text-white mb-2">Live Chat</h3>
-                <p className="text-sm text-[var(--text-muted)] mb-4">Chat with our support team in real-time</p>
-                <Button variant="ghost" size="sm">
-                  Start Chat
+                <h3 className="font-semibold text-white mb-2">Request a Demo</h3>
+                <p className="text-sm text-[var(--text-muted)] mb-4">See Sentinel AI in action with a personalized demo</p>
+                <Button variant="outline" size="sm" as="a" href="/contact?demo=true">
+                  Request Demo
+                  <ArrowRight className="w-4 h-4" />
                 </Button>
               </Card>
               <Card className="p-6 text-center">
                 <Mail className="w-10 h-10 text-[var(--primary)] mx-auto mb-4" />
-                <h3 className="font-semibold text-white mb-2">Contact Form</h3>
-                <p className="text-sm text-[var(--text-muted)] mb-4">Get a response within 24 hours</p>
-                <Button variant="ghost" size="sm" as="a" href="/contact">
-                  Contact Us
+                <h3 className="font-semibold text-white mb-2">Contact Us</h3>
+                <p className="text-sm text-[var(--text-muted)] mb-4">Have questions? Our team is here to help</p>
+                <Button variant="outline" size="sm" as="a" href="/contact">
+                  Get in Touch
                   <ArrowRight className="w-4 h-4" />
                 </Button>
               </Card>
