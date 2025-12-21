@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <rect width="32" height="32" fill="#000000" rx="4"/>
+  <g transform="translate(4, 8)">
+    <!-- First bracket - dimmer -->
+    <path
+      d="M0 8 L5 4 L0 0"
+      fill="none"
+      stroke="#FFD700"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      opacity="0.5"
+    />
+    <!-- Second bracket - brighter -->
+    <path
+      d="M6 8 L11 4 L6 0"
+      fill="none"
+      stroke="#FFD700"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+    <!-- Vertical stop line -->
+    <line
+      x1="15" y1="0" x2="15" y2="8"
+      stroke="#FFD700"
+      stroke-width="2"
+      stroke-linecap="round"
+    />
+  </g>
+</svg>
