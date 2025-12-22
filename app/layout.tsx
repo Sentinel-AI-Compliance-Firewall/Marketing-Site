@@ -84,12 +84,24 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <head>
-        <link rel="icon" href="/icon.svg" type="image/svg+xml" />
-        <link rel="icon" href="/icon.png" type="image/png" />
-        <link rel="apple-touch-icon" href="/icon.png" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+        {/* RB2B Visitor Identification Script */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              !function(key) {
+                if (window.reb2b) return;
+                window.reb2b = {loaded: true};
+                var s = document.createElement("script");
+                s.async = true;
+                s.src = "https://ddwl4m2hdecbv.cloudfront.net/b/" + key + "/" + key + ".js.gz";
+                document.getElementsByTagName("script")[0].parentNode.insertBefore(s, document.getElementsByTagName("script")[0]);
+              }("XOE9GHRR17OM");
+            `,
+          }}
+        />
       </head>
       <body
         className="font-sans antialiased bg-black text-white min-h-screen"
