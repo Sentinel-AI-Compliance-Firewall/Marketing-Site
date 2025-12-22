@@ -92,7 +92,6 @@ export const FOOTER_LINKS = {
     links: [
       { label: "Documentation", href: "/docs" },
       { label: "API Reference", href: "/docs/api" },
-      { label: "Security Docs", href: "/security" },
       { label: "Help Center", href: "/help" },
     ],
   },

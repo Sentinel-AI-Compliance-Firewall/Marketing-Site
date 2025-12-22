@@ -94,10 +94,9 @@ export default function ChangelogPage() {
                     <h3 className="text-lg font-semibold text-white mb-3">
                       {entry.title}
                     </h3>
-                    <ul className="space-y-2">
+                    <ul className="space-y-2 list-disc list-inside marker:text-[var(--primary)]">
                       {entry.changes.map((change, j) => (
-                        <li key={j} className="flex items-start gap-2 text-sm text-[var(--text-secondary)]">
-                          <span className="text-[var(--primary)] mt-1.5">•</span>
+                        <li key={j} className="text-sm text-[var(--text-secondary)]">
                           {change}
                         </li>
                       ))}
