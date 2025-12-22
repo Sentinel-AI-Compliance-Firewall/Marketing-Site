@@ -9,7 +9,7 @@ const HeroScrollStatic = () => {
   const { openWaitlist } = useWaitlist()
 
   return (
-    <div className="relative w-full min-h-screen bg-[#1a1a1a] overflow-hidden">
+    <div className="relative w-full h-[85vh] md:min-h-screen bg-[#1a1a1a] overflow-hidden">
       {/* Static background image - frame 120 for best visual */}
       <div className="absolute inset-0 w-full h-full">
         <Image

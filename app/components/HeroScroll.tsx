@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react"
 import Link from "next/link"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
-import { ChevronDown, ArrowRight, Sparkles } from "lucide-react"
+import { ChevronDown, ArrowRight, Sparkles, Menu, X } from "lucide-react"
 import { useWaitlist } from "@/app/context/WaitlistContext"
 import SentinelLogo from "./SentinelLogo"
 
@@ -26,6 +26,7 @@ const HeroScroll = ({ onFirstFrameReady, showContent = false }: HeroScrollProps)
   const heroContentRef = useRef<HTMLDivElement>(null)
   const imagesRef = useRef<HTMLImageElement[]>([])
   const [imagesLoaded, setImagesLoaded] = useState(0)
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const firstFrameReadyRef = useRef(false)
   const scrollTimelineRef = useRef<gsap.core.Timeline | null>(null)
   const introAnimationComplete = useRef(false)
@@ -229,7 +230,7 @@ const HeroScroll = ({ onFirstFrameReady, showContent = false }: HeroScrollProps)
   }, [onFirstFrameReady])
 
   return (
-    <div ref={containerRef} className="relative w-full h-screen bg-[#1a1a1a] overflow-hidden">
+    <div ref={containerRef} className="relative w-full h-[85vh] md:h-screen bg-[#1a1a1a] overflow-hidden">
       <div ref={wrapperRef} className="w-full h-full relative origin-top will-change-transform overflow-hidden">
         <canvas ref={canvasRef} className="block object-cover canvas-fullscreen" />
 
@@ -283,13 +284,88 @@ const HeroScroll = ({ onFirstFrameReady, showContent = false }: HeroScrollProps)
             </div>
           </div>
 
-          {/* Right CTA buttons */}
+          {/* Right side - Desktop CTA + Mobile Menu Button */}
           <div className="flex items-center gap-2 md:gap-4">
-            <Link href="/contact?demo=true" className="px-4 md:px-5 py-2 md:py-2.5 text-xs md:text-sm font-medium text-black bg-gradient-to-r from-[#FFD700] to-[#FFA500] rounded-full uppercase tracking-wider hover:from-[#FFE55C] hover:to-[#FFB733] transition-all">
+            <Link href="/contact?demo=true" className="hidden md:block px-4 md:px-5 py-2 md:py-2.5 text-xs md:text-sm font-medium text-black bg-gradient-to-r from-[#FFD700] to-[#FFA500] rounded-full uppercase tracking-wider hover:from-[#FFE55C] hover:to-[#FFB733] transition-all">
               Request Demo
             </Link>
+            {/* Mobile Menu Button */}
+            <button
+              type="button"
+              className="lg:hidden p-2 text-white"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              aria-label="Toggle menu"
+            >
+              {isMobileMenuOpen ? (
+                <X className="w-6 h-6" />
+              ) : (
+                <Menu className="w-6 h-6" />
+              )}
+            </button>
           </div>
         </nav>
+
+        {/* Mobile Menu */}
+        {isMobileMenuOpen && (
+          <div className="fixed inset-0 z-30 lg:hidden">
+            {/* Backdrop */}
+            <div
+              className="absolute inset-0 bg-black/80 backdrop-blur-sm"
+              onClick={() => setIsMobileMenuOpen(false)}
+            />
+            {/* Menu Content */}
+            <div className="absolute top-16 left-0 right-0 bg-black/95 backdrop-blur-xl border-b border-white/10">
+              <div className="container mx-auto px-4 py-6">
+                <div className="space-y-1">
+                  <Link
+                    href="/product"
+                    className="block px-4 py-3 text-sm font-medium uppercase tracking-wider text-white hover:text-[#FFD700] transition-colors"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    Products
+                  </Link>
+                  <Link
+                    href="/pricing"
+                    className="block px-4 py-3 text-sm font-medium uppercase tracking-wider text-white hover:text-[#FFD700] transition-colors"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    Pricing
+                  </Link>
+                  <Link
+                    href="/security"
+                    className="block px-4 py-3 text-sm font-medium uppercase tracking-wider text-white hover:text-[#FFD700] transition-colors"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    Security
+                  </Link>
+                  <Link
+                    href="/about"
+                    className="block px-4 py-3 text-sm font-medium uppercase tracking-wider text-white hover:text-[#FFD700] transition-colors"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    About
+                  </Link>
+                  <Link
+                    href="/contact"
+                    className="block px-4 py-3 text-sm font-medium uppercase tracking-wider text-white hover:text-[#FFD700] transition-colors"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    Contact
+                  </Link>
+                </div>
+                <div className="mt-6 pt-6 border-t border-white/10 space-y-3">
+                  <button
+                    type="button"
+                    onClick={() => { setIsMobileMenuOpen(false); openWaitlist(); }}
+                    className="w-full px-5 py-3 text-sm font-medium text-black bg-gradient-to-r from-[#FFD700] to-[#FFA500] rounded-full uppercase tracking-wider"
+                  >
+                    Join Waitlist
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
 
         <div
           ref={heroContentRef}
