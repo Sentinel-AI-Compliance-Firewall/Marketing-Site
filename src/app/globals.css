@@ -1,8 +1,52 @@
 @import "tailwindcss";
+@import "../framer/styles.css";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+
+  /* Framer color tokens */
+  --unframer-white-80: rgba(255, 255, 255, 0.8);
+  --unframer-white-40: rgba(255, 255, 255, 0.4);
+  --unframer-black: rgb(0, 0, 0);
+  --unframer-dark-gray: rgb(17, 17, 17);
+  --unframer-white-60: rgba(255, 255, 255, 0.6);
+  --unframer-gray: rgb(31, 31, 31);
+  --unframer-white: rgb(255, 255, 255);
+  --unframer-orange: rgb(251, 73, 48);
+  --radius: 0.625rem;
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: oklch(0.205 0 0);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --accent: oklch(0.97 0 0);
+  --accent-foreground: oklch(0.205 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.708 0 0);
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
 }
 
 @theme inline {
@@ -10,17 +54,220 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
 }
+
+/* Fix for Framer components to be full width and responsive */
+.framer-component-wrapper {
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+/* Override fixed widths from Framer hero section */
+.framer-3LWK1.framer-jajp6h {
+  width: 100% !important;
+  max-width: 100vw !important;
+}
+
+/* Tablet variant */
+.framer-3LWK1.framer-v-tu8x1y.framer-jajp6h {
+  width: 100% !important;
+  max-width: 100vw !important;
+}
+
+/* Phone variant */
+.framer-3LWK1.framer-v-1j6m0qo.framer-jajp6h {
+  width: 100% !important;
+  max-width: 100vw !important;
+}
+
+/* Hide MorphGPU */
+.framer-kgq5wu-container {
+  display: none !important;
+}
+
+/* Hide the loading dots in hero section */
+.framer-b3q5nb-container {
+  display: none !important;
+}
+
+/* Make hero section transparent so img shows through */
+.framer-3LWK1.framer-jajp6h {
+  background-color: transparent !important;
+}
+
+/* Ensure responsive images */
+[class*="framer-"] img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Services Section - Override fixed widths */
+.framer-EzW10.framer-1ljj4z7 {
+  width: 100% !important;
+  max-width: 100vw !important;
+}
+
+/* Services Section - Laptop variant */
+.framer-EzW10.framer-v-1mlphww.framer-1ljj4z7 {
+  width: 100% !important;
+  max-width: 100vw !important;
+}
+
+/* Services Section - Tablet variant */
+.framer-EzW10.framer-v-78gsh8.framer-1ljj4z7 {
+  width: 100% !important;
+  max-width: 100vw !important;
+}
+
+/* Services Section - Phone variant */
+.framer-EzW10.framer-v-jeys9j.framer-1ljj4z7 {
+  width: 100% !important;
+  max-width: 100vw !important;
+}
+
+/* Ensure the HorizontalTextTube container maintains proper height for scroll tracking */
+.framer-EzW10 .framer-ljc3kb-container {
+  width: 100% !important;
+}
+
+/* HorizontalTextTube scroll animation support */
+.framer-EzW10 {
+  position: relative;
+  overflow: visible;
+}
+
+/* Ensure the link container allows proper scroll height */
+.framer-EzW10 .framer-zfcclr {
+  max-width: 100% !important;
+}
+
+/* Fix for sticky positioning in HorizontalTextTube */
+.framer-EzW10 .framer-ljc3kb-container > div {
+  overflow: visible !important;
+}
+
+/* Ensure Three.js canvas is visible */
+.framer-EzW10 canvas {
+  display: block !important;
+}
+
+/* Sticky Header - Override fixed widths */
+.framer-Oz0p6.framer-5ed1i1,
+.framer-Oz0p6.framer-v-jbgxm0.framer-5ed1i1,
+.framer-Oz0p6.framer-v-640cve.framer-5ed1i1,
+.framer-Oz0p6.framer-v-1soofel.framer-5ed1i1,
+.framer-Oz0p6.framer-v-1i8wx9h.framer-5ed1i1 {
+  width: 100% !important;
+  max-width: 100vw !important;
+}
+
+/* Make header background transparent so glassmorphism shows */
+.framer-Oz0p6.framer-5ed1i1 {
+  background: transparent !important;
+}
+
+/* Generations Images Section - Fix Types of Bias positioning */
+/* Move Types of Bias to the right side */
+.framer-Bk1Dr .framer-4pruwk {
+  justify-content: space-between !important;
+}
+
+/* Ensure Types of Bias container has proper width and alignment */
+.framer-Bk1Dr .framer-xy45vh-container {
+  flex: none !important;
+  width: auto !important;
+  text-align: right !important;
+}
+
+/* Hide the white floating dropdown in header on hover */
+.framer-Oz0p6 .framer-1ygwdf {
+  display: none !important;
+}
+
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.205 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.205 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.922 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.556 0 0);
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.556 0 0);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+}
+
+/* Auth pages specific styles */
+.auth-page {
+  background: linear-gradient(135deg, #000000 0%, #111111 50%, #1a1a1a 100%);
+  min-height: 100vh;
+}
+
