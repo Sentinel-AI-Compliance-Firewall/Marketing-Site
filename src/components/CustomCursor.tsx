@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import CursorsFramerComponent from "@/framer/cursors";
 
-type CursorVariant = "View Case" | "Request Pricing" | "Next Case" | "Prev Case" | "View Eye" | null;
+type CursorVariant = "View Case" | "Join Waitlist" | "Next Case" | "Prev Case" | "View Eye" | null;
 
 interface CustomCursorProps {
   children: React.ReactNode;
@@ -88,7 +88,7 @@ export function useCursor() {
 
   return {
     showViewCase: () => setCursorVariant("View Case"),
-    showRequestPricing: () => setCursorVariant("Request Pricing"),
+    showRequestPricing: () => setCursorVariant("Join Waitlist"),
     showNextCase: () => setCursorVariant("Next Case"),
     showPrevCase: () => setCursorVariant("Prev Case"),
     showViewEye: () => setCursorVariant("View Eye"),

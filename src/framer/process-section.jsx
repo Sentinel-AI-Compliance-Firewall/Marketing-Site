@@ -2072,8 +2072,8 @@ var getProps3 = ({
 		DOoF8BUY3: subHeadingLine2 ?? props.DOoF8BUY3 ?? "CLEAR CHECKPOINTS",
 		fBOTuyw0M: buttonLink ?? props.fBOTuyw0M,
 		GclMHpLmc: heading ?? props.GclMHpLmc ?? "Process",
-		gMCRjZH3_: cTATextLine1 ?? props.gMCRjZH3_ ?? "REQUEST",
-		HfSNQaVP0: cTATextLine2 ?? props.HfSNQaVP0 ?? "PRICING",
+		gMCRjZH3_: cTATextLine1 ?? props.gMCRjZH3_ ?? "JOIN",
+		HfSNQaVP0: cTATextLine2 ?? props.HfSNQaVP0 ?? "WAITLIST",
 		LiSiy4me9: subHeadingLine1 ?? props.LiSiy4me9 ?? "SHORT LOOPS",
 		Tpyi48vaT: imageInCTA ??
 			props.Tpyi48vaT ?? {
@@ -2917,7 +2917,7 @@ var Component3 = /* @__PURE__ */ React4.forwardRef(function (props, ref) {
 																				"var(--extracted-1w1cjl5, var(--token-cabcd209-02ce-41bf-9dfa-3682975d9176, rgb(255, 255, 255)))",
 																		}}
 																	>
-																		{"ANALYZE (AI)"}
+																		{"ANALYZE"}
 																	</motion3.h6>
 																</React4.Fragment>
 															),
@@ -2933,7 +2933,7 @@ var Component3 = /* @__PURE__ */ React4.forwardRef(function (props, ref) {
 																				"var(--extracted-1w1cjl5, var(--token-cabcd209-02ce-41bf-9dfa-3682975d9176, rgb(255, 255, 255)))",
 																		}}
 																	>
-																		{"ANALYZE (AI)"}
+																		{"ANALYZE"}
 																	</motion3.h6>
 																</React4.Fragment>
 															),
@@ -2952,7 +2952,7 @@ var Component3 = /* @__PURE__ */ React4.forwardRef(function (props, ref) {
 																"var(--extracted-1lwpl3i, var(--token-cabcd209-02ce-41bf-9dfa-3682975d9176, rgb(255, 255, 255)))",
 														}}
 													>
-														{"ANALYZE (AI)"}
+														{"ANALYZE"}
 													</motion3.h5>
 												</React4.Fragment>
 											</RichText3>
@@ -3011,7 +3011,7 @@ var Component3 = /* @__PURE__ */ React4.forwardRef(function (props, ref) {
 												}}
 											>
 												{
-													"Our AI scans every word in real-time, detecting bias patterns across gender, race, age, disability, and more. Contextual analysis flags issues with confidence scores and explanations."
+													"Our system scans every word in real-time, detecting bias patterns across gender, race, age, disability, and more. Contextual analysis flags issues with confidence scores and explanations."
 												}
 											</motion3.p>
 										</React4.Fragment>
@@ -3793,7 +3793,7 @@ var Component3 = /* @__PURE__ */ React4.forwardRef(function (props, ref) {
 													}}
 												>
 													{
-														"Get smart alternative suggestions for each flag. Choose from AI-generated rewrites that preserve your message while removing bias. Edit manually or accept suggestions with one click."
+														"Get smart alternative suggestions for each flag. Choose from intelligently generated rewrites that preserve your message while removing bias. Edit manually or accept suggestions with one click."
 													}
 												</motion3.p>
 											</React4.Fragment>
@@ -4505,7 +4505,7 @@ var Component3 = /* @__PURE__ */ React4.forwardRef(function (props, ref) {
 																			"var(--extracted-1w1cjl5, var(--token-cabcd209-02ce-41bf-9dfa-3682975d9176, rgb(255, 255, 255)))",
 																	}}
 																>
-																	{"REQUEST"}
+																	{"JOIN"}
 																</motion3.h6>
 															</React4.Fragment>
 														),
@@ -4525,7 +4525,7 @@ var Component3 = /* @__PURE__ */ React4.forwardRef(function (props, ref) {
 															"var(--extracted-1eung3n, var(--token-cabcd209-02ce-41bf-9dfa-3682975d9176, rgb(255, 255, 255)))",
 													}}
 												>
-													{"REQUEST"}
+													{"JOIN"}
 												</motion3.h4>
 											</React4.Fragment>
 										</RichText3>
@@ -4570,7 +4570,7 @@ var Component3 = /* @__PURE__ */ React4.forwardRef(function (props, ref) {
 																				"var(--extracted-1w1cjl5, var(--token-cabcd209-02ce-41bf-9dfa-3682975d9176, rgb(255, 255, 255)))",
 																		}}
 																	>
-																		{"PRICING"}
+																		{"WAITLIST"}
 																	</motion3.h6>
 																</React4.Fragment>
 															),
@@ -4590,7 +4590,7 @@ var Component3 = /* @__PURE__ */ React4.forwardRef(function (props, ref) {
 																"var(--extracted-1eung3n, var(--token-cabcd209-02ce-41bf-9dfa-3682975d9176, rgb(255, 255, 255)))",
 														}}
 													>
-														{"PRICING"}
+														{"WAITLIST"}
 													</motion3.h4>
 												</React4.Fragment>
 											</RichText3>
@@ -4895,13 +4895,13 @@ addPropertyControls4(FramerV1lV42W6x, {
 		type: ControlType4.ResponsiveImage,
 	},
 	gMCRjZH3_: {
-		defaultValue: "REQUEST",
+		defaultValue: "JOIN",
 		displayTextArea: false,
 		title: "CTA Text - Line 1",
 		type: ControlType4.String,
 	},
 	HfSNQaVP0: {
-		defaultValue: "PRICING",
+		defaultValue: "WAITLIST",
 		displayTextArea: false,
 		title: "CTA Text - Line 2",
 		type: ControlType4.String,

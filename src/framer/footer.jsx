@@ -1703,7 +1703,7 @@ var Component = /* @__PURE__ */ React.forwardRef(function (props, ref) {
 											"var(--extracted-1lwpl3i, var(--token-8663ad7b-5035-4dfb-abe8-7f871f579863, rgb(241, 237, 233)))",
 									}}
 								>
-	{"Los Angeles, CA"}
+	{"Remote Worldwide"}
 								</motion.h5>
 							</React.Fragment>
 						</RichText>
@@ -2758,21 +2758,15 @@ var Component4 = /* @__PURE__ */ React4.forwardRef(function (props, ref) {
 									<ResolveLinks
 										links={[
 											{
-												href: {
-													webPageId: "augiA20Il",
-												},
+												href: "/",
 												implicitPathVariables: void 0,
 											},
 											{
-												href: {
-													webPageId: "augiA20Il",
-												},
+												href: "/",
 												implicitPathVariables: void 0,
 											},
 											{
-												href: {
-													webPageId: "augiA20Il",
-												},
+												href: "/",
 												implicitPathVariables: void 0,
 											},
 										]}
@@ -2874,21 +2868,15 @@ var Component4 = /* @__PURE__ */ React4.forwardRef(function (props, ref) {
 									<ResolveLinks
 										links={[
 											{
-												href: {
-													webPageId: "GKGrE0X0E",
-												},
+												href: "/#services",
 												implicitPathVariables: void 0,
 											},
 											{
-												href: {
-													webPageId: "GKGrE0X0E",
-												},
+												href: "/#services",
 												implicitPathVariables: void 0,
 											},
 											{
-												href: {
-													webPageId: "GKGrE0X0E",
-												},
+												href: "/#services",
 												implicitPathVariables: void 0,
 											},
 										]}
@@ -2991,19 +2979,19 @@ var Component4 = /* @__PURE__ */ React4.forwardRef(function (props, ref) {
 										links={[
 											{
 												href: {
-													webPageId: "l9u1Z487J",
+													url: "/#process",
 												},
 												implicitPathVariables: void 0,
 											},
 											{
 												href: {
-													webPageId: "l9u1Z487J",
+													url: "/#process",
 												},
 												implicitPathVariables: void 0,
 											},
 											{
 												href: {
-													webPageId: "l9u1Z487J",
+													url: "/#process",
 												},
 												implicitPathVariables: void 0,
 											},
@@ -3107,19 +3095,19 @@ var Component4 = /* @__PURE__ */ React4.forwardRef(function (props, ref) {
 										links={[
 											{
 												href: {
-													webPageId: "DgLiz1O8W",
+													url: "/#contact",
 												},
 												implicitPathVariables: void 0,
 											},
 											{
 												href: {
-													webPageId: "DgLiz1O8W",
+													url: "/#contact",
 												},
 												implicitPathVariables: void 0,
 											},
 											{
 												href: {
-													webPageId: "DgLiz1O8W",
+													url: "/#contact",
 												},
 												implicitPathVariables: void 0,
 											},
@@ -3223,19 +3211,19 @@ var Component4 = /* @__PURE__ */ React4.forwardRef(function (props, ref) {
 										links={[
 											{
 												href: {
-													webPageId: "DkYm1jLcL",
+													url: "/",
 												},
 												implicitPathVariables: void 0,
 											},
 											{
 												href: {
-													webPageId: "DkYm1jLcL",
+													url: "/",
 												},
 												implicitPathVariables: void 0,
 											},
 											{
 												href: {
-													webPageId: "DkYm1jLcL",
+													url: "/",
 												},
 												implicitPathVariables: void 0,
 											},
@@ -3442,7 +3430,7 @@ var Component4 = /* @__PURE__ */ React4.forwardRef(function (props, ref) {
 												id: "dAST1fgJR",
 												layoutId: "dAST1fgJR",
 												name: "Icon_Twitter",
-												sm5VPT_8v: "https://x.com/framer",
+												sm5VPT_8v: "https://x.com/sentinelai",
 												unUlSXRfZ: "Twitter",
 												variant: "TgbQLLyZG",
 												width: "100%",
@@ -3519,7 +3507,7 @@ var Component4 = /* @__PURE__ */ React4.forwardRef(function (props, ref) {
 												id: "fQY7dys2I",
 												layoutId: "fQY7dys2I",
 												name: "Icon_Linkedin",
-												sm5VPT_8v: "https://www.linkedin.com/company/framer",
+												sm5VPT_8v: "https://www.linkedin.com/company/sentinelai",
 												unUlSXRfZ: "Linkedin",
 												variant: "TgbQLLyZG",
 												width: "100%",
@@ -3596,7 +3584,7 @@ var Component4 = /* @__PURE__ */ React4.forwardRef(function (props, ref) {
 												id: "A8urfHxhj",
 												layoutId: "A8urfHxhj",
 												name: "Icon_Instagram",
-												sm5VPT_8v: "https://www.instagram.com/framer",
+												sm5VPT_8v: "https://www.instagram.com/sentinelai",
 												unUlSXRfZ: "Instagram",
 												variant: "TgbQLLyZG",
 												width: "100%",
@@ -3707,9 +3695,7 @@ var Component4 = /* @__PURE__ */ React4.forwardRef(function (props, ref) {
 											}}
 										>
 											<Link3
-												href={{
-													webPageId: "aUMWffrId",
-												}}
+												href={"/privacy"}
 												motionChild={true}
 												nodeId={"cffpMWebl"}
 												openInNewTab={false}
@@ -3761,9 +3747,7 @@ var Component4 = /* @__PURE__ */ React4.forwardRef(function (props, ref) {
 											}}
 										>
 											<Link3
-												href={{
-													webPageId: "z_VQZ8OE1",
-												}}
+												href={"/terms"}
 												motionChild={true}
 												nodeId={"mQCsKMFbi"}
 												openInNewTab={false}

@@ -80,7 +80,7 @@ export default function FallbackServices() {
             className="inline-flex items-center gap-2 text-[rgb(251,73,48)] hover:text-white text-sm uppercase tracking-wider transition-colors"
             style={{ fontFamily: '"Mozilla Text", sans-serif' }}
           >
-            Request Pricing
+            Join Waitlist
             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>

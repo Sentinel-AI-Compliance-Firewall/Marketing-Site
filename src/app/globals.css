@@ -92,8 +92,31 @@
   --radius-4xl: calc(var(--radius) + 16px);
 }
 
+/* Smooth scroll handled by JavaScript for better control over speed */
+
 body {
   overflow-x: hidden;
+}
+
+/* Smooth scroll offset for fixed header */
+html {
+  scroll-padding-top: 100px;
+}
+
+/* GPU acceleration for animations */
+.will-change-transform {
+  will-change: transform;
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
 
 /* Fix for Framer components to be full width and responsive */
@@ -190,6 +213,23 @@ body {
 /* Ensure Three.js canvas is visible */
 .framer-EzW10 canvas {
   display: block !important;
+}
+
+/* Services section performance optimizations */
+.framer-EzW10 {
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* Optimize scroll-linked animations */
+.framer-EzW10 * {
+  transform: translateZ(0);
+}
+
+/* Reduce paint areas during scroll */
+.framer-EzW10 .framer-ljc3kb-container {
+  contain: layout style paint;
 }
 
 /* Sticky Header - Override fixed widths */

@@ -19,7 +19,7 @@
  * width?: any
  * height?: any
  * layoutId?: string
- * variant?: 'View Case' | 'Request Pricing' | 'Next Case' | 'Prev Case' | 'View Eye' // Variant
+ * variant?: 'View Case' | 'Join Waitlist' | 'Next Case' | 'Prev Case' | 'View Eye' // Variant
 }} Props
 
  */
@@ -141,7 +141,7 @@ var Variants = motion2.create(React2.Fragment);
 var humanReadableVariantMap = {
 	"Next Case": "xgIRdHVYP",
 	"Prev Case": "Se1Y3Yggr",
-	"Request Pricing": "PEZ68OvoJ",
+	"Join Waitlist": "PEZ68OvoJ",
 	"View Case": "sK_SZQ8AH",
 	"View Eye": "CfYrl1mpC",
 };
@@ -228,7 +228,7 @@ var Component2 = /* @__PURE__ */ React2.forwardRef(function (props, ref) {
 									"data-framer-name": "View Eye",
 								},
 								PEZ68OvoJ: {
-									"data-framer-name": "Request Pricing",
+									"data-framer-name": "Join Waitlist",
 								},
 								Se1Y3Yggr: {
 									"data-framer-name": "Prev Case",
@@ -345,7 +345,7 @@ var Component2 = /* @__PURE__ */ React2.forwardRef(function (props, ref) {
 						{isDisplayed2() && (
 							<motion2.div
 								className={"framer-1ta4zf"}
-								data-framer-name={"Request Pricing"}
+								data-framer-name={"Join Waitlist"}
 								layoutDependency={layoutDependency}
 								layoutId={"AZGF5XNXJ"}
 							>
@@ -395,7 +395,7 @@ var Component2 = /* @__PURE__ */ React2.forwardRef(function (props, ref) {
 												"--framer-text-transform": "uppercase",
 											}}
 										>
-											{"Request pricing"}
+											{"Join waitlist"}
 										</motion2.p>
 									</React2.Fragment>
 								</RichText>
@@ -532,7 +532,7 @@ addPropertyControls(Framerc273mVu6n, {
 		options: ["sK_SZQ8AH", "PEZ68OvoJ", "xgIRdHVYP", "Se1Y3Yggr", "CfYrl1mpC"],
 		optionTitles: [
 			"View Case",
-			"Request Pricing",
+			"Join Waitlist",
 			"Next Case",
 			"Prev Case",
 			"View Eye",

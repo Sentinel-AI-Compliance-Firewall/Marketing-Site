@@ -145,23 +145,25 @@ export default function SignupPage() {
 
   return (
     <div className="min-h-screen flex items-center justify-center p-4 auth-page relative overflow-hidden">
-      {/* Animated gradient background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-black via-[#0a0a0a] to-black">
-        {/* Animated gradient orbs */}
-        <div className="absolute top-0 left-0 w-[800px] h-[800px] bg-[rgb(251,73,48)]/20 rounded-full blur-[150px] -translate-x-1/2 -translate-y-1/2 animate-pulse" />
-        <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-[rgb(251,73,48)]/10 rounded-full blur-[120px] translate-x-1/3 translate-y-1/3" />
-        <div className="absolute top-1/2 left-1/2 w-[400px] h-[400px] bg-purple-900/20 rounded-full blur-[100px] -translate-x-1/2 -translate-y-1/2" />
-        <div className="absolute bottom-1/3 left-1/4 w-[300px] h-[300px] bg-orange-600/10 rounded-full blur-[80px]" />
+      {/* Clean linear gradient background */}
+      <div
+        className="absolute inset-0"
+        style={{
+          background: `linear-gradient(135deg,
+            #000000 0%,
+            #0a0a0a 25%,
+            #111111 50%,
+            #0d0808 75%,
+            #0f0505 100%
+          )`,
+        }}
+      />
 
-        {/* Subtle grid overlay */}
-        <div
-          className="absolute inset-0 opacity-[0.03]"
-          style={{
-            backgroundImage: `linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)`,
-            backgroundSize: '50px 50px'
-          }}
-        />
-      </div>
+      {/* Subtle accent glow - top */}
+      <div className="absolute top-0 left-0 right-0 h-[50vh] bg-gradient-to-b from-[rgb(251,73,48)]/[0.08] to-transparent" />
+
+      {/* Subtle accent line - diagonal */}
+      <div className="absolute inset-0 bg-gradient-to-br from-[rgb(251,73,48)]/[0.02] via-transparent to-[rgb(251,73,48)]/[0.02]" />
 
       <motion.div
         initial={{ opacity: 0, y: 20 }}

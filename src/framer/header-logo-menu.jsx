@@ -440,9 +440,7 @@ var Component = /* @__PURE__ */ React.forwardRef(function (props, ref) {
 										layoutId={"x7wZW7b0V"}
 									>
 										<Link
-											href={{
-												webPageId: "augiA20Il",
-											}}
+											href={"/"}
 											motionChild={true}
 											nodeId={"rYfPWwAR7"}
 											openInNewTab={false}
@@ -604,24 +602,15 @@ var Component = /* @__PURE__ */ React.forwardRef(function (props, ref) {
 												<ResolveLinks
 													links={[
 														{
-															href: {
-																hash: ":S2dfvZrU0",
-																webPageId: "augiA20Il",
-															},
+															href: "/",
 															implicitPathVariables: void 0,
 														},
 														{
-															href: {
-																hash: ":S2dfvZrU0",
-																webPageId: "augiA20Il",
-															},
+															href: "/",
 															implicitPathVariables: void 0,
 														},
 														{
-															href: {
-																hash: ":S2dfvZrU0",
-																webPageId: "augiA20Il",
-															},
+															href: "/",
 															implicitPathVariables: void 0,
 														},
 													]}
@@ -698,24 +687,15 @@ var Component = /* @__PURE__ */ React.forwardRef(function (props, ref) {
 												<ResolveLinks
 													links={[
 														{
-															href: {
-																hash: ":E9l_G70ow",
-																webPageId: "augiA20Il",
-															},
+															href: "/#services",
 															implicitPathVariables: void 0,
 														},
 														{
-															href: {
-																hash: ":E9l_G70ow",
-																webPageId: "augiA20Il",
-															},
+															href: "/#services",
 															implicitPathVariables: void 0,
 														},
 														{
-															href: {
-																hash: ":E9l_G70ow",
-																webPageId: "augiA20Il",
-															},
+															href: "/#services",
 															implicitPathVariables: void 0,
 														},
 													]}
@@ -792,24 +772,15 @@ var Component = /* @__PURE__ */ React.forwardRef(function (props, ref) {
 												<ResolveLinks
 													links={[
 														{
-															href: {
-																hash: ":UBV6qutsT",
-																webPageId: "augiA20Il",
-															},
+															href: "/#process",
 															implicitPathVariables: void 0,
 														},
 														{
-															href: {
-																hash: ":UBV6qutsT",
-																webPageId: "augiA20Il",
-															},
+															href: "/#process",
 															implicitPathVariables: void 0,
 														},
 														{
-															href: {
-																hash: ":UBV6qutsT",
-																webPageId: "augiA20Il",
-															},
+															href: "/#process",
 															implicitPathVariables: void 0,
 														},
 													]}
@@ -886,21 +857,15 @@ var Component = /* @__PURE__ */ React.forwardRef(function (props, ref) {
 												<ResolveLinks
 													links={[
 														{
-															href: {
-																webPageId: "mtj262pGH",
-															},
+															href: "/#team",
 															implicitPathVariables: void 0,
 														},
 														{
-															href: {
-																webPageId: "mtj262pGH",
-															},
+															href: "/#team",
 															implicitPathVariables: void 0,
 														},
 														{
-															href: {
-																webPageId: "mtj262pGH",
-															},
+															href: "/#team",
 															implicitPathVariables: void 0,
 														},
 													]}
@@ -977,24 +942,15 @@ var Component = /* @__PURE__ */ React.forwardRef(function (props, ref) {
 												<ResolveLinks
 													links={[
 														{
-															href: {
-																hash: ":wWJVhnWPG",
-																webPageId: "augiA20Il",
-															},
+															href: "/#contact",
 															implicitPathVariables: void 0,
 														},
 														{
-															href: {
-																hash: ":wWJVhnWPG",
-																webPageId: "augiA20Il",
-															},
+															href: "/#contact",
 															implicitPathVariables: void 0,
 														},
 														{
-															href: {
-																hash: ":wWJVhnWPG",
-																webPageId: "augiA20Il",
-															},
+															href: "/#contact",
 															implicitPathVariables: void 0,
 														},
 													]}

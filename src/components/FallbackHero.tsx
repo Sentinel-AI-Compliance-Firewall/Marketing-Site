@@ -84,8 +84,11 @@ export default function FallbackHero({ tagline }: FallbackHeroProps) {
       </div>
 
       {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10">
-        <div className="flex flex-col items-center gap-2 text-white/40">
+      <div
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 cursor-pointer scroll-indicator"
+        onClick={() => window.scrollBy({ top: window.innerHeight, behavior: 'smooth' })}
+      >
+        <div className="flex flex-col items-center gap-2 text-white/40 hover:text-white/60 transition-colors">
           <span className="text-xs uppercase tracking-widest" style={{ fontFamily: '"Mozilla Text", sans-serif' }}>
             Scroll
           </span>

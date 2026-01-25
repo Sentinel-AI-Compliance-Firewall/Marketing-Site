@@ -1064,9 +1064,7 @@ var Component2 = /* @__PURE__ */ React2.forwardRef(function (props, ref) {
 						)}
 					>
 						<FormContainer
-							action={
-								"https://api.framer.com/forms/v1/forms/fc8c2061-2e6b-4232-9cfa-4f09e790c6a2/submit"
-							}
+							action={"/api/contact"}
 							className={"framer-9h5j1h"}
 							layoutDependency={layoutDependency}
 							layoutId={"B9AXh9aKi"}
