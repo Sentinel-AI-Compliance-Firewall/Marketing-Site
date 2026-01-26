@@ -285,9 +285,7 @@ var Component = /* @__PURE__ */ React.forwardRef(function (props, ref) {
 										letterSpacingEm={-0.04}
 										phrases={[
 											"Fairness",
-											"Transparency",
 											"Accuracy",
-											"Speed",
 											"Trust",
 											"Compliance",
 										]}

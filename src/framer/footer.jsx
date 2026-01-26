@@ -1703,7 +1703,7 @@ var Component = /* @__PURE__ */ React.forwardRef(function (props, ref) {
 											"var(--extracted-1lwpl3i, var(--token-8663ad7b-5035-4dfb-abe8-7f871f579863, rgb(241, 237, 233)))",
 									}}
 								>
-	{"Remote Worldwide"}
+	{""}
 								</motion.h5>
 							</React.Fragment>
 						</RichText>
@@ -2979,19 +2979,19 @@ var Component4 = /* @__PURE__ */ React4.forwardRef(function (props, ref) {
 										links={[
 											{
 												href: {
-													url: "/#process",
+													url: "/#team",
 												},
 												implicitPathVariables: void 0,
 											},
 											{
 												href: {
-													url: "/#process",
+													url: "/#team",
 												},
 												implicitPathVariables: void 0,
 											},
 											{
 												href: {
-													url: "/#process",
+													url: "/#team",
 												},
 												implicitPathVariables: void 0,
 											},
@@ -3071,7 +3071,7 @@ var Component4 = /* @__PURE__ */ React4.forwardRef(function (props, ref) {
 														layoutId: "yK_Node5U",
 														name: "NavLink_Project",
 														sm5VPT_8v: resolvedLinks2[0],
-														unUlSXRfZ: "Process",
+														unUlSXRfZ: "Company",
 														variant: "mwHGkNEUL",
 														width: "100%",
 														...addPropertyOverrides3(
@@ -3430,7 +3430,7 @@ var Component4 = /* @__PURE__ */ React4.forwardRef(function (props, ref) {
 												id: "dAST1fgJR",
 												layoutId: "dAST1fgJR",
 												name: "Icon_Twitter",
-												sm5VPT_8v: "https://x.com/sentinelai",
+												sm5VPT_8v: "https://x.com/SentinelAICF",
 												unUlSXRfZ: "Twitter",
 												variant: "TgbQLLyZG",
 												width: "100%",
@@ -3507,90 +3507,14 @@ var Component4 = /* @__PURE__ */ React4.forwardRef(function (props, ref) {
 												id: "fQY7dys2I",
 												layoutId: "fQY7dys2I",
 												name: "Icon_Linkedin",
-												sm5VPT_8v: "https://www.linkedin.com/company/sentinelai",
+												sm5VPT_8v: "https://www.linkedin.com/company/sentinel-ai-compliance-firewall/",
 												unUlSXRfZ: "Linkedin",
 												variant: "TgbQLLyZG",
 												width: "100%",
 											})}
 										</SmartComponentScopedContainer>
 									</ComponentViewportProvider>
-									<ComponentViewportProvider
-										height={19}
-										y={
-											(componentViewport?.y || 0) +
-											124 +
-											(0 +
-												0 +
-												(((componentViewport?.height || 640) - 204 - 404.7) /
-													1) *
-													0) +
-											0 +
-											0 +
-											0 +
-											87.6
-										}
-										{...addPropertyOverrides3(
-											{
-												HBmUDmPrv: {
-													y:
-														(componentViewport?.y || 0) +
-														80 +
-														(((componentViewport?.height || 800.5) -
-															160 -
-															636.8) /
-															2 +
-															0 +
-															0) +
-														0 +
-														171 +
-														0 +
-														0 +
-														87.6,
-												},
-												ne9rBVElO: {
-													y:
-														(componentViewport?.y || 0) +
-														80 +
-														(((componentViewport?.height || 899) -
-															160 -
-															733.4) /
-															2 +
-															0 +
-															0) +
-														24 +
-														136.6 +
-														0 +
-														178.6 +
-														0 +
-														87.6,
-												},
-											},
-											baseVariant,
-											gestureVariant,
-										)}
-									>
-										<SmartComponentScopedContainer
-											className={"framer-1u6oa4y-container"}
-											data-framer-name={"Icon_Instagram"}
-											layoutDependency={layoutDependency}
-											layoutId={"A8urfHxhj-container"}
-											name={"Icon_Instagram"}
-											nodeId={"A8urfHxhj"}
-											rendersWithMotion={true}
-											scopeId={"WAtv0vHt0"}
-										>
-											{_jsx6(stdin_default3, {
-												height: "100%",
-												id: "A8urfHxhj",
-												layoutId: "A8urfHxhj",
-												name: "Icon_Instagram",
-												sm5VPT_8v: "https://www.instagram.com/sentinelai",
-												unUlSXRfZ: "Instagram",
-												variant: "TgbQLLyZG",
-												width: "100%",
-											})}
-										</SmartComponentScopedContainer>
-									</ComponentViewportProvider>
+{/* Instagram removed - B2B SaaS */}
 								</motion4.div>
 							</motion4.div>
 						</motion4.main>

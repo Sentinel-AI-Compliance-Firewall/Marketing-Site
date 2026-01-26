@@ -1400,13 +1400,13 @@ var Component = /* @__PURE__ */ React.forwardRef(function (props, ref) {
 																<motion.br />
 																<motion.br />
 																{
-																	"Every word checked. Every suggestion tracked."
+																	"Every word checked. Every suggestion logged."
 																}
 																<motion.br />
 															</motion.span>
 															<motion.br />
 															{
-																"AI scans your content, identifies bias patterns, highlights issues, suggests alternatives, logs changes. Teams review suggestions, accept rewrites, and maintain audit trails automatically."
+																"AI scans your content, identifies bias patterns, highlights issues, suggests alternatives, logs changes. Teams review suggestions, accept rewrites, and maintain audit trails."
 															}
 														</motion.h6>
 													</React.Fragment>
@@ -1525,13 +1525,13 @@ var Component = /* @__PURE__ */ React.forwardRef(function (props, ref) {
 																<motion.br />
 																<motion.br />
 																{
-																	"Every word checked. Every suggestion tracked."
+																	"Every word checked. Every suggestion logged."
 																}
 																<motion.br />
 															</motion.span>
 															<motion.br />
 															{
-																"AI scans your content, identifies bias patterns, highlights issues, suggests alternatives, logs changes. Teams review suggestions, accept rewrites, and maintain audit trails automatically."
+																"AI scans your content, identifies bias patterns, highlights issues, suggests alternatives, logs changes. Teams review suggestions, accept rewrites, and maintain audit trails."
 															}
 														</motion.h6>
 													</React.Fragment>
@@ -1652,12 +1652,12 @@ var Component = /* @__PURE__ */ React.forwardRef(function (props, ref) {
 												{"."}
 												<motion.br />
 												<motion.br />
-												{"Every word checked. Every suggestion tracked."}
+												{"Every word checked. Every suggestion logged."}
 												<motion.br />
 											</motion.span>
 											<motion.br />
 											{
-												"AI scans your content, identifies bias patterns, highlights issues, suggests alternatives, logs changes. Teams review suggestions, accept rewrites, and maintain audit trails automatically."
+												"AI scans your content, identifies bias patterns, highlights issues, suggests alternatives, logs changes. Teams review suggestions, accept rewrites, and maintain audit trails."
 											}
 										</motion.h5>
 									</React.Fragment>

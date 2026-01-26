@@ -226,29 +226,7 @@ export default function FaqSection() {
         </div>
 
         {/* Bottom CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mt-16 text-center"
-        >
-          <p
-            className="text-white/40 text-sm mb-4"
-            style={{ fontFamily: '"Mozilla Text", sans-serif' }}
-          >
-            Still have questions?
-          </p>
-          <a
-            href="/#contact"
-            className="inline-flex items-center gap-2 text-[rgb(251,73,48)] hover:text-white transition-colors text-sm uppercase tracking-[0.2em]"
-            style={{ fontFamily: '"Mozilla Text", sans-serif' }}
-          >
-            Get in Touch
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5">
-              <path d="M4 8h8m0 0L9 5m3 3L9 11" />
-            </svg>
-          </a>
-        </motion.div>
+{/* "Still have questions?" section removed */}
       </div>
     </section>
   );

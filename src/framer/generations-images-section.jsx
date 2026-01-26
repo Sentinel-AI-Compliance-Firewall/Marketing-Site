@@ -96,7 +96,7 @@ function BookFlip(props) {
 		radius = 14,
 		perspective = 1300,
 		maxRotDeg = 180,
-		follow = 0.25,
+		follow = 0.06, // Slower animation for realistic page turns
 		snapBias = 0.5,
 		pxPerPage = 300,
 		initialPeek = 0.12,
@@ -116,9 +116,25 @@ function BookFlip(props) {
 		return out;
 	}, [images]);
 	const [isLoading, setIsLoading] = React.useState(true);
+	const [currentPage, setCurrentPage] = React.useState(0);
+	const targetPageRef = React.useRef(initialPeek); // Ref for target page position
 	const stageRef = React.useRef(null);
 	const bookRef = React.useRef(null);
 	const pageRefs = React.useRef([]);
+	const N = pairs.length;
+
+	// Arrow navigation handlers
+	const goNext = React.useCallback(() => {
+		const newPage = Math.min(Math.floor(targetPageRef.current) + 1, N);
+		targetPageRef.current = newPage;
+		setCurrentPage(newPage);
+	}, [N]);
+
+	const goPrev = React.useCallback(() => {
+		const newPage = Math.max(Math.ceil(targetPageRef.current) - 1, 0);
+		targetPageRef.current = newPage;
+		setCurrentPage(newPage);
+	}, []);
 	const setPageRef = React.useCallback(
 		(index) => (el) => {
 			pageRefs.current[index] = el;
@@ -160,17 +176,20 @@ function BookFlip(props) {
 		const stage = stageRef.current;
 		if (!stage) return;
 		let t = 0;
-		let T = initialPeek;
-		const N = pairs.length;
+		targetPageRef.current = initialPeek;
+		const numPages = pairs.length;
 		const MAX = (maxRotDeg * Math.PI) / 180;
 		let isDown = false;
 		let lastX = 0;
+		let startX = 0;
 		let lastTime = 0;
 		let velocity = 0;
+		let totalDragDistance = 0;
 		const EPSZ = 0.1;
 		const LEFT_EPSZ = 2;
 		const SPINE_SHIFT = -0.75;
 		const H = pageHeight;
+		const CLICK_THRESHOLD = 10; // pixels - if drag is less than this, treat as click
 		const clamp = (x, a, b) => (x < a ? a : x > b ? b : x);
 		const easeInOutCubic = (u) =>
 			u < 0.5 ? 4 * u * u * u : 1 - Math.pow(-2 * u + 2, 3) / 2;
@@ -178,8 +197,10 @@ function BookFlip(props) {
 			isDown = true;
 			stage.classList.add("dragging");
 			lastX = e.clientX;
+			startX = e.clientX;
 			lastTime = performance.now();
 			velocity = 0;
+			totalDragDistance = 0;
 			stage.setPointerCapture(e.pointerId);
 			e.preventDefault();
 		};
@@ -187,11 +208,12 @@ function BookFlip(props) {
 			if (!isDown) return;
 			const now = performance.now();
 			const dx = e.clientX - lastX;
+			totalDragDistance += Math.abs(dx);
 			lastX = e.clientX;
 			const dt = now - lastTime || 16;
 			lastTime = now;
 			velocity = dx / dt;
-			T = clamp(T - dx / pxPerPage, 0, N);
+			targetPageRef.current = clamp(targetPageRef.current - dx / pxPerPage, 0, numPages);
 			e.preventDefault();
 		};
 		const onUp = (e) => {
@@ -201,17 +223,38 @@ function BookFlip(props) {
 			try {
 				stage.releasePointerCapture(e.pointerId);
 			} catch {}
-			const base = Math.round(T);
+
+			// Check if this was a click (minimal drag distance)
+			if (totalDragDistance < CLICK_THRESHOLD) {
+				// Get click position relative to stage center
+				const rect = stage.getBoundingClientRect();
+				const clickX = e.clientX - rect.left;
+				const centerX = rect.width / 2;
+
+				// Click on right side = next page, left side = previous page
+				if (clickX > centerX) {
+					// Next page
+					targetPageRef.current = clamp(Math.floor(targetPageRef.current) + 1, 0, numPages);
+				} else {
+					// Previous page
+					targetPageRef.current = clamp(Math.ceil(targetPageRef.current) - 1, 0, numPages);
+				}
+				setCurrentPage(Math.round(targetPageRef.current));
+				return;
+			}
+
+			const base = Math.round(targetPageRef.current);
 			let snap = base;
 			const FLICK_V_TH = 9;
 			if (Math.abs(velocity) > FLICK_V_TH)
-				snap = clamp(base + (velocity < 0 ? 1 : -1), 0, N);
+				snap = clamp(base + (velocity < 0 ? 1 : -1), 0, numPages);
 			else {
-				const frac = T - Math.floor(T);
-				if (frac > 1 - snapBias) snap = Math.ceil(T);
-				else if (frac < snapBias) snap = Math.floor(T);
+				const frac = targetPageRef.current - Math.floor(targetPageRef.current);
+				if (frac > 1 - snapBias) snap = Math.ceil(targetPageRef.current);
+				else if (frac < snapBias) snap = Math.floor(targetPageRef.current);
 			}
-			T = clamp(snap, 0, N);
+			targetPageRef.current = clamp(snap, 0, numPages);
+			setCurrentPage(Math.round(targetPageRef.current));
 		};
 		stage.addEventListener("pointerdown", onDown, {
 			passive: false,
@@ -230,11 +273,11 @@ function BookFlip(props) {
 		});
 		let raf = 0;
 		const loop = () => {
-			t += (T - t) * follow;
-			const lastIndex = N - 1;
+			t += (targetPageRef.current - t) * follow;
+			const lastIndex = numPages - 1;
 			const opened = Math.min(Math.floor(t + 1e-6), lastIndex);
-			const lastFully = t >= N - 1e-4;
-			for (let i = 0; i < N; i++) {
+			const lastFully = t >= numPages - 1e-4;
+			for (let i = 0; i < numPages; i++) {
 				const el = pageRefs.current[i];
 				if (!el) continue;
 				const front = el.firstElementChild;
@@ -334,12 +377,96 @@ function BookFlip(props) {
 					))}
 				</div>
 			</div>
+
+			{/* Navigation arrows */}
+			{!isLoading && N > 0 && (
+				<>
+					{/* Left arrow - Previous page */}
+					<button
+						onClick={goPrev}
+						disabled={currentPage <= 0}
+						aria-label="Previous page"
+						style={{
+							position: 'absolute',
+							left: '20px',
+							top: '50%',
+							transform: 'translateY(-50%)',
+							zIndex: 60000,
+							width: '56px',
+							height: '56px',
+							borderRadius: '50%',
+							background: 'rgba(0,0,0,0.7)',
+							border: '2px solid rgb(251,73,48)',
+							color: 'rgb(251,73,48)',
+							cursor: currentPage <= 0 ? 'not-allowed' : 'pointer',
+							display: 'flex',
+							alignItems: 'center',
+							justifyContent: 'center',
+							opacity: currentPage <= 0 ? 0.3 : 1,
+							transition: 'all 0.3s ease',
+						}}
+					>
+						<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+							<polyline points="15 18 9 12 15 6"></polyline>
+						</svg>
+					</button>
+
+					{/* Right arrow - Next page */}
+					<button
+						onClick={goNext}
+						disabled={currentPage >= N}
+						aria-label="Next page"
+						style={{
+							position: 'absolute',
+							right: '20px',
+							top: '50%',
+							transform: 'translateY(-50%)',
+							zIndex: 60000,
+							width: '56px',
+							height: '56px',
+							borderRadius: '50%',
+							background: 'rgba(0,0,0,0.7)',
+							border: '2px solid rgb(251,73,48)',
+							color: 'rgb(251,73,48)',
+							cursor: currentPage >= N ? 'not-allowed' : 'pointer',
+							display: 'flex',
+							alignItems: 'center',
+							justifyContent: 'center',
+							opacity: currentPage >= N ? 0.3 : 1,
+							transition: 'all 0.3s ease',
+						}}
+					>
+						<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+							<polyline points="9 18 15 12 9 6"></polyline>
+						</svg>
+					</button>
+
+					{/* Page indicator */}
+					<div style={{
+						position: 'absolute',
+						bottom: '20px',
+						left: '50%',
+						transform: 'translateX(-50%)',
+						zIndex: 60000,
+						padding: '8px 20px',
+						background: 'rgba(0,0,0,0.7)',
+						border: '1px solid rgba(251,73,48,0.5)',
+						borderRadius: '20px',
+						color: 'rgba(255,255,255,0.9)',
+						fontSize: '14px',
+						fontFamily: 'Inter, sans-serif',
+						fontWeight: 500,
+					}}>
+						{currentPage + 1} / {N + 1}
+					</div>
+				</>
+			)}
 			<style>{`
     .root{position:relative;width:100%;height:100%;background:transparent;overflow:visible;-webkit-tap-highlight-color:transparent}
     .preloader{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:transparent;z-index:50000}
     .loading-text{font-size:1.2em;font-weight:500;color:white;letter-spacing:0.5px}
 
-    .stage{position:absolute;inset:0;display:grid;place-items:center;user-select:none;touch-action:none;cursor:grab}
+    .stage{position:absolute;inset:0;display:grid;place-items:center;user-select:none;touch-action:none;cursor:pointer}
     .stage.dragging{cursor:grabbing}
 
     .book{

@@ -27,10 +27,44 @@ import FallbackCta from "@/components/FallbackCta";
 import ContactSection from "@/components/ContactSection";
 import FallbackHowItWorks from "@/components/FallbackHowItWorks";
 import FallbackServices from "@/components/FallbackServices";
+import WaitlistModal from "@/components/WaitlistModal";
 import { useShouldUseSimpleMode } from "@/hooks/useIsMobile";
 
 export default function Home() {
   const useSimpleMode = useShouldUseSimpleMode();
+  const [isWaitlistOpen, setIsWaitlistOpen] = useState(false);
+
+  // Expose waitlist modal opener globally for Framer components
+  useEffect(() => {
+    (window as any).openWaitlistModal = () => setIsWaitlistOpen(true);
+
+    // Intercept clicks on the "Get Early Access" button in process section
+    const handleWaitlistClick = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      // Check if click is within the process section
+      const processSection = document.getElementById("process");
+      if (processSection && processSection.contains(target)) {
+        // Only trigger on actual button clicks, not heading text
+        const button = target.closest("a, button");
+        if (button) {
+          const text = button.textContent?.toUpperCase() || "";
+          // Only catch "Get Early Access" button, not the "JOIN WAITLIST" heading
+          if (text.includes("EARLY ACCESS") || text.includes("GET EARLY")) {
+            e.preventDefault();
+            e.stopPropagation();
+            setIsWaitlistOpen(true);
+          }
+        }
+      }
+    };
+
+    document.addEventListener("click", handleWaitlistClick, true);
+
+    return () => {
+      delete (window as any).openWaitlistModal;
+      document.removeEventListener("click", handleWaitlistClick, true);
+    };
+  }, []);
 
   // Scroll to top on page load/reload
   useEffect(() => {
@@ -443,6 +477,9 @@ export default function Home() {
             </ErrorBoundary>
           )}
         </main>
+
+        {/* Waitlist Modal */}
+        <WaitlistModal isOpen={isWaitlistOpen} onClose={() => setIsWaitlistOpen(false)} />
       </Preloader>
     </CustomCursor>
   );

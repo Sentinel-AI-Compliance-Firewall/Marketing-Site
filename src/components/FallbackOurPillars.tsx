@@ -6,12 +6,12 @@ const pillars = [
     description: "Ensure equal treatment across all demographics and protected classes.",
   },
   {
-    title: "Transparency",
-    description: "Clear explanations of detected bias and suggested corrections.",
-  },
-  {
     title: "Accuracy",
     description: "High-precision detection with minimal false positives.",
+  },
+  {
+    title: "Trust",
+    description: "Build confidence through consistent and reliable bias detection.",
   },
   {
     title: "Compliance",

@@ -220,6 +220,13 @@ html {
   will-change: transform;
   transform: translateZ(0);
   backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+/* Optimize Three.js canvas rendering */
+.framer-EzW10 canvas {
+  will-change: contents;
+  image-rendering: optimizeSpeed;
 }
 
 /* Optimize scroll-linked animations */
@@ -230,6 +237,25 @@ html {
 /* Reduce paint areas during scroll */
 .framer-EzW10 .framer-ljc3kb-container {
   contain: layout style paint;
+  isolation: isolate;
+}
+
+/* GPU layer optimization for text tube */
+.framer-EzW10 .framer-zfcclr {
+  will-change: transform, opacity;
+  transform: translate3d(0, 0, 0);
+}
+
+/* Reduce animation complexity on lower-powered devices */
+@media (max-width: 768px), (prefers-reduced-motion: reduce) {
+  .framer-EzW10 canvas {
+    image-rendering: auto;
+  }
+}
+
+/* Optimize during scroll */
+.framer-EzW10.is-scrolling * {
+  pointer-events: none;
 }
 
 /* Sticky Header - Override fixed widths */
@@ -302,6 +328,39 @@ html {
 @layer base {
   * {
     @apply border-border outline-ring/50;
+  }
+}
+
+/* Our Pillars Section - Reduce height since we have fewer pillars */
+.framer-z8b56 .framer-1vzk6k2-container {
+  height: 5000px !important;
+}
+
+.framer-z8b56 .framer-1p16oje {
+  padding: 100px 100px 150px 100px !important;
+}
+
+@media (max-width: 1199px) {
+  .framer-z8b56 .framer-1vzk6k2-container {
+    height: 4000px !important;
+  }
+}
+
+@media (max-width: 809px) {
+  .framer-z8b56 .framer-1vzk6k2-container {
+    height: 3000px !important;
+  }
+  .framer-z8b56 .framer-1p16oje {
+    padding: 80px 30px 100px 30px !important;
+  }
+}
+
+@media (max-width: 479px) {
+  .framer-z8b56 .framer-1vzk6k2-container {
+    height: 2500px !important;
+  }
+  .framer-z8b56 .framer-1p16oje {
+    padding: 60px 20px 80px 20px !important;
   }
 }
 

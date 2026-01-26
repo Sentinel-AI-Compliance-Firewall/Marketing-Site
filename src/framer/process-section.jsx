@@ -2068,7 +2068,7 @@ var getProps3 = ({
 }) => {
 	return {
 		...props,
-		CWAdSmhQp: textInButton ?? props.CWAdSmhQp ?? "Contact Now",
+		CWAdSmhQp: textInButton ?? props.CWAdSmhQp ?? "Get Early Access",
 		DOoF8BUY3: subHeadingLine2 ?? props.DOoF8BUY3 ?? "CLEAR CHECKPOINTS",
 		fBOTuyw0M: buttonLink ?? props.fBOTuyw0M,
 		GclMHpLmc: heading ?? props.GclMHpLmc ?? "Process",
@@ -2648,7 +2648,7 @@ var Component3 = /* @__PURE__ */ React4.forwardRef(function (props, ref) {
 																				"var(--extracted-1w1cjl5, var(--token-cabcd209-02ce-41bf-9dfa-3682975d9176, rgb(255, 255, 255)))",
 																		}}
 																	>
-																		{"WRITE"}
+																		{"INPUT"}
 																	</motion3.h6>
 																</React4.Fragment>
 															),
@@ -2664,7 +2664,7 @@ var Component3 = /* @__PURE__ */ React4.forwardRef(function (props, ref) {
 																				"var(--extracted-1w1cjl5, var(--token-cabcd209-02ce-41bf-9dfa-3682975d9176, rgb(255, 255, 255)))",
 																		}}
 																	>
-																		{"WRITE"}
+																		{"INPUT"}
 																	</motion3.h6>
 																</React4.Fragment>
 															),
@@ -2683,7 +2683,7 @@ var Component3 = /* @__PURE__ */ React4.forwardRef(function (props, ref) {
 																"var(--extracted-1lwpl3i, var(--token-cabcd209-02ce-41bf-9dfa-3682975d9176, rgb(255, 255, 255)))",
 														}}
 													>
-														{"WRITE"}
+														{"INPUT"}
 													</motion3.h5>
 												</React4.Fragment>
 											</RichText3>
@@ -2742,7 +2742,7 @@ var Component3 = /* @__PURE__ */ React4.forwardRef(function (props, ref) {
 												}}
 											>
 												{
-													"Draft your content naturally in any format marketing copy, documentation, support tickets, or social posts. No workflow changes. Write as you normally would."
+													"Write directly, upload files, or paste links. Any format works: marketing copy, documentation, support tickets, or social posts. No workflow changes required."
 												}
 											</motion3.p>
 										</React4.Fragment>
@@ -3011,7 +3011,7 @@ var Component3 = /* @__PURE__ */ React4.forwardRef(function (props, ref) {
 												}}
 											>
 												{
-													"Our system scans every word in real-time, detecting bias patterns across gender, race, age, disability, and more. Contextual analysis flags issues with confidence scores and explanations."
+													"Your content is analyzed in real-time to identify potential bias across multiple protected categories. Issues are clearly highlighted for your review."
 												}
 											</motion3.p>
 										</React4.Fragment>
@@ -3518,7 +3518,7 @@ var Component3 = /* @__PURE__ */ React4.forwardRef(function (props, ref) {
 													}}
 												>
 													{
-														"Every change is logged automatically. Track who made edits, what was changed, and why. Export reports for compliance. Build a complete history of content decisions."
+														"All changes are automatically documented. Generate reports for compliance requirements and maintain a clear record of your content review process."
 													}
 												</motion3.p>
 											</React4.Fragment>
@@ -3793,7 +3793,7 @@ var Component3 = /* @__PURE__ */ React4.forwardRef(function (props, ref) {
 													}}
 												>
 													{
-														"Get smart alternative suggestions for each flag. Choose from intelligently generated rewrites that preserve your message while removing bias. Edit manually or accept suggestions with one click."
+														"Review suggested alternatives for flagged content. Accept recommendations or edit manually to maintain your voice while ensuring fairness."
 													}
 												</motion3.p>
 											</React4.Fragment>
@@ -4104,7 +4104,7 @@ var Component3 = /* @__PURE__ */ React4.forwardRef(function (props, ref) {
 													}}
 												>
 													{
-														"Ship confidently knowing your content has been thoroughly checked. Deploy through our API or export to your CMS. Enable automated checks for ongoing content. Maintain fairness at scale."
+														"Publish with confidence knowing your content has been reviewed for fairness. Integrate with your existing workflow through our API or export directly."
 													}
 												</motion3.p>
 											</React4.Fragment>
@@ -4907,7 +4907,7 @@ addPropertyControls4(FramerV1lV42W6x, {
 		type: ControlType4.String,
 	},
 	CWAdSmhQp: {
-		defaultValue: "Contact Now",
+		defaultValue: "Get Early Access",
 		displayTextArea: false,
 		title: "Text In Button",
 		type: ControlType4.String,
