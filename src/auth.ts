@@ -18,10 +18,15 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     error: "/login",
   },
   callbacks: {
-    async jwt({ token, user, account }) {
+    async redirect({ baseUrl }) {
+      // After OAuth, redirect to token exchange page
+      return `${baseUrl}/auth/callback`;
+    },
+    async jwt({ token, user, account, profile }) {
       if (account && user) {
         token.accessToken = account.access_token;
         token.provider = account.provider;
+        token.picture = (profile as any)?.picture || user.image;
       }
       return token;
     },
@@ -29,6 +34,8 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       if (session.user) {
         (session.user as any).id = token.sub;
         (session.user as any).provider = token.provider;
+        (session.user as any).accessToken = token.accessToken;
+        (session.user as any).picture = token.picture;
       }
       return session;
     },
