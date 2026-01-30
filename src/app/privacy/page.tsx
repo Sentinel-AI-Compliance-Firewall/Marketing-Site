@@ -9,23 +9,21 @@ export default function PrivacyPage() {
       <header className="fixed top-0 left-0 right-0 z-50 px-6 py-4 bg-black/90 backdrop-blur-md border-b border-white/10">
         <div className="max-w-4xl mx-auto flex items-center justify-between">
           <Link href="/" className="text-white hover:text-[rgb(251,73,48)] transition-colors">
-            <svg className="w-14 h-12" viewBox="0 0 56 48" fill="currentColor">
-              {/* Top parallelogram bar */}
-              <path d="M 10 0 L 44 0 L 34 5.5 L 0 5.5 Z" />
-              {/* Upper diagonal lines */}
-              <path d="M 1 7 L 12 18 L 11.5 18.5 L 0.5 7.5 Z" />
-              <path d="M 5 7 L 16 18 L 15.5 18.5 L 4.5 7.5 Z" />
-              {/* Main diagonal with accent bar */}
-              <path d="M 10 12 L 28 30 L 27 31 L 9 13 Z" />
-              <path d="M 24 17 L 42 10 L 42 14 L 26 20 Z" />
-              {/* Lower diagonal with accent bar - mirrored */}
-              <path d="M 28 18 L 46 36 L 45 37 L 27 19 Z" />
-              <path d="M 14 34 L 32 28 L 32 32 L 16 37 Z" />
-              {/* Lower diagonal lines */}
-              <path d="M 40 29 L 51 40 L 50.5 40.5 L 39.5 29.5 Z" />
-              <path d="M 44 29 L 55 40 L 54.5 40.5 L 43.5 29.5 Z" />
-              {/* Bottom parallelogram bar */}
-              <path d="M 10 42.5 L 49 42.5 L 39 48 L 0 48 Z" />
+            <svg className="w-14 h-12" viewBox="0 0 56 47.6" fill="currentColor" overflow="visible">
+              <g>
+                <path d="M 20.959 0 L 54.98 0 L 44.941 5.444 L 10.919 5.444 Z" />
+                <path d="M 0.179 0.179 C 0.278 0.08 0.438 0.08 0.537 0.179 L 11.813 11.468 C 11.912 11.567 11.912 11.727 11.813 11.826 L 11.813 11.826 C 11.714 11.925 11.554 11.925 11.455 11.826 L 0.179 0.538 C 0.08 0.439 0.08 0.278 0.179 0.179 Z" transform="translate(44.314 4.955) rotate(2 6 6)" />
+                <path d="M 0.179 0.179 C 0.278 0.08 0.438 0.08 0.537 0.179 L 11.813 11.468 C 11.912 11.567 11.912 11.727 11.813 11.826 L 11.813 11.826 C 11.714 11.925 11.554 11.925 11.455 11.826 L 0.179 0.538 C 0.08 0.439 0.08 0.278 0.179 0.179 Z" transform="translate(-0.305 30.64) rotate(2 6 6)" />
+                <g transform="translate(12.349 4.714)">
+                  <path d="M 0.261 0.258 C 0.406 0.115 0.639 0.115 0.784 0.258 L 17.171 16.442 C 17.315 16.584 17.315 16.816 17.171 16.958 L 17.171 16.958 C 17.026 17.101 16.793 17.101 16.649 16.958 L 0.261 0.774 C 0.117 0.632 0.117 0.4 0.261 0.258 Z" transform="translate(-0.296 -0.009) rotate(1 8.75 8.5)" />
+                  <path d="M 13.996 0.899 L 30.227 0 L 29.819 7.475 L 0 9.127 Z" transform="translate(10.974 17.328) rotate(49 15 4.5)" />
+                </g>
+                <g transform="translate(4.854 6.212) rotate(179 19.75 18.5)">
+                  <path d="M 0.271 0.277 C 0.42 0.125 0.664 0.125 0.813 0.278 L 17.855 17.733 C 18.006 17.887 18.006 18.134 17.855 18.288 L 17.855 18.288 C 17.707 18.44 17.462 18.44 17.313 18.288 L 0.271 0.832 C 0.12 0.678 0.12 0.432 0.271 0.277 Z" transform="translate(-0.312 -0.016) rotate(1 9 9.25)" />
+                  <path d="M 13.764 0.352 L 30.013 0 L 29.853 7.414 L 0 8.062 Z" transform="translate(11.397 19.401) rotate(49 15 4)" />
+                </g>
+                <path d="M 10.78 42.156 L 50.242 42.156 L 40.2 47.6 L 0.88 47.6 Z" />
+              </g>
             </svg>
           </Link>
           <Link

@@ -181,6 +181,8 @@ var getProps = ({
 	id,
 	topSpacer,
 	width,
+	parentSize,
+	providedWindow,
 	...props
 }) => {
 	return {

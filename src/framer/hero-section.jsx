@@ -135,7 +135,7 @@ var SVG = /* @__PURE__ */ forwardRef2((props, ref) => {
 		<div {...rest} ref={ref} />
 	);
 });
-var getProps = ({ height, id, width, ...props }) => {
+var getProps = ({ height, id, width, parentSize, providedWindow, ...props }) => {
 	return {
 		...props,
 	};

@@ -294,6 +294,8 @@ var getProps = ({
 	subHeadingLine1,
 	subHeadingLine2,
 	width,
+	parentSize,
+	providedWindow,
 	...props
 }) => {
 	return {

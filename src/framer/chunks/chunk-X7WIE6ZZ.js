@@ -18,7 +18,7 @@ var SVG = /* @__PURE__ */ forwardRef2((props, ref) => {
   const { animated, layoutId, children, ...rest } = props;
   return animated ? /* @__PURE__ */ _jsx(motion.div, { ...rest, layoutId, ref }) : /* @__PURE__ */ _jsx("div", { ...rest, ref });
 });
-var getProps = ({ height, id, width, ...props }) => {
+var getProps = ({ height, id, width, parentSize, providedWindow, ...props }) => {
   return { ...props };
 };
 var Component = /* @__PURE__ */ React.forwardRef(function(props, ref) {

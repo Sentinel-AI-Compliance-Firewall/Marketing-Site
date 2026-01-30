@@ -20,7 +20,7 @@ function splitChars(str) {
   return Array.from(str);
 }
 function ZipText(props) {
-  const { text = "Testimoinals", font, textColor = "#FFFFFF", letterSpacing = 0, timeAnimation = 4, offsetPx = 40, fitSize = 0.985, repeatOnVisible = false, width = "100%", height = 120, lastSymbolColor: lastSymbolColorProp, ...rest } = props;
+  const { text = "Testimoinals", font, textColor = "#FFFFFF", letterSpacing = 0, timeAnimation = 4, offsetPx = 40, fitSize = 0.985, repeatOnVisible = false, width = "100%", height = 120, lastSymbolColor: lastSymbolColorProp, layoutId, layoutDependency, parentSize, providedWindow, ...rest } = props;
   const lastSymbolColor = lastSymbolColorProp ?? textColor;
   const rootRef = React.useRef(null);
   const measureRef = React.useRef(null);

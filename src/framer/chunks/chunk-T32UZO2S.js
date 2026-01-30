@@ -27,7 +27,7 @@ var Transition = ({ value, children }) => {
   return /* @__PURE__ */ _jsx(MotionConfigContext.Provider, { value: contextValue, children });
 };
 var Variants = motion.create(React.Fragment);
-var getProps = ({ gap, height, id, link1, link1URL, link2, link2URL, link3, link3URL, link4, link4URL, link5, link5URL, width, ...props }) => {
+var getProps = ({ gap, height, id, link1, link1URL, link2, link2URL, link3, link3URL, link4, link4URL, link5, link5URL, width, parentSize, providedWindow, ...props }) => {
   return { ...props, dfS2LDEpS: link5URL ?? props.dfS2LDEpS, DysJC_1cj: link3URL ?? props.DysJC_1cj, ecxWw6VhB: link2URL ?? props.ecxWw6VhB, k3lRB2Eb3: link4URL ?? props.k3lRB2Eb3, Kss1S8FBU: link3 ?? props.Kss1S8FBU ?? "Process", Lhv1vNzgf: link2 ?? props.Lhv1vNzgf ?? "Services", s9VsuJvXT: link5 ?? props.s9VsuJvXT ?? "Contact", tfQntUoHI: gap ?? props.tfQntUoHI ?? 5, trkldUXRj: link1 ?? props.trkldUXRj ?? "Home", WeXuJH6m6: link4 ?? props.WeXuJH6m6 ?? "Company", x7r_43pIr: link1URL ?? props.x7r_43pIr };
 };
 var createLayoutDependency = (props, variants) => {

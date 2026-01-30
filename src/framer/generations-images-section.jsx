@@ -1012,7 +1012,7 @@ var humanReadableVariantMap = {
 	"White Right - Phone": "X5SEuS0Kb",
 	"White Right - Tablet": "R4jDgdVzn",
 };
-var getProps = ({ heading, height, id, showText, width, ...props }) => {
+var getProps = ({ heading, height, id, showText, width, parentSize, providedWindow, ...props }) => {
 	return {
 		...props,
 		B4pJURn2f: showText ?? props.B4pJURn2f ?? true,

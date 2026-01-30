@@ -669,7 +669,7 @@ var humanReadableVariantMap = {
 	"Variant 2": "kuFSgBD2m",
 	Close: "RK6XVwIWf",
 };
-var getProps = ({ click, height, id, width, ...props }) => {
+var getProps = ({ click, height, id, width, parentSize, providedWindow, ...props }) => {
 	return {
 		...props,
 		EwEoDaqoU: click ?? props.EwEoDaqoU,

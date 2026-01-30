@@ -44,7 +44,7 @@ var Transition = ({ value, children }) => {
 };
 var Variants = motion.create(React.Fragment);
 var humanReadableVariantMap = { "Left - Desktop": "xXrD9u5iR", "Left - Phone": "TjckuJE3n", "Left - Tablet": "Cbjf6HBG2", "Right - Desktop": "d3bH04UyF", "Right - Phone": "W8N8T6INQ", "Right - Tablet": "LCJjm_9gq", "White  Left  - Phone": "Ea6DjCLYg", "White  Left - Tablet": "fXMLZeGEE", "White Left - Desktop ": "OT8QvgaED", "White Right - Desktop": "Yw_oqMS57", "White Right - Phone": "X5SEuS0Kb", "White Right - Tablet": "R4jDgdVzn" };
-var getProps = ({ heading, height, id, showText, width, ...props }) => {
+var getProps = ({ heading, height, id, showText, width, parentSize, providedWindow, ...props }) => {
   return { ...props, B4pJURn2f: showText ?? props.B4pJURn2f ?? true, variant: humanReadableVariantMap[props.variant] ?? props.variant ?? "xXrD9u5iR", zWunlxr_x: heading ?? props.zWunlxr_x ?? "OUR STACK" };
 };
 var createLayoutDependency = (props, variants) => {

@@ -74,7 +74,7 @@ var Transition = ({ value, children }) => {
   return /* @__PURE__ */ _jsx2(MotionConfigContext.Provider, { value: contextValue, children });
 };
 var Variants = motion.create(React.Fragment);
-var getProps = ({ height, id, width, ...props }) => {
+var getProps = ({ height, id, width, parentSize, providedWindow, ...props }) => {
   return { ...props };
 };
 var createLayoutDependency = (props, variants) => {

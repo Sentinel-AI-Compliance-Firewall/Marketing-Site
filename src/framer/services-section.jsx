@@ -115,6 +115,8 @@ var getProps = ({
 	id,
 	linkToSectionOrPage,
 	width,
+	parentSize,
+	providedWindow,
 	...props
 }) => {
 	return {

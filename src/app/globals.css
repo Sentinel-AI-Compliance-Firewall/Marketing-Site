@@ -215,47 +215,21 @@ html {
   display: block !important;
 }
 
-/* Services section performance optimizations */
-.framer-EzW10 {
-  will-change: transform;
-  transform: translateZ(0);
-  backface-visibility: hidden;
-  perspective: 1000px;
-}
-
-/* Optimize Three.js canvas rendering */
+/* Services section - keep GPU compositing only on canvas, don't break sticky/3D */
 .framer-EzW10 canvas {
-  will-change: contents;
-  image-rendering: optimizeSpeed;
+  will-change: transform;
 }
 
-/* Optimize scroll-linked animations */
-.framer-EzW10 * {
-  transform: translateZ(0);
-}
-
-/* Reduce paint areas during scroll */
+/* Ensure scroll container doesn't clip sticky elements */
 .framer-EzW10 .framer-ljc3kb-container {
-  contain: layout style paint;
   isolation: isolate;
 }
 
-/* GPU layer optimization for text tube */
-.framer-EzW10 .framer-zfcclr {
-  will-change: transform, opacity;
-  transform: translate3d(0, 0, 0);
-}
-
-/* Reduce animation complexity on lower-powered devices */
-@media (max-width: 768px), (prefers-reduced-motion: reduce) {
+/* Disable pointer events during active scroll for performance */
+@media (prefers-reduced-motion: reduce) {
   .framer-EzW10 canvas {
-    image-rendering: auto;
+    display: none;
   }
-}
-
-/* Optimize during scroll */
-.framer-EzW10.is-scrolling * {
-  pointer-events: none;
 }
 
 /* Sticky Header - Override fixed widths */
@@ -290,6 +264,13 @@ html {
 .framer-Oz0p6 .framer-1ygwdf {
   display: none !important;
 }
+
+/* Hide the plus/crosshair icon (old location marker) in footer */
+.framer-rjds2-container {
+  display: none !important;
+}
+
+/* "About" link repurposed as "Process" in footer */
 
 .dark {
   --background: oklch(0.145 0 0);

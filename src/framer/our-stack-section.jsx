@@ -98,7 +98,7 @@ var humanReadableVariantMap = {
 	Phone: "uXykAYwLl",
 	Tablet: "h4UoONpV0",
 };
-var getProps = ({ heading, height, id, width, ...props }) => {
+var getProps = ({ heading, height, id, width, parentSize, providedWindow, ...props }) => {
 	return {
 		...props,
 		Udvf2bKUQ: heading ?? props.Udvf2bKUQ ?? "OUR STACK",

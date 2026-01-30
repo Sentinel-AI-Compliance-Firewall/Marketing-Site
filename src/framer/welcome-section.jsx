@@ -159,6 +159,8 @@ var getProps = ({
 	textureIn3DShpere,
 	topSpacer,
 	width,
+	parentSize,
+	providedWindow,
 	...props
 }) => {
 	return {

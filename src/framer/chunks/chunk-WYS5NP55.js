@@ -24,7 +24,7 @@ var Transition = ({ value, children }) => {
 };
 var Variants = motion.create(React.Fragment);
 var humanReadableVariantMap = { "2": "cAAx1rUvo", "3": "tVqaczTj2", "4": "ynYVtagYi", Start: "IuzRA6V2q" };
-var getProps = ({ height, id, width, ...props }) => {
+var getProps = ({ height, id, width, parentSize, providedWindow, ...props }) => {
   return { ...props, variant: humanReadableVariantMap[props.variant] ?? props.variant ?? "IuzRA6V2q" };
 };
 var createLayoutDependency = (props, variants) => {

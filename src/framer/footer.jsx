@@ -1545,7 +1545,7 @@ var Transition = ({ value, children }) => {
 	);
 };
 var Variants = motion.create(React.Fragment);
-var getProps = ({ height, id, width, ...props }) => {
+var getProps = ({ height, id, width, parentSize, providedWindow, ...props }) => {
 	return {
 		...props,
 	};
@@ -3211,19 +3211,19 @@ var Component4 = /* @__PURE__ */ React4.forwardRef(function (props, ref) {
 										links={[
 											{
 												href: {
-													url: "/",
+													url: "/#process",
 												},
 												implicitPathVariables: void 0,
 											},
 											{
 												href: {
-													url: "/",
+													url: "/#process",
 												},
 												implicitPathVariables: void 0,
 											},
 											{
 												href: {
-													url: "/",
+													url: "/#process",
 												},
 												implicitPathVariables: void 0,
 											},
@@ -3303,7 +3303,7 @@ var Component4 = /* @__PURE__ */ React4.forwardRef(function (props, ref) {
 														layoutId: "iGxK1EwY2",
 														name: "NavLink_Journal",
 														sm5VPT_8v: resolvedLinks4[0],
-														unUlSXRfZ: "About",
+														unUlSXRfZ: "Process",
 														variant: "mwHGkNEUL",
 														width: "100%",
 														...addPropertyOverrides3(

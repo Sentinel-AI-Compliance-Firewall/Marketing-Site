@@ -45,7 +45,7 @@ var Transition = ({ value, children }) => {
 };
 var Variants = motion.create(React.Fragment);
 var humanReadableVariantMap = { "Big - Without Right Padding": "D0hxHNqkD", "Hover - Without Right Padding": "HQ8tEHqoV", "Without Right Padding": "J37DLfr4g", Hover: "kEO7yE7JD", Normal: "aAK0Zsaeb" };
-var getProps = ({ click, height, id, link, newTab, padding, smoothScroll, textInLink, width, ...props }) => {
+var getProps = ({ click, height, id, link, newTab, padding, smoothScroll, textInLink, width, parentSize, providedWindow, ...props }) => {
   return { ...props, AshsiEE7l: link ?? props.AshsiEE7l, dwK17zoHk: padding ?? props.dwK17zoHk ?? "10px 0px 10px 20px", jKVOjm35o: newTab ?? props.jKVOjm35o, mskYeEObK: textInLink ?? props.mskYeEObK ?? "Home", OJ_klaT9g: click ?? props.OJ_klaT9g, QbkxDi4U0: smoothScroll ?? props.QbkxDi4U0 ?? true, variant: humanReadableVariantMap[props.variant] ?? props.variant ?? "aAK0Zsaeb" };
 };
 var createLayoutDependency = (props, variants) => {

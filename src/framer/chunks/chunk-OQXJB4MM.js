@@ -35,7 +35,7 @@ var Transition = ({ value, children }) => {
 };
 var Variants = motion.create(React.Fragment);
 var humanReadableVariantMap = { "Tablet & Phone": "haAYgGI8I", Desktop: "IeeGHQ7zU" };
-var getProps = ({ height, id, subHeadingLine1, subHeadingLine2, width, ...props }) => {
+var getProps = ({ height, id, subHeadingLine1, subHeadingLine2, width, parentSize, providedWindow, ...props }) => {
   return { ...props, KzcXRrP4V: subHeadingLine1 ?? props.KzcXRrP4V ?? "SHORT LOOPS", variant: humanReadableVariantMap[props.variant] ?? props.variant ?? "IeeGHQ7zU", XYUUHggdm: subHeadingLine2 ?? props.XYUUHggdm ?? "CLEAR CHECKPOINTS" };
 };
 var createLayoutDependency = (props, variants) => {

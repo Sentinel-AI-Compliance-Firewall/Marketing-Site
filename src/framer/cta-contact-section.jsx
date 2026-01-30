@@ -205,7 +205,7 @@ var humanReadableVariantMap = {
 	Normal: "Mr9AJ_Tw9",
 	Success: "iUviNC0GG",
 };
-var getProps = ({ height, id, textInLink, width, ...props }) => {
+var getProps = ({ height, id, textInLink, width, parentSize, providedWindow, ...props }) => {
 	return {
 		...props,
 		PW51ip198: textInLink ?? props.PW51ip198 ?? "Join the Waitlist",

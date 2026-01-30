@@ -542,7 +542,7 @@ var Transition = ({ value, children }) => {
 };
 var Variants = motion.create(React2.Fragment);
 var humanReadableVariantMap = { "Wide Screen": "XF37Aoeis", Laptop: "mRVKYY5Ma", Phone: "wvCIj3dT0", Tablet: "pjiRvzvaf" };
-var getProps = ({ height, id, width, ...props }) => {
+var getProps = ({ height, id, width, parentSize, providedWindow, ...props }) => {
   return { ...props, variant: humanReadableVariantMap[props.variant] ?? props.variant ?? "XF37Aoeis" };
 };
 var createLayoutDependency = (props, variants) => {

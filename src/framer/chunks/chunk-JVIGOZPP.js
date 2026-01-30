@@ -154,7 +154,15 @@ function MorphGPU(props) {
     const finalDpr = dpr * pixelRatio;
     const ratioNow = intersectionRatio(root);
     const initialActive = ratioNow > IO_THRESHOLD && (typeof document === "undefined" || document.visibilityState === "visible");
-    const offscreen = cvs.transferControlToOffscreen();
+    let offscreen;
+    try {
+      offscreen = cvs.transferControlToOffscreen();
+    } catch (e) {
+      // Canvas control already transferred (React strict mode / HMR re-run)
+      worker.terminate();
+      workerRef.current = null;
+      return;
+    }
     worker.postMessage({ type: "init", canvas: offscreen, size: { w: elW, h: elH }, dpr: finalDpr, initialActive, props: { imgA, imgB, morphMs, pauseMs, underlayStart } }, [offscreen]);
     activeStateRef.current.inView = ratioNow > IO_THRESHOLD;
     activeStateRef.current.visible = typeof document === "undefined" ? true : document.visibilityState === "visible";

@@ -116,7 +116,7 @@ var Transition = ({ value, children }) => {
 	);
 };
 var Variants = motion.create(React.Fragment);
-var getProps = ({ height, id, width, ...props }) => {
+var getProps = ({ height, id, width, parentSize, providedWindow, ...props }) => {
 	return {
 		...props,
 	};

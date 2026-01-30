@@ -297,7 +297,7 @@ var Transition = ({ value, children }) => {
 };
 var Variants = motion.create(React2.Fragment);
 var humanReadableVariantMap = { "Hover FX - Speed - Hover": "dC7iQkL3E", "Hover FX - Speed": "dhHja9Y32", "Tablet & Phone": "DYsBWRByw", FX: "frZYC4W68", Hover: "wfi8Az_F0", Normal: "fnIpDlFFI" };
-var getProps = ({ height, id, link, newTab, textInLink, width, ...props }) => {
+var getProps = ({ height, id, link, newTab, textInLink, width, parentSize, providedWindow, ...props }) => {
   return { ...props, cbXbrjClJ: newTab ?? props.cbXbrjClJ, PW51ip198: textInLink ?? props.PW51ip198 ?? "Contact now", variant: humanReadableVariantMap[props.variant] ?? props.variant ?? "fnIpDlFFI", ykgYtZYbZ: link ?? props.ykgYtZYbZ };
 };
 var createLayoutDependency = (props, variants) => {

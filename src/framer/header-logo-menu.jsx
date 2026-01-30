@@ -204,7 +204,7 @@ var humanReadableVariantMap = {
 	Phone: "UXyOf63_F",
 	Tablet: "tuSyraQiM",
 };
-var getProps = ({ height, id, width, ...props }) => {
+var getProps = ({ height, id, width, parentSize, providedWindow, ...props }) => {
 	return {
 		...props,
 		variant:

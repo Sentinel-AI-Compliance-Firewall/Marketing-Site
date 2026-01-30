@@ -1422,6 +1422,8 @@ var getProps = ({
 	position,
 	text,
 	width,
+	parentSize,
+	providedWindow,
 	...props
 }) => {
 	return {

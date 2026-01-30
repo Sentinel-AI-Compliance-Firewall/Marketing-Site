@@ -33,7 +33,7 @@ var Transition = ({ value, children }) => {
 };
 var Variants = motion.create(React.Fragment);
 var humanReadableVariantMap = { Hover: "esQ_AoDo6", Normal: "irgn6VhgH" };
-var getProps = ({ height, id, link, newTab, textInLink, width, ...props }) => {
+var getProps = ({ height, id, link, newTab, textInLink, width, parentSize, providedWindow, ...props }) => {
   return { ...props, iAUF86sQz: link ?? props.iAUF86sQz, pMr_wql6N: textInLink ?? props.pMr_wql6N ?? "Home", Ua_Cl6qvH: newTab ?? props.Ua_Cl6qvH, variant: humanReadableVariantMap[props.variant] ?? props.variant ?? "irgn6VhgH" };
 };
 var createLayoutDependency = (props, variants) => {
